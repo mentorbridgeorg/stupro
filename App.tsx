@@ -1,45 +1,55 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NativeBaseProvider, Box, Text, Stack, HStack, View, Flex, Icon, IconButton } from 'native-base';
+import { createStackNavigator } from '@react-navigation/stack';
+import { TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import DetailsCard from './DetailsCard';
+import ExampleIcons from './ExampleIcons';
+const Stacks = createStackNavigator();
 
-const Stack = createNativeStackNavigator();
+function HomeScreen({ navigation }) {
+const exampleIcons= ExampleIcons();
 
-// Define the HomeScreen Component
-const HomeScreen = ({navigation}) => {
+const selectedIcon = exampleIcons[2].icon; 
+
   return (
-    <View >
-      <Text >Welcome to the Home Screen</Text>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
-    </View>
+      <NativeBaseProvider>
+        <Box p="4">
+          <DetailsCard />
+        <View margin="auto" >
+         <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+         <HStack space="3" px="4" pb="4">
+      <IconButton
+      icon={selectedIcon} _light={{ color: 'emerald.800' }} _dark={{ color: 'emerald.300' }} />
+          <Text _light={{ color: 'emerald.800' }} _dark={{ color: 'emerald.300' }}>
+            Find out more
+          </Text>
+        </HStack>
+        </TouchableOpacity>
+        </View>
+        </Box>
+      </NativeBaseProvider>
   );
-};
+}
 
-// Define the ProfileScreen Component
-const ProfileScreen = () => {
-  return (
-    <View>
-      <Text>This is the Profile Screen</Text>
-    </View>
-  );
-};
+const DetailsScreen = () => (
+  <NativeBaseProvider>
+    <Box p="4">
+      <Text fontSize="lg">This is the Details Page</Text>
+    </Box>
+  </NativeBaseProvider>
+);
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{title: 'Welcome'}}
-        />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+const App = () => (
+  <NavigationContainer>
+    <Stacks.Navigator>
+      <Stacks.Screen name="Home" component={HomeScreen}/>
+      <Stacks.Screen name="Details" component={DetailsScreen}/>
+    </Stacks.Navigator>
+  </NavigationContainer>
+);
+//   );
+// };
+// };
 
 export default App;
