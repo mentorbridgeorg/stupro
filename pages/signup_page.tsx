@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginTop: 150,
     display: 'flex',
     justifyContent: 'center',
-    margin: 40
+    margin: 40,
   },
 
   heading: {

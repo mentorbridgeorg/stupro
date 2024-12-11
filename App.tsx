@@ -14,7 +14,7 @@ import SignUpPage from './screens/signup_page';
 
 function App(): React.JSX.Element {
   return <SafeAreaView>
-    <SignUpPage></SignUpPage>
+    <SignUpPage />
   </SafeAreaView>;
 }
 
