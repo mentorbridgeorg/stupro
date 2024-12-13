@@ -1,28 +1,30 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Button, TouchableOpacity} from 'react-native';
+import { NativeBaseProvider, Box, Text, HStack } from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import DetailsCard from './DetailsCard';
 
 const Stack = createNativeStackNavigator();
 
 // Define the HomeScreen Component
 const HomeScreen = ({navigation}) => {
   return (
-    <View >
-      <Text >Welcome to the Home Screen</Text>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
-    </View>
+      <NativeBaseProvider>
+        <Box p="4" alignItems="center" margin="auto">
+        <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+          <DetailsCard/>
+        </TouchableOpacity>
+        </Box>
+      </NativeBaseProvider>
   );
 };
 
 // Define the ProfileScreen Component
-const ProfileScreen = () => {
+const Details = () => {
   return (
     <View>
-      <Text>This is the Profile Screen</Text>
+      <Text>This is the details Screen</Text>
     </View>
   );
 };
@@ -34,9 +36,8 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Welcome'}}
         />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
   );
