@@ -1,21 +1,24 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import type {} from 'react';
-import {StyleSheet, Image, Text} from 'react-native';
+import {StyleSheet, Image, Text, Pressable} from 'react-native';
 import {
   Center,
   Box,
   Heading,
-  VStack,
   FormControl,
   Input,
   Button,
   HStack,
+  Stack,
+  Checkbox,
+  Divider,
 } from 'native-base';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SignUpPage = () => {
+  const [show, setShow] = useState(false);
   return (
     <SafeAreaView>
       <Image
@@ -23,42 +26,101 @@ const SignUpPage = () => {
         style={styles.image}
       />
       <Center>
-        <Box>
-          <Heading style={styles.heading}>Create Account</Heading>
-          <VStack space={2} mt="2">
-            <FormControl>
-              <HStack style={styles.inputContainer}>
-                <Icon name="user" size={25} style={styles.icon} />
+        <Box w="90%">
+          <Heading style={styles.heading}>Welcome To StuPro</Heading>
+          <Text
+            style={styles.subHead}>
+            Create Account
+          </Text>
+          <Stack space={6} mt="2">
+            <FormControl mt="10">
+              <HStack justifyContent="space-between">
+                <Text style={[styles.label, {flex: 1, textAlign: 'left'}]}>
+                  First Name
+                </Text>
+                <Text style={[styles.label, {flex: 1, textAlign: 'left'}]}>
+                  Last Name
+                </Text>
+              </HStack>
+              <HStack space={2} mt="1">
                 <Input
+                  borderColor={'#0089B3'}
+                  flex={1}
                   style={styles.input}
-                  variant="underlined"
-                  placeholder="Full Name"
+                  InputLeftElement={
+                    <Icon name="user" size={22} style={styles.icon} />
+                  }
+                  placeholder="First Name"
+                />
+                <Input
+                  borderColor={'#0089B3'}
+                  flex={1}
+                  style={styles.input}
+                  InputLeftElement={
+                    <Icon name="user" size={22} style={styles.icon} />
+                  }
+                  placeholder="Last Name"
                 />
               </HStack>
             </FormControl>
             <FormControl>
-              <HStack style={styles.inputContainer}>
-                <Icon name="envelope" size={22} style={styles.icon} />
-                <Input
-                  style={styles.input}
-                  variant="underlined"
-                  placeholder="Email"
-                />
-              </HStack>
+              <Text style={styles.label}>Email Address</Text>
+              <Input
+                borderColor={'#0089B3'}
+                style={styles.inputtext}
+                InputLeftElement={
+                  <Icon name="envelope" size={22} style={styles.icon} />
+                }
+                placeholder="Email"
+              />
             </FormControl>
             <FormControl>
-              <HStack style={styles.inputContainer}>
-                <Icon name="lock" size={30} style={styles.icon} />
-                <Input
-                  style={styles.input}
-                  variant="underlined"
-                  type="password"
-                  placeholder="password"
-                />
-              </HStack>
+              <Text style={styles.label}>Password</Text>
+              <Input
+                borderColor={'#0089B3'}
+                style={styles.inputtext}
+                InputLeftElement={
+                  <Icon name="lock" size={30} style={styles.icon} />
+                }
+                type={show ? 'text' : 'password'}
+                InputRightElement={
+                  <Pressable onPress={() => setShow(!show)}>
+                    <Icon
+                      name={show ? 'eye-slash' : 'eye-slash'}
+                      size={22}
+                      style={styles.icon}
+                    />
+                  </Pressable>
+                }
+                placeholder="Password"
+              />
             </FormControl>
-            <Button style={styles.button}>Sign up</Button>
-          </VStack>
+            <Button
+              style={styles.button}
+              _text={{fontWeight: 'bold', fontSize: 18}}>
+              Sign up
+            </Button>
+          </Stack>
+          <Checkbox color="green" value={''}>
+            By Signingup,you are agree to the terms and conditions & privacy
+            policy
+          </Checkbox>
+          <HStack space={5} mt="6" justifyContent="space-between">
+            <Divider
+              width="150"
+              _light={{
+                bg: 'muted.800',
+              }}
+            />
+            <Text>Or</Text>
+            <Divider
+              width="150"
+              _light={{
+                bg: 'muted.800',
+              }}
+            />
+          </HStack>
+          <Text style={styles.text}>Sign in With</Text>
           <HStack style={styles.logoContainer}>
             <Image
               style={styles.logo}
@@ -69,12 +131,6 @@ const SignUpPage = () => {
               source={require('../assets/linkdin.png')}
             />
           </HStack>
-          <HStack style={styles.loginText}>
-            <Text style={styles.text}>
-              Already User?
-              <Text style={{color: '#0A6F8E'}}>Log In</Text>
-            </Text>
-          </HStack>
         </Box>
       </Center>
     </SafeAreaView>
@@ -83,60 +139,74 @@ const SignUpPage = () => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 300,
-    height: 300,
-    marginLeft: 50,
+    width: 150,
+    height: 150,
+    alignSelf: 'center',
   },
+  // linearGradient: {
+  //   flex: 1,
+  //   paddingLeft: 15,
+  //   paddingRight: 15,
+  //   borderRadius: 5
+  // },
   heading: {
+    margin:5,
     color: '#0089B3',
     fontSize: 30,
-    fontWeight: 900,
-    fontFamily: 'inter',
+    fontFamily: 'Lusitana-Bold',
     textAlign: 'center',
     marginBottom: 15,
   },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 8,
-    borderColor: '#E0E0E0',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    height: 60,
-    width: 300,
+  subHead:{
+    fontSize: 20,
+    fontWeight: '700',
+    fontFamily: 'Lusitana-Regular',
+    color: '#0089B3',
+    textAlign: 'center',
+  },
+  label: {
+    fontSize: 14,
+    fontFamily: 'Lusitana-Bold',
   },
   input: {
+    fontSize: 13,
+    fontFamily: 'inter',
+    fontWeight: 'bold',
+    backgroundColor:'#FFFFFF',
+  },
+  inputtext: {
     fontSize: 15,
     fontFamily: 'inter',
     fontWeight: 'bold',
-    marginRight: 50,
+    backgroundColor:'#FFFFFF',
   },
   icon: {
-    marginRight: 15,
+    padding: 8,
     color: '#999999',
+    backgroundColor:'#FFFFFF',
   },
   button: {
-    marginTop: 10,
     color: '#0A6F8E',
     width: 100,
-    marginLeft: 100,
+    alignSelf: 'center',
+    borderRadius: 10,
+    borderWidth: 1,
+    marginBottom: 10,
   },
   logo: {
     width: 30,
     height: 30,
-    margin: 30,
+    margin: 15,
   },
   logoContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  loginText: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
   text: {
     fontSize: 15,
     fontFamily: 'inter',
+    textAlign: 'center',
+    color: '#0089B3',
   },
 });
 
