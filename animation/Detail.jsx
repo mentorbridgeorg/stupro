@@ -5,19 +5,19 @@ import { SharedElement } from 'react-navigation-shared-element';
 const Detail = () => {
   return (
     <View>
+    <SharedElement id="sharedCard">
     <Box flex={1} justifyContent="center" alignItems="center">
-      <SharedElement id="sharedCard">
-        <Box p="4" w="100%" h="100%" bg="emerald.300">
+        <View p="4" w="100%" h="100%" bg="emerald.300">
           <Text fontSize="lg" color="white">This is the expanded card</Text>
-        </Box>
-      </SharedElement>
+        </View>
     </Box>
+    </SharedElement>
     </View>
   );
 };
 
 Detail.sharedElements = () => {
-  return [{ id: 'sharedCard' }];
+  return [{ id: 'id' }];
 };
 
 export default Detail;

@@ -1,17 +1,20 @@
 import React from 'react';
 import { NativeBaseProvider, Box } from 'native-base';
 import { TouchableOpacity } from 'react-native';
-import {}
-const HomeScreen = ({navigation}) => {
+import DetailsCard from './DetailsCard';
+import { SharedElement } from 'react-native-shared-element';
+const Home = ({navigation}) => {
     return (
         <NativeBaseProvider>
+        <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+          <SharedElement>
           <Box p="4" alignItems="center" margin="auto">
-          <TouchableOpacity onPress={() => navigation.navigate('Details')}>
             <DetailsCard/>
-          </TouchableOpacity>
           </Box>
+          </SharedElement>
+        </TouchableOpacity>
         </NativeBaseProvider>
     );
   };
 
-export default HomeScreen;
+export default Home;
