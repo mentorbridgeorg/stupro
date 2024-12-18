@@ -7,7 +7,7 @@ const Home = ({navigation}) => {
     return (
         <NativeBaseProvider>
         <TouchableOpacity onPress={() => navigation.navigate('Details')}>
-          <SharedElement>
+          <SharedElement id="id">
           <Box p="4" alignItems="center" margin="auto">
             <DetailsCard/>
           </Box>
