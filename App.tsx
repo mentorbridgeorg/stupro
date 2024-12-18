@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Button, TouchableOpacity} from 'react-native';
-import { NativeBaseProvider, Box, Text, HStack } from 'native-base';
+import {View, TouchableOpacity} from 'react-native';
+import { NativeBaseProvider, Box, Text } from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DetailsCard from './DetailsCard';
@@ -8,24 +8,16 @@ import DetailsCard from './DetailsCard';
 const Stack = createNativeStackNavigator();
 
 // Define the HomeScreen Component
-const HomeScreen = ({navigation}) => {
-  return (
-      <NativeBaseProvider>
-        <Box p="4" alignItems="center" margin="auto">
-        <TouchableOpacity onPress={() => navigation.navigate("Details")}>
-          <DetailsCard/>
-        </TouchableOpacity>
-        </Box>
-      </NativeBaseProvider>
-  );
-};
+
 
 // Define the ProfileScreen Component
 const Details = () => {
   return (
+    <NativeBaseProvider>
     <View>
       <Text>This is the details Screen</Text>
     </View>
+    </NativeBaseProvider>
   );
 };
 
