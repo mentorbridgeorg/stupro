@@ -2,7 +2,7 @@ import React from 'react';
 import { NativeBaseProvider, Box } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import DetailsCard from './DetailsCard';
-import { SharedElement } from 'react-native-shared-element';
+import { SharedElement } from 'react-navigation-shared-element';
 const Home = ({navigation}) => {
     return (
         <NativeBaseProvider>
