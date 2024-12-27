@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "tailwind.config": [
+        "./tailwind.config.js"
+      ]
+    }
   },
   "extends": "@react-native/typescript-config/tsconfig.json"
 }
