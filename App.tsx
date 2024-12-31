@@ -7,18 +7,20 @@
 
 import React from 'react';
 import type {} from 'react';
-import {SafeAreaView} from 'react-native';
 
 import {} from 'react-native/Libraries/NewAppScreen';
-import SignUpPage from './pages/signup_page';
+// import SignUpscreen from './src/screens/Signupscreen';
+// import SignUpscreen from './screens/SignupScreen';
+
 import { NativeBaseProvider} from 'native-base';
+import SelectUserTypeScreen from './src/screens/SelectUserTypeScreen';
 
 function App(): React.JSX.Element {
   return <NativeBaseProvider>
-      <SafeAreaView>
-     <SignUpPage/>
-      </SafeAreaView>
-      </NativeBaseProvider>;
+    {/* <SignUpscreen /> */}
+    <SelectUserTypeScreen/>
+  </NativeBaseProvider>;
+  
 }
 
 export default App;
