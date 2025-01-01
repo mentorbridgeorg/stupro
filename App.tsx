@@ -5,20 +5,20 @@
  * @format
  */
 
+import {NativeBaseProvider} from 'native-base';
 import React from 'react';
-import type {} from 'react';
 import {SafeAreaView} from 'react-native';
-
-import {} from 'react-native/Libraries/NewAppScreen';
-import SignUpPage from './pages/signup_page';
-import { NativeBaseProvider} from 'native-base';
+import {SignUp} from './pages/SignUp';
+import {theme} from './theme';
 
 function App(): React.JSX.Element {
-  return <NativeBaseProvider>
+  return (
+    <NativeBaseProvider theme={theme}>
       <SafeAreaView>
-     <SignUpPage/>
+        <SignUp />
       </SafeAreaView>
-      </NativeBaseProvider>;
+    </NativeBaseProvider>
+  );
 }
 
 export default App;
