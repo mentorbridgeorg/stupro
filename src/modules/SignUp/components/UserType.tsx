@@ -1,3 +1,4 @@
+import {useAtom, useSetAtom} from 'jotai';
 import {
   Badge,
   Box,
@@ -10,21 +11,14 @@ import {
   Text,
 } from 'native-base';
 import React, {useState} from 'react';
-import {ProfessionalIcon} from './ProfessionalIcon';
-import {StudentIcon} from './StudentIcon';
+import {ProfessionalIcon} from '../../../assets/icons/ProfessionalIcon';
+import {StudentIcon} from '../../../assets/icons/StudentIcon';
 import {theme} from '../../../theme';
-export const UserType = ({
-  setCurrentStep,
-}: {
-  setCurrentStep: (step: number) => void;
-}) => {
-  const [selectedUserType, setSelectedUserType] = useState<
-    'student' | 'professional' | null
-  >(null);
+import {currentStepAtom, signUpDataAtom} from '../atoms';
 
-  const handleUserTypeChange = (type: 'student' | 'professional') => {
-    setSelectedUserType(type);
-  };
+export const UserType = () => {
+  const setCurrentStep = useSetAtom(currentStepAtom);
+  const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
 
   const userTypes = [
     {
@@ -48,13 +42,14 @@ export const UserType = ({
         </Text>
         <Box mb="5">
           <HStack space={3} justifyContent="center">
-            {userTypes.map(userType => (
-              <Center w="50%" key={userType.type}>
+            {userTypes.map(type => (
+              <Center w="50%" key={type.type}>
                 <Pressable
                   onPress={() =>
-                    handleUserTypeChange(
-                      userType.type as 'student' | 'professional',
-                    )
+                    setSignUpData({
+                      ...signUpData,
+                      userType: type.type as 'student' | 'professional',
+                    })
                   }
                   borderColor="muted.300"
                   rounded="8"
@@ -62,13 +57,13 @@ export const UserType = ({
                   borderWidth="1"
                   borderStyle="solid"
                   boxShadow={
-                    userType.type === selectedUserType
+                    type.type === signUpData?.userType
                       ? `0 0 2px 2px ${theme.colors.font.primary}`
                       : 'none'
                   }
                   p="5">
                   <Flex direction="column" alignItems="center" gap="3">
-                    {userType.icon}
+                    {type.icon}
                     <Badge
                       colorScheme="primary"
                       _text={{
@@ -76,7 +71,7 @@ export const UserType = ({
                       }}
                       variant="solid"
                       rounded="4">
-                      {userType.type.toUpperCase()}
+                      {type.type.toUpperCase()}
                     </Badge>
                   </Flex>
                 </Pressable>
@@ -93,6 +88,7 @@ export const UserType = ({
               fontWeight: 'bold',
               marginLeft: '0',
             }}
+            isDisabled={!signUpData?.userType}
             onPress={() => setCurrentStep(2)}>
             Continue
           </Button>

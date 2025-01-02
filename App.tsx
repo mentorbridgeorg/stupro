@@ -8,8 +8,8 @@
 import {NativeBaseProvider} from 'native-base';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {SignUp} from './pages/SignUp';
-import {theme} from './theme';
+import {theme} from './src/theme';
+import {SignUp} from './src/pages/SignUp/SignUp';
 
 function App(): React.JSX.Element {
   return (
