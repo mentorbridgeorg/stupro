@@ -1,9 +1,10 @@
-import {useAtom, useAtomValue} from 'jotai';
-import {Box, Button, Text} from 'native-base';
+import { useAtom, useAtomValue } from 'jotai';
+import { Box, Text } from 'native-base';
 import React from 'react';
-import {currentStepAtom, signUpDataAtom} from '../atoms';
-import {ProfessionalFields} from './ProfessionalFields';
-import {StudentFields} from './StudentFields';
+import { Button } from '../../../ui/atoms/Button';
+import { currentStepAtom, signUpDataAtom } from '../atoms';
+import { ProfessionalFields } from './ProfessionalFields';
+import { StudentFields } from './StudentFields';
 
 export const UserDetails = () => {
   const [currentStep, setCurrentStep] = useAtom(currentStepAtom);
@@ -12,13 +13,28 @@ export const UserDetails = () => {
     setCurrentStep(currentStep + 1);
   };
 
+  const isUserDetailsValid = () => {
+    if (signUpData?.userType === 'student') {
+      return (
+        signUpData?.userDetails?.degree !== '' &&
+        signUpData?.userDetails?.college !== ''
+      );
+    } else {
+      return (
+        signUpData?.userDetails?.designation !== '' &&
+        signUpData?.userDetails?.company !== ''
+      );
+    }
+  };
+
   return (
     <Box>
       <Text
         fontSize={'3xl'}
         fontWeight={'bold'}
         color="font.primary"
-        textAlign={'center'}>
+        textAlign={'center'}
+        mb={'2'}>
         User Details
       </Text>
       {signUpData?.userType === 'student' ? (
@@ -27,15 +43,7 @@ export const UserDetails = () => {
         <ProfessionalFields />
       )}
       <Box alignItems="center" mb="5" mt="5">
-        <Button
-          width={'50%'}
-          borderRadius={10}
-          _text={{
-            fontSize: 'md',
-            fontWeight: 'bold',
-            marginLeft: '0',
-          }}
-          onPress={handleContinue}>
+        <Button onPress={handleContinue} isDisabled={!isUserDetailsValid}>
           Continue
         </Button>
       </Box>

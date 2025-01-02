@@ -1,4 +1,4 @@
-import {ReactElement} from 'react';
+import {ReactElement, ReactNode} from 'react';
 
 export interface FormInputProps {
   label?: string;
@@ -7,4 +7,7 @@ export interface FormInputProps {
   isRequired?: boolean;
   icon?: ReactElement;
   type?: 'text' | 'password' | undefined;
+  rightIcon?: ReactElement;
+  helperText?: ReactNode;
+  value?: string;
 }

@@ -13,6 +13,7 @@ export const ProfessionalFields = () => {
         <FormInput
           label="Designation"
           placeholder="Designation"
+          value={signUpData?.userDetails?.designation}
           onChange={text =>
             setSignUpData({
               ...signUpData,
@@ -25,6 +26,7 @@ export const ProfessionalFields = () => {
         <FormInput
           label="Company"
           placeholder="Company"
+          value={signUpData?.userDetails?.company}
           onChange={text =>
             setSignUpData({
               ...signUpData,

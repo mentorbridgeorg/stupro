@@ -27,6 +27,7 @@ export const StudentFields = () => {
           label="Degree"
           isRequired
           options={degreeOptions}
+          selectedValue={signUpData?.userDetails?.degree}
           onChange={itemValue =>
             setSignUpData({
               ...signUpData,
@@ -41,6 +42,7 @@ export const StudentFields = () => {
           label="College"
           isRequired
           placeholder="ABC College of Engineering"
+          value={signUpData?.userDetails?.college}
           onChange={text =>
             setSignUpData({
               ...signUpData,

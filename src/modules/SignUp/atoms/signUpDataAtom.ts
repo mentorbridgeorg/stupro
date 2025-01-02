@@ -5,7 +5,7 @@ export const signUpDataAtom = atom<SignUpData>({
   email: '',
   userType: null,
   userDetails: {
-    firstName: '',
+    firstName: 'X',
     lastName: '',
     degree: '',
     college: '',

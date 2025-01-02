@@ -9,6 +9,9 @@ export const FormInput = ({
   onChange,
   isRequired = true,
   icon,
+  rightIcon,
+  helperText,
+  value,
 }: FormInputProps) => {
   return (
     <Box w="100%">
@@ -26,11 +29,16 @@ export const FormInput = ({
           borderWidth={'1px'}
           onChangeText={onChange}
           InputLeftElement={icon}
+          InputRightElement={rightIcon}
+          value={value}
           _focus={{
             borderColor: 'primary.500',
             borderWidth: '2px',
           }}
         />
+        {helperText && (
+          <FormControl.HelperText>{helperText}</FormControl.HelperText>
+        )}
       </FormControl>
     </Box>
   );

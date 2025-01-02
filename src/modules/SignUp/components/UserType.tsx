@@ -1,8 +1,7 @@
-import {useAtom, useSetAtom} from 'jotai';
+import { useAtom } from 'jotai';
 import {
   Badge,
   Box,
-  Button,
   Center,
   Flex,
   Heading,
@@ -10,14 +9,15 @@ import {
   Pressable,
   Text,
 } from 'native-base';
-import React, {useState} from 'react';
-import {ProfessionalIcon} from '../../../assets/icons/ProfessionalIcon';
-import {StudentIcon} from '../../../assets/icons/StudentIcon';
-import {theme} from '../../../theme';
-import {currentStepAtom, signUpDataAtom} from '../atoms';
+import React from 'react';
+import { ProfessionalIcon } from '../../../assets/icons/ProfessionalIcon';
+import { StudentIcon } from '../../../assets/icons/StudentIcon';
+import { theme } from '../../../theme';
+import { Button } from '../../../ui/atoms/Button';
+import { currentStepAtom, signUpDataAtom } from '../atoms';
 
 export const UserType = () => {
-  const setCurrentStep = useSetAtom(currentStepAtom);
+  const [currentStep, setCurrentStep] = useAtom(currentStepAtom);
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
 
   const userTypes = [
@@ -81,15 +81,8 @@ export const UserType = () => {
         </Box>
         <Box alignItems="center" mb="5">
           <Button
-            width={'50%'}
-            borderRadius={10}
-            _text={{
-              fontSize: 'md',
-              fontWeight: 'bold',
-              marginLeft: '0',
-            }}
             isDisabled={!signUpData?.userType}
-            onPress={() => setCurrentStep(2)}>
+            onPress={() => setCurrentStep(currentStep + 1)}>
             Continue
           </Button>
         </Box>

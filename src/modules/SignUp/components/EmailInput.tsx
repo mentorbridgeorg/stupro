@@ -1,7 +1,6 @@
 import {useAtom, useSetAtom} from 'jotai';
 import {
   Box,
-  Button,
   Divider,
   Flex,
   FormControl,
@@ -12,11 +11,11 @@ import {
 } from 'native-base';
 import React from 'react';
 import {Path} from 'react-native-svg';
+import {Button} from '../../../ui/atoms/Button';
 import {FormInput} from '../../../ui/molecules/FormInput';
 import {signUpDataAtom} from '../atoms';
 import {currentStepAtom} from '../atoms/currentStepAtom';
 import {SocialLogin} from './SocialLogin';
-
 export const EmailInput = () => {
   const setCurrentStep = useSetAtom(currentStepAtom);
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
@@ -76,15 +75,7 @@ export const EmailInput = () => {
           Policy.
         </Text>
         <Box alignItems="center" mb="5">
-          <Button
-            width={'50%'}
-            borderRadius={10}
-            _text={{
-              fontSize: 'md',
-              fontWeight: 'bold',
-            }}
-            isDisabled={!isValidEmail}
-            onPress={() => setCurrentStep(1)}>
+          <Button isDisabled={!isValidEmail} onPress={() => setCurrentStep(1)}>
             Continue
           </Button>
         </Box>

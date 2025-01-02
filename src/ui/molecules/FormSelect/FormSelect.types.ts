@@ -4,4 +4,5 @@ export interface FormSelectProps {
   placeholder: string;
   label?: string;
   isRequired?: boolean;
+  selectedValue?: string;
 }

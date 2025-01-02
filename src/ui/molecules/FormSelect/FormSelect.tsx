@@ -8,6 +8,7 @@ export const FormSelect = ({
   isRequired = true,
   placeholder,
   label,
+  selectedValue,
 }: FormSelectProps) => {
   return (
     <Box w="100%">
@@ -17,6 +18,7 @@ export const FormSelect = ({
           minWidth="100%"
           size="lg"
           fontSize={'sm'}
+          selectedValue={selectedValue}
           accessibilityLabel={placeholder}
           placeholder={placeholder}
           borderRadius={'10px'}
