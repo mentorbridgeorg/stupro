@@ -1,7 +1,7 @@
 import {ReactElement, ReactNode} from 'react';
 
 export interface FormInputProps {
-  label?: string;
+  label?: ReactNode;
   placeholder: string;
   onChange: (value: string) => void;
   isRequired?: boolean;

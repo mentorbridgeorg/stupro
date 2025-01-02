@@ -10,12 +10,15 @@ import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {theme} from './src/theme';
 import {SignUp} from './src/pages/SignUp/SignUp';
+import {SignIn} from './src/pages/SignIn';
+import {Preferences} from './src/pages/Preferences';
+import {Home} from './src/pages/Home';
 
 function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme}>
       <SafeAreaView>
-        <SignUp />
+        <Home />
       </SafeAreaView>
     </NativeBaseProvider>
   );
