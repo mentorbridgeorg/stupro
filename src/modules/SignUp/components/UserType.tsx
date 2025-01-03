@@ -1,4 +1,4 @@
-import { useAtom } from 'jotai';
+import {useAtom} from 'jotai';
 import {
   Badge,
   Box,
@@ -10,11 +10,11 @@ import {
   Text,
 } from 'native-base';
 import React from 'react';
-import { ProfessionalIcon } from '../../../assets/icons/ProfessionalIcon';
-import { StudentIcon } from '../../../assets/icons/StudentIcon';
-import { theme } from '../../../theme';
-import { Button } from '../../../ui/atoms/Button';
-import { currentStepAtom, signUpDataAtom } from '../atoms';
+import {ProfessionalIcon} from '../../../assets/icons/ProfessionalIcon';
+import {StudentIcon} from '../../../assets/icons/StudentIcon';
+import {theme} from '../../../theme';
+import {Button} from '../../../ui/atoms/Button';
+import {currentStepAtom, signUpDataAtom} from '../atoms';
 
 export const UserType = () => {
   const [currentStep, setCurrentStep] = useAtom(currentStepAtom);

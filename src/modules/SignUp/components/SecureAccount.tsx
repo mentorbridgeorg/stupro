@@ -1,13 +1,13 @@
-import { useAtom } from 'jotai';
-import { Box, Center, Pressable, Stack, Text } from 'native-base';
-import React, { useState } from 'react';
-import { EyeIcon } from '../../../assets/icons/EyeIcon';
-import { EyeSlashIcon } from '../../../assets/icons/EyeSlashIcon';
-import { PasswordIcon } from '../../../assets/icons/PasswordIcon';
-import { Button } from '../../../ui/atoms/Button';
-import { FormInput } from '../../../ui/molecules/FormInput';
-import { signUpDataAtom } from '../atoms';
-import { PasswordPattern } from './helpers/PasswordPattern';
+import {useAtom} from 'jotai';
+import {Box, Center, Pressable, Stack, Text} from 'native-base';
+import React, {useState} from 'react';
+import {EyeIcon} from '../../../assets/icons/EyeIcon';
+import {EyeSlashIcon} from '../../../assets/icons/EyeSlashIcon';
+import {PasswordIcon} from '../../../assets/icons/PasswordIcon';
+import {Button} from '../../../ui/atoms/Button';
+import {FormInput} from '../../../ui/molecules/FormInput';
+import {signUpDataAtom} from '../atoms';
+import {PasswordPattern} from './helpers/PasswordPattern';
 export const SecureAccount = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
   const handleContinue = () => {

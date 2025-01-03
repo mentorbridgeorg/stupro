@@ -1,7 +1,6 @@
 import {ReactElement, ReactNode} from 'react';
 
 export interface FormInputProps {
-  label?: ReactNode;
   placeholder: string;
   onChange: (value: string) => void;
   isRequired?: boolean;
@@ -10,4 +9,5 @@ export interface FormInputProps {
   rightIcon?: ReactElement;
   helperText?: ReactNode;
   value?: string;
+  label?: ReactNode;
 }
