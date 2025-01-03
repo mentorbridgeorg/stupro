@@ -13,13 +13,14 @@ import {SignUp} from './src/pages/SignUp/SignUp';
 import {SignIn} from './src/pages/SignIn';
 import {Preferences} from './src/pages/Preferences';
 import {Home} from './src/pages/Home';
-import {ChangePassword} from './src/pages/ChangePassword';
+import {ChangePassword, SucessPage} from './src/pages/ChangePassword';
 
 function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme}>
       <SafeAreaView>
         <ChangePassword/>
+        {/* <SucessPage/> */}
       </SafeAreaView>
     </NativeBaseProvider>
   );
