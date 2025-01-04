@@ -1,2 +1,2 @@
 export * from './ChangePassword';
-export * from './SucessPage';
+export * from './SuccessPage';

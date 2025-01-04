@@ -5,4 +5,5 @@ export interface PasswordFieldProps{
   placeholder: string;
   onChange: (value: string) => void;
   value?: string;
-};
+  helperText?: ReactNode;
+}

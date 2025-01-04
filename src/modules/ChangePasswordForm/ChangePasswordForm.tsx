@@ -1,54 +1,85 @@
+import {Alert, Box, HStack, Text, VStack} from 'native-base';
+import React, {useEffect, useState} from 'react';
 import {Button} from '../../ui/atoms/Button';
-import React from 'react';
-import {Box} from 'native-base';
-import {PasswordPattern} from '../SignUp/components/helpers/PasswordPattern';
 
+import {useAtom} from 'jotai';
+import {SucessPage} from '../../pages/ChangePassword';
+import {PasswordPatternList} from '../../ui/molecules/PasswordPatternList';
+import {passwordFormAtom} from './atoms/PasswordForm';
 import {PasswordField} from './components';
-import { useAtom } from 'jotai';
-import { PasswordFormAtom } from './atoms/PasswordForm';
-import { SucessPage } from '../../pages/ChangePassword';
-// import { signUpDataAtom } from '../SignUp/atoms';
 
 export const ChangePasswordForm = () => {
-     const [PasswordData,SetPassword] = useAtom(PasswordFormAtom);
-    //  const singupData = useAtomValue(signUpDataAtom);
-     let isValidPassword;
-    
-    // if( PasswordData?.password === singupData.userDetails?.password){
-     isValidPassword = (PasswordData?.newPassword?.length >= 8 &&
-     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
-         PasswordData.newPassword,
-     )) && (PasswordData?.newPassword === PasswordData?.confirmPassword);
-    // }
-    // const handleSubmit = () =>{
-       
-    // };
+  const [passwordData, setPassword] = useAtom(passwordFormAtom);
+  const [error, setError] = useState<string | null>(null);
+  const isValidPassword =
+    passwordData?.newPassword?.length >= 8 &&
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
+      passwordData.newPassword,
+    );
 
-    
-  
+  const isPasswordsMatch =
+    passwordData?.newPassword === passwordData?.confirmPassword;
+
+  useEffect(() => {
+    if (
+      passwordData?.newPassword !== '' &&
+      passwordData?.confirmPassword !== '' &&
+      isValidPassword &&
+      passwordData?.newPassword !== passwordData?.confirmPassword
+    ) {
+      setError('Passwords do not match');
+    } else {
+      setError(null);
+    }
+  }, [passwordData, isValidPassword]);
+
   return (
     <>
-      <Box alignItems="center" mb="5" p="10">
+      <Box alignItems="center" p="10">
         <PasswordField
           placeholder="Current Password"
           label="Current Password"
-          value= {PasswordData?.password}
-          onChange={value => SetPassword({...PasswordData,password:value})}
+          value={passwordData?.password}
+          onChange={value => setPassword({...passwordData, password: value})}
         />
-        <PasswordField placeholder="New Password" label="New Password" value= {PasswordData?.newPassword}
-          onChange={value => SetPassword({...PasswordData,newPassword:value})}/>
-        <Box mt="2">
-          <PasswordPattern />
-        </Box>
         <PasswordField
-          placeholder="Confirm Password"
-          label="Confirm Password"
-          value= {PasswordData?.confirmPassword}
-          onChange={value => SetPassword({...PasswordData,confirmPassword:value})}
+          placeholder="New Password"
+          label="New Password"
+          value={passwordData?.newPassword}
+          onChange={value => setPassword({...passwordData, newPassword: value})}
+          helperText={
+            <PasswordPatternList password={passwordData?.newPassword} />
+          }
+        />
+        <PasswordField
+          placeholder="Confirm New Password"
+          label="Confirm New Password"
+          value={passwordData?.confirmPassword}
+          onChange={value =>
+            setPassword({...passwordData, confirmPassword: value})
+          }
         />
       </Box>
+      <Box px="10">
+        {error && (
+          <Alert w="100%" status="error">
+            <VStack space={2} flexShrink={1} w="100%">
+              <HStack flexShrink={1} space={2} justifyContent="space-between">
+                <HStack space={2} flexShrink={1}>
+                  <Alert.Icon mt="1" />
+                  <Text fontSize="md" color="coolGray.800">
+                    {error}
+                  </Text>
+                </HStack>
+              </HStack>
+            </VStack>
+          </Alert>
+        )}
+      </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={()=>SucessPage()} isDisabled={!isValidPassword}>
+        <Button
+          onPress={() => {}}
+          isDisabled={!isValidPassword || !isPasswordsMatch}>
           Submit
         </Button>
       </Box>
