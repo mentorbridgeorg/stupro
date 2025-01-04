@@ -31,7 +31,7 @@ export const SuccessPage = () => {
         </Alert>
       </Center>
       <Center px={'5'}>
-        <AspectRatio ratio={16 / 9} width={'80%'} height={'400px'}>
+        <AspectRatio ratio={9 / 16} width={'80%'} height={'400px'}>
           <Image
             size={'2xl'}
             source={{

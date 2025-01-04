@@ -1,7 +1,7 @@
 import {EyeIcon} from '../../../assets/icons/EyeIcon';
 import {EyeSlashIcon} from '../../../assets/icons/EyeSlashIcon';
 import {PasswordIcon} from '../../../assets/icons/PasswordIcon';
-import {Box, FormControl, Input, Pressable} from 'native-base';
+import {Box,Pressable} from 'native-base';
 import React, {useState} from 'react';
 import {PasswordFieldProps} from './PasswordField.types';
 import {FormInput} from '../../../ui/molecules/FormInput';

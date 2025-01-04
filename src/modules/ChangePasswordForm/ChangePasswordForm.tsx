@@ -1,9 +1,7 @@
 import {Alert, Box, HStack, Text, VStack} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {Button} from '../../ui/atoms/Button';
-
 import {useAtom} from 'jotai';
-import {SucessPage} from '../../pages/ChangePassword';
 import {PasswordPatternList} from '../../ui/molecules/PasswordPatternList';
 import {passwordFormAtom} from './atoms/PasswordForm';
 import {PasswordField} from './components';

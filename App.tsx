@@ -15,6 +15,7 @@ function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme}>
       <SafeAreaView>
+        <ChangePassword/>
         <SuccessPage />
       </SafeAreaView>
     </NativeBaseProvider>
