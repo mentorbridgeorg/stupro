@@ -31,6 +31,7 @@ export const FocusedCard = ({
             <Box textAlign="center">
               <Text
                 fontSize={'3xl'}
+              
                 ml={isDisplayBackButton ? '50px' : '75px'}
                 fontWeight={'bold'}
                 color={'white'}>
