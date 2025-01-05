@@ -1,7 +1,7 @@
-import {Box, Center, HStack, Image, Pressable, Text} from 'native-base';
+import {Box, Center, HStack, Image, Text} from 'native-base';
 import React from 'react';
 import {View} from 'react-native';
-import {ChevronIcon} from '../../../assets/icons/ChevronIcon';
+import {BackButton} from '../../atoms/BackButton';
 import {IFocusedCardProps} from './FocusedCard.types';
 
 export const FocusedCard = ({
@@ -21,10 +21,8 @@ export const FocusedCard = ({
           w="100%"
           maxW="350">
           <Box>
-            {isDisplayBackButton && (
-              <Pressable onPress={onBackButtonPress}>
-                <ChevronIcon />
-              </Pressable>
+            {isDisplayBackButton && onBackButtonPress && (
+              <BackButton onPress={onBackButtonPress} />
             )}
           </Box>
           <Center>
