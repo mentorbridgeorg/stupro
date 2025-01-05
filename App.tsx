@@ -19,7 +19,7 @@ function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme}>
       <SafeAreaView>
-        <ForgotPassword />
+        < ForgotPassword/>
       </SafeAreaView>
     </NativeBaseProvider>
   );

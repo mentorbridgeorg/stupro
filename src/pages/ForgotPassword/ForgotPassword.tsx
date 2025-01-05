@@ -4,6 +4,7 @@ import { FocusedCard } from '../../ui/organisms/FocusedCard';
 import {ForgotPasswordForm } from '../../modules/ForgotPasswordForm/ForgotPasswordForm';
 
 export const ForgotPassword = () => {
+  
   return (
     <Box>
       <FocusedCard 
@@ -18,7 +19,7 @@ export const ForgotPassword = () => {
         </Text>
 
       
-        <Text fontSize="sm" fontWeight="semibold" mx='2'  color= '#0a678e' mb="4">
+        <Text fontSize="sm" fontWeight="semibold" mx='2'  color= '#676F74' mb="4">
           Don’t worry! Please enter the correct email address.
         </Text>
 

@@ -6,11 +6,16 @@ import {FormInput} from '../../ui/molecules/FormInput';
 
 
 export const ForgotPasswordForm = () => {
-  const [ForgotPasswordData, setForgotPasswordData] = useState({
+  const [forgotPasswordData, setForgotPasswordData] = useState({
     email: '',
   
   });
-  const [] = useState(false);
+  const isValidEmail =
+    forgotPasswordData?.email &&
+  forgotPasswordData?.email !== '' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotPasswordData?.email);
+
+  
   return (
     <Box w="100%">
       <Box mb="6" mx="4">
@@ -21,7 +26,7 @@ export const ForgotPasswordForm = () => {
             placeholder="example@gmail.com"
           
             onChange={text => {
-                setForgotPasswordData({...ForgotPasswordData, email: text});
+                setForgotPasswordData({...forgotPasswordData, email: text});
             }}
                
             icon={<EmailIcon />}
@@ -31,7 +36,7 @@ export const ForgotPasswordForm = () => {
        
       </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={() => {}} isDisabled={false}>
+        <Button onPress={() => {}} isDisabled={!isValidEmail}>
           Submit
         </Button>
       </Box>
