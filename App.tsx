@@ -5,7 +5,7 @@
  * @format
  */
 
-import {NativeBaseProvider} from 'native-base';
+//import {NativeBaseProvider} from 'native-base';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {ChangePassword, SuccessPage} from './src/pages/ChangePassword';
