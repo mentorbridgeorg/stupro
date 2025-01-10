@@ -1,16 +1,10 @@
-import { useAtomValue } from 'jotai';
-import { Badge, Center, CheckIcon, Flex, HStack } from 'native-base';
+import {Badge, Center, CheckIcon, Flex, HStack} from 'native-base';
 import React from 'react';
-import { CrossCircledIcon } from '../../../../assets/icons/CrossCircledIcon';
-import { signUpDataAtom } from '../../atoms';
-import { PasswordFormAtom } from '../../../ChangePasswordForm/atoms/PasswordForm';
+import {CrossCircledIcon} from '../../../assets/icons/CrossCircledIcon';
 
-export const PasswordPattern = () => {
-  const signUpData = useAtomValue(signUpDataAtom);
-  const passwordData = useAtomValue(PasswordFormAtom);
-
+export const PasswordPatternList = ({password}: {password: string}) => {
   const isPatternMatch = (pattern: RegExp) => {
-    return pattern.test((signUpData?.userDetails?.password ?? '') || (passwordData?.newPassword ?? ''));
+    return pattern.test(password);
   };
   return (
     <Center mx="auto">
