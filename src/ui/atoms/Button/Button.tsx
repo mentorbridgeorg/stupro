@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Button as NativeBaseButton } from 'native-base';
-import { ButtonProps } from './Button.types';
+import {Button as NativeBaseButton} from 'native-base';
+import {ButtonProps} from './Button.types';
 
 export const Button = ({onPress, children, isDisabled}: ButtonProps) => {
   return (

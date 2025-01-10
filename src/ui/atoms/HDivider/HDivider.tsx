@@ -7,7 +7,7 @@ export const HDivider = ({label}: {label: string}) => {
       direction="row"
       alignItems="center"
       mb="5"
-      w="80%"
+      w="100%"
       justifyContent="center">
       <Divider
         orientation="horizontal"
