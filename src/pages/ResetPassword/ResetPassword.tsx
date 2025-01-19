@@ -2,7 +2,11 @@ import {Box, Text} from 'native-base';
 // import {ResetPasswordForm} from '../../modules/ResetPasswordForm';
 import {FocusedCard} from '../../ui/organisms/FocusedCard';
 import React from 'react';
-import { ResetPasswordForm } from '../../modules/ResetPasswordForm';
+// import { ResetPasswordForm } from '../../modules/ResetPasswordForm/Components';
+import { ResetPasswordForm } from '../../../src/modules/ResetPasswordForm/ResetPasswordForm';
+
+
+
 
 export const ResetPassword = () => {
   return (
