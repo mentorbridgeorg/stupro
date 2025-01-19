@@ -24,10 +24,6 @@ export const theme = extendTheme({
       secondary: '#FFFFFF',
       tertiary: '#000000',
     },
-    //Feedbackicon background colors
-    faceBgColor: {
-      50:'rgba(233,70,181,0.39)',
-    },
   },
   config: {
     // Changing initialColorMode to 'dark'
