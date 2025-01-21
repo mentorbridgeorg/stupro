@@ -23,8 +23,12 @@ const Dropdown = ({
       onValueChange={onValueChange}
       borderRadius={10}
       p={3}>
-      {options.map((Option: any) => (
-        <Select.Item label={Option.label} value={Option.value} />
+      {options.map((option: any) => (
+        <Select.Item
+          key={option.value}
+          label={option.label}
+          value={option.value}
+        />
       ))}
     </Select>
   );
