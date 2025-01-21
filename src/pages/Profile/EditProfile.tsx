@@ -17,7 +17,6 @@ const EditProfile = () => {
   ];
 
   const renderValue = () => {
-    console.log(roles.find(roleOption => roleOption.value === role)?.label);
     return roles.find(roleOption => roleOption.value === role)?.label ?? '';
   };
 
@@ -44,7 +43,7 @@ const EditProfile = () => {
             placeholder="Choose options"
             onValueChange={handleChange}
           />
-          {/* <InputText placeholder="Phone" keyboardType="number-pad" /> */}
+          <InputText placeholder="Designation" />
         </Stack>
         <Center mt={5} flexDirection={'row'} justifyContent={'space-around'}>
           <Button

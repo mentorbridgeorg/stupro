@@ -48,8 +48,14 @@ export const Profile = () => {
           </Button>
         </Box>
       </Center>
+      <Box
+        pl={5}
+        pt={5}
+        _text={{color: 'black', fontWeight: 'medium', fontSize: 20}}>
+        Settings
+      </Box>
       <Box marginY={5}>
-        <Options Component="Settings" />
+        <Options Component="Change password" onPress={() => {}} />
       </Box>
     </Box>
   );
