@@ -1,20 +1,21 @@
 import React from 'react';
 
-import { Button as NativeBaseButton } from 'native-base';
-import { ButtonProps } from './Button.types';
+import {Button as NativeBaseButton} from 'native-base';
+import {ButtonProps} from './Button.types';
 
-export const Button = ({onPress, children, isDisabled}: ButtonProps) => {
+export const Button = ({onPress, children, isDisabled, style}: ButtonProps) => {
   return (
     <NativeBaseButton
-      width={'50%'}
+      // width={'50%'}
       borderRadius={10}
       _text={{
         fontSize: 'md',
         fontWeight: 'bold',
-        marginLeft: '0',
+        // marginLeft: '0',
       }}
       isDisabled={isDisabled}
-      onPress={onPress}>
+      onPress={onPress}
+      style={style}>
       {children}
     </NativeBaseButton>
   );
