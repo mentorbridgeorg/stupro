@@ -1,9 +1,21 @@
 import { Box, Text, Input, Button } from 'native-base';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FocusedCard } from '../../ui/organisms/FocusedCard';
 import {OTPForm } from '../../modules/OTPForm/OTPForm';
+import { posthog } from '../../../posthog';
 
 export const OTP = () => {
+
+  useEffect(() => {
+    console.log(posthog);
+    if(posthog){
+      posthog.autocapture;
+      posthog.capture("OTP verified");
+      console.log('executed');
+    }
+  }, [posthog])
+
+  
   return (
     <Box>
       <FocusedCard 

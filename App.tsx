@@ -10,12 +10,15 @@ import { theme } from './src/theme';
 import { FeedbackPage } from './src/pages/Feedback';
 
 function App(): React.JSX.Element {
+
   return (
     <NativeBaseProvider theme={theme}>
       <SafeAreaView>
       <OTP/>
       </SafeAreaView>
+     
     </NativeBaseProvider>
+
   );
 }
 
