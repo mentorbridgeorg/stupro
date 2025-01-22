@@ -8,7 +8,7 @@
 import {NativeBaseProvider, Stack} from 'native-base';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {theme} from './src/theme';
+import {ChangePassword, SuccessPage} from './src/pages/ChangePassword';
 import {SignUp} from './src/pages/SignUp/SignUp';
 import {SignIn} from './src/pages/SignIn';
 import {Preferences} from './src/pages/Preferences';

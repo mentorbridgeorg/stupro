@@ -1,5 +1,5 @@
 import {useAtom, useSetAtom} from 'jotai';
-import {Box, FormControl, Stack, Text, WarningOutlineIcon} from 'native-base';
+import {Box, FormControl, Stack, Text} from 'native-base';
 import React from 'react';
 import {EmailIcon} from '../../../assets/icons/EmailIcon';
 import {Button} from '../../../ui/atoms/Button';
@@ -13,7 +13,6 @@ export const EmailInput = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
 
   const isValidEmail =
-    signUpData?.email &&
     signUpData?.email !== '' &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signUpData?.email);
 
@@ -36,10 +35,6 @@ export const EmailInput = () => {
               }}
               icon={<EmailIcon />}
             />
-            <FormControl.ErrorMessage
-              leftIcon={<WarningOutlineIcon size="xs" />}>
-              At least 6 characters are required.
-            </FormControl.ErrorMessage>
           </Stack>
         </FormControl>
         <Text
