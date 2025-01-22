@@ -3,12 +3,14 @@ import { Badge, Center, CheckIcon, Flex, HStack } from 'native-base';
 import React from 'react';
 import { CrossCircledIcon } from '../../../../assets/icons/CrossCircledIcon';
 import { signUpDataAtom } from '../../atoms';
+import { PasswordFormAtom } from '../../../ChangePasswordForm/atoms/PasswordForm';
 
 export const PasswordPattern = () => {
   const signUpData = useAtomValue(signUpDataAtom);
+  const passwordData = useAtomValue(PasswordFormAtom);
 
   const isPatternMatch = (pattern: RegExp) => {
-    return pattern.test(signUpData?.userDetails?.password ?? '');
+    return pattern.test((signUpData?.userDetails?.password ?? '') || (passwordData?.newPassword ?? ''));
   };
   return (
     <Center mx="auto">

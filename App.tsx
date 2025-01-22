@@ -5,21 +5,21 @@
  * @format
  */
 
-import {NativeBaseProvider} from 'native-base';
+import {NativeBaseProvider, Stack} from 'native-base';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {SignIn} from './src/pages/SignIn';
-import {theme} from './src/theme';
-import { ResetPassword } from './src/pages/ResetPassword';
+import {NavigationContainer} from '@react-navigation/native';
+import {RootStack} from './src/navigation/RootStack';
 
 function App(): React.JSX.Element {
   return (
-    <NativeBaseProvider theme={theme}>
-      <SafeAreaView>
-        {/* <SignIn /> */}
-        <ResetPassword/>
-      </SafeAreaView>
-    </NativeBaseProvider>
+    <>
+      <NativeBaseProvider theme={theme}>
+        <NavigationContainer>
+          <RootStack />
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </>
   );
 }
 

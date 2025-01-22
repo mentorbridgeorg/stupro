@@ -6,7 +6,7 @@ export const PasswordPatternList = ({password}: {password: string}) => {
   const isPatternMatch = (pattern: RegExp) => {
     return pattern.test(password);
   };
-  
+
   return (
     <Center mx="auto">
       <HStack flexWrap="wrap" justifyContent="center" space={2} mt="2">
@@ -24,7 +24,7 @@ export const PasswordPatternList = ({password}: {password: string}) => {
             variant={'solid'}
             mb="2"
             fontWeight={fontWeight}>
-            <Flex direction="row" alignItems="center">
+            <Flex direction="row" alignItems="center" gap={1}>
               {isPatternMatch(pattern) ? (
                 <CheckIcon />
               ) : (
