@@ -1,6 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {Children, Component} from 'react';
 import {Box} from 'native-base';
+import React from 'react';
 import {RoleLabelProps} from './RoleLabel.types';
 
 export const RoleLabel = ({bg, Component}: RoleLabelProps) => {

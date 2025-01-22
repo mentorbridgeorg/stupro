@@ -1,7 +1,7 @@
+import {GoogleIcon} from '@assets/icons/GoogleIcon';
+import {LinkedInIcon} from '@assets/icons/LinkedInIcon';
 import {Flex} from 'native-base';
 import React from 'react';
-import {GoogleIcon} from '../../../assets/icons/GoogleIcon';
-import {LinkedInIcon} from '../../../assets/icons/LinkedInIcon';
 
 export const SocialLogin = () => {
   return (

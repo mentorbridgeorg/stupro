@@ -1,26 +1,23 @@
-import { Box, Input, Button } from 'native-base';
-import React, { useState, useRef } from 'react';
+import {Box, Button, Input} from 'native-base';
+import React, {useRef, useState} from 'react';
 
 export const OTPForm = () => {
   const [otp, setOtp] = useState<string[]>(['', '', '', '']);
   const inputsRef = useRef<(any | null)[]>([]);
 
- 
   const handleOtpChange = (text: string, index: number) => {
     if (/^\d*$/.test(text)) {
       const newOtp = [...otp];
       newOtp[index] = text;
       setOtp(newOtp);
 
-     
       if (text && index < otp.length - 1) {
         inputsRef.current[index + 1]?.focus();
       }
     }
   };
 
-
-  const isSubmitEnabled = otp.every((digit) => digit !== '');
+  const isSubmitEnabled = otp.every(digit => digit !== '');
 
   return (
     <Box w="100%" p="4">
@@ -28,10 +25,10 @@ export const OTPForm = () => {
         {otp.map((digit, index) => (
           <Input
             key={index}
-            ref={(el) => (inputsRef.current[index] = el)} 
+            ref={el => (inputsRef.current[index] = el)}
             maxLength={1}
             value={digit}
-            onChangeText={(text) => handleOtpChange(text, index)}
+            onChangeText={text => handleOtpChange(text, index)}
             keyboardType="number-pad"
             color="black"
             textAlign="center"
@@ -50,9 +47,9 @@ export const OTPForm = () => {
             borderColor="#ccc"
             borderRadius="10"
             bg="#f8f8f8"
-            onKeyPress={({ nativeEvent }) => {
+            onKeyPress={({nativeEvent}) => {
               if (nativeEvent.key === 'Backspace' && !digit && index > 0) {
-                inputsRef.current[index - 1]?.focus(); 
+                inputsRef.current[index - 1]?.focus();
               }
             }}
           />
@@ -63,8 +60,7 @@ export const OTPForm = () => {
           onPress={() => {
             console.log('OTP Submitted:', otp.join(''));
           }}
-          isDisabled={!isSubmitEnabled}
-        >
+          isDisabled={!isSubmitEnabled}>
           Submit
         </Button>
       </Box>

@@ -1,14 +1,21 @@
-import { Box, Center, FormControl, Pressable, Alert, HStack, Text, VStack } from 'native-base';
-import React, { useState, useEffect } from 'react';
-import { Button } from '../../ui/atoms/Button';
-import { EyeIcon } from '../../assets/icons/EyeIcon';
-import { EyeSlashIcon } from '../../assets/icons/EyeSlashIcon';
-import { FormInput } from '../../ui/molecules/FormInput';
-import { useAtom } from 'jotai';
-import { resetPasswordFormAtom } from './atoms/PasswordForn';
-import {PasswordPatternList} from '../../ui/molecules/PasswordPatternList';
-
-
+import {EyeIcon} from '@assets/icons/EyeIcon';
+import {EyeSlashIcon} from '@assets/icons/EyeSlashIcon';
+import {Button} from '@atoms/Button';
+import {FormInput} from '@molecules/FormInput';
+import {PasswordPatternList} from '@molecules/PasswordPatternList';
+import {useAtom} from 'jotai';
+import {
+  Alert,
+  Box,
+  Center,
+  FormControl,
+  HStack,
+  Pressable,
+  Text,
+  VStack,
+} from 'native-base';
+import React, {useEffect, useState} from 'react';
+import {resetPasswordFormAtom} from './atoms/PasswordForn';
 
 export const ResetPasswordForm = () => {
   const [passwordData, setPasswordData] = useAtom(resetPasswordFormAtom);
@@ -17,10 +24,11 @@ export const ResetPasswordForm = () => {
   const isValidPassword =
     passwordData?.newPassword?.length >= 8 &&
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
-      passwordData.newPassword
+      passwordData.newPassword,
     );
 
-  const isPasswordsMatch = passwordData?.newPassword === passwordData?.confirmPassword;
+  const isPasswordsMatch =
+    passwordData?.newPassword === passwordData?.confirmPassword;
 
   useEffect(() => {
     if (
@@ -49,7 +57,9 @@ export const ResetPasswordForm = () => {
             label="New Password"
             type={showPassword ? 'text' : 'password'}
             value={passwordData.newPassword}
-            onChange={(value) => setPasswordData({ ...passwordData, newPassword: value })}
+            onChange={value =>
+              setPasswordData({...passwordData, newPassword: value})
+            }
             rightIcon={
               <Pressable onPress={() => setShowPassword(!showPassword)}>
                 {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
@@ -65,7 +75,9 @@ export const ResetPasswordForm = () => {
             label="Confirm Password"
             type={showPassword ? 'text' : 'password'}
             value={passwordData?.confirmPassword}
-            onChange={(value) => setPasswordData({ ...passwordData, confirmPassword: value })}
+            onChange={value =>
+              setPasswordData({...passwordData, confirmPassword: value})
+            }
             rightIcon={
               <Pressable onPress={() => setShowPassword(!showPassword)}>
                 {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
@@ -93,8 +105,9 @@ export const ResetPasswordForm = () => {
         )}
 
         <Center mt="5">
-          <Button onPress={handleSubmit} 
-          isDisabled={!isValidPassword || !isPasswordsMatch}>
+          <Button
+            onPress={handleSubmit}
+            isDisabled={!isValidPassword || !isPasswordsMatch}>
             Submit
           </Button>
         </Center>

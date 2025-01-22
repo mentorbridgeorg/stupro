@@ -1,11 +1,11 @@
+import {EmailIcon} from '@assets/icons/EmailIcon';
+import {EyeIcon} from '@assets/icons/EyeIcon';
+import {EyeSlashIcon} from '@assets/icons/EyeSlashIcon';
+import {PasswordIcon} from '@assets/icons/PasswordIcon';
+import {Button} from '@atoms/Button';
+import {FormInput} from '@molecules/FormInput';
 import {Box, FormControl, Input, Pressable} from 'native-base';
 import React, {useState} from 'react';
-import {EmailIcon} from '../../assets/icons/EmailIcon';
-import {EyeIcon} from '../../assets/icons/EyeIcon';
-import {EyeSlashIcon} from '../../assets/icons/EyeSlashIcon';
-import {PasswordIcon} from '../../assets/icons/PasswordIcon';
-import {Button} from '../../ui/atoms/Button';
-import {FormInput} from '../../ui/molecules/FormInput';
 import {PasswordLabel} from './components/PasswordLabel';
 
 export const SignInForm = () => {

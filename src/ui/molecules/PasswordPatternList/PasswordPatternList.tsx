@@ -1,6 +1,6 @@
+import {CrossCircledIcon} from '@assets/icons/CrossCircledIcon';
 import {Badge, Center, CheckIcon, Flex, HStack} from 'native-base';
 import React from 'react';
-import {CrossCircledIcon} from '../../../assets/icons/CrossCircledIcon';
 
 export const PasswordPatternList = ({password}: {password: string}) => {
   const isPatternMatch = (pattern: RegExp) => {

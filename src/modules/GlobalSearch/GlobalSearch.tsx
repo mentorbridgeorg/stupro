@@ -1,6 +1,6 @@
+import {SearchIcon} from '@assets/icons/SearchIcon';
 import {Box, Center, Input} from 'native-base';
 import React from 'react';
-import {SearchIcon} from '../../assets/icons/SearchIcon';
 
 export const GlobalSearch = () => {
   return (

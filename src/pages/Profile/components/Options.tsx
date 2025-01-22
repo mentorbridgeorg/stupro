@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Pressable, Box} from 'native-base';
-import {ArrowRight} from '../../../assets/icons/ArrowRight';
+import {ArrowRight} from '@assets/icons/ArrowRight';
+import {Box, Pressable} from 'native-base';
+import React from 'react';
 
 const Options = ({Component, onPress}: any) => {
   return (

@@ -1,6 +1,6 @@
 import {AspectRatio, Box, Center, Image} from 'native-base';
 import React from 'react';
-import {GlobalSearch} from '../../modules/GlobalSearch';
+import {GlobalSearch} from '@modules/GlobalSearch';
 
 export const Home = () => {
   return (

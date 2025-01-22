@@ -1,24 +1,31 @@
-import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {View, Text} from 'react-native';
-import {Feed} from '../modules/Feed';
-import EditProfile from '../pages/Profile/EditProfile';
-import {Profile} from '../pages/Profile';
+import React from 'react';
+import {ForgotPassword} from '../pages/ForgotPassword';
 import {Home} from '../pages/Home';
 import {Preferences} from '../pages/Preferences';
+import {Profile} from '../pages/Profile';
+import EditProfile from '../pages/Profile/EditProfile';
+import {SignIn} from '../pages/SignIn';
+import {SignUp} from '../pages/SignUp';
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Profile"
-      screenOptions={{headerTitleAlign: 'center', headerShadowVisible: false}}>
+      initialRouteName="Login"
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerShadowVisible: false,
+        headerShown: false,
+      }}>
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Preferences" component={Preferences} />
-      {/* <Stack.Screen name='' component={}/> */}
+      <Stack.Screen name="Login" component={SignIn} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
     </Stack.Navigator>
   );
 };

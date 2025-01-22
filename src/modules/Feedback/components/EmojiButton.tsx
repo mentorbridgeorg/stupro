@@ -10,27 +10,24 @@ export const EmojiButton = ({
   bgColor,
 }: EmojiButtonProps) => {
   return (
-    <>
-      <Pressable onPress={onPress} >
-        <Box
-          width={'60'}
-          height={'70'}
-          rounded="lg"
-          overflow="hidden"
-          borderWidth="1"
-          borderColor={color}
-          backgroundColor={bgColor}
-          alignItems={'center'}
-          justifyContent="center"
-          borderRadius="10"
-          shadow="9"
-          >
-          <Icon as={icon} />
-          <Text color="font.primary" fontSize="10" fontWeight="bold">
-            {label}
-          </Text>
-        </Box>
-      </Pressable>
-    </>
+    <Pressable onPress={onPress}>
+      <Box
+        width={'60'}
+        height={'70'}
+        rounded="lg"
+        overflow="hidden"
+        borderWidth="1"
+        borderColor={color}
+        backgroundColor={bgColor}
+        alignItems={'center'}
+        justifyContent="center"
+        borderRadius="10"
+        shadow="9">
+        <Icon as={icon} />
+        <Text color="font.primary" fontSize="10" fontWeight="bold">
+          {label}
+        </Text>
+      </Box>
+    </Pressable>
   );
 };

@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import {Box, Center, Spacer, Stack} from 'native-base';
-import {SafeAreaView, Text} from 'react-native';
-import InputText from '../../ui/atoms/InputText/InputText';
-import Dropdown from '../../ui/atoms/Dropdown/Dropdown';
-import {Button} from '../../ui/atoms/Button';
+import {Button} from '@atoms/Button';
+import {FormInput} from '@molecules/FormInput';
 import {useNavigation} from '@react-navigation/native';
+import {Box, Center, Select, Stack} from 'native-base';
+import React, {useState} from 'react';
+import {SafeAreaView} from 'react-native';
 
 const EditProfile = () => {
   const navigation = useNavigation();
@@ -20,7 +19,7 @@ const EditProfile = () => {
     return roles.find(roleOption => roleOption.value === role)?.label ?? '';
   };
 
-  const handleChange = itemValue => {
+  const handleChange = (itemValue: string) => {
     setRole(itemValue);
   };
 
@@ -35,15 +34,24 @@ const EditProfile = () => {
       </Box>
       <Box mt={10}>
         <Stack space={4} w="100%" alignItems="center">
-          <InputText placeholder="First Name" />
-          <InputText placeholder="Last Name" />
-          <Dropdown
-            options={roles}
+          <FormInput placeholder="First Name" onChange={() => {}} />
+          <FormInput placeholder="Last Name" onChange={() => {}} />
+          <Select
             selectedValue={renderValue()}
-            placeholder="Choose options"
+            minWidth={'80%'}
+            placeholder={'Choose options'}
             onValueChange={handleChange}
-          />
-          <InputText placeholder="Designation" />
+            borderRadius={10}
+            p={3}>
+            {roles.map((option: any) => (
+              <Select.Item
+                key={option.value}
+                label={option.label}
+                value={option.value}
+              />
+            ))}
+          </Select>
+          <FormInput placeholder="Designation" onChange={() => {}} />
         </Stack>
         <Center mt={5} flexDirection={'row'} justifyContent={'space-around'}>
           <Button

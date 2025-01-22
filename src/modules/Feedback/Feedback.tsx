@@ -1,11 +1,11 @@
+import {BadFaceEmojiIcon} from '@assets/icons/BadFaceEmojiIcon';
+import {GoodFaceIcon} from '@assets/icons/GoodFaceIcon';
+import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
+import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
+import {Button} from '@atoms/Button';
 import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
 import React, {useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
-import {BadFaceEmojiIcon} from '../../assets/icons/BadFaceEmojiIcon';
-import {OkFaceIcon} from '../../assets/icons/OkFaceIcon';
-import {GoodFaceIcon} from '../../assets/icons/GoodFaceIcon';
-import {PerfectFaceIcon} from '../../assets/icons/PerfectFaceIcon';
-import {Button} from '../../ui/atoms/Button';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
@@ -37,7 +37,6 @@ export const Feedback = () => {
       bg: 'rgba(254, 249, 224,1)',
     },
   ];
-
 
   return (
     <Box>
@@ -72,16 +71,14 @@ export const Feedback = () => {
       />
       <Box mt="10">
         <HStack space={5} justifyContent={'space-between'}>
-          <Link mt={'2'} ml={'2'} onPress={()=>{}}>
+          <Link mt={'2'} ml={'2'} onPress={() => {}}>
             <Text color="#0089B3" fontSize="13" fontWeight={'bold'}>
               Ask Me Later
             </Text>
           </Link>
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
-              <Button
-                onPress={()=>{}}
-                isDisabled={selectedEmoji === null}>
+              <Button onPress={() => {}} isDisabled={selectedEmoji === null}>
                 Send
               </Button>
             </Flex>
