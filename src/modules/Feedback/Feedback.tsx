@@ -4,12 +4,14 @@ import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
 import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
 import {Button} from '@atoms/Button';
 import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
+import axios from 'axios';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
   const [comment, setComment] = useState('');
+  const [isSendPressed, setSendPressed] = useState(false);
 
   const emojis = [
     {
@@ -37,6 +39,30 @@ export const Feedback = () => {
       bg: 'rgba(254, 249, 224,1)',
     },
   ];
+
+  const data = {
+    label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
+    comment: setComment,
+    addedDate: null,
+    addedBy: null,
+  };
+
+  const saveFeedback = () => {
+    axios
+      .post('http://localhost:8080/feedback', data)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (isSendPressed) {
+      saveFeedback();
+    }
+  },);
 
   return (
     <Box>
@@ -78,7 +104,9 @@ export const Feedback = () => {
           </Link>
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
-              <Button onPress={() => {}} isDisabled={selectedEmoji === null}>
+              <Button
+                onPress={() => setSendPressed(true)}
+                isDisabled={selectedEmoji === null}>
                 Send
               </Button>
             </Flex>
