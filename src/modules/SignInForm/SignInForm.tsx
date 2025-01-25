@@ -5,8 +5,9 @@ import {PasswordIcon} from '@assets/icons/PasswordIcon';
 import {Button} from '@atoms/Button';
 import {FormInput} from '@molecules/FormInput';
 import {Box, FormControl, Input, Pressable} from 'native-base';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {PasswordLabel} from './components/PasswordLabel';
+import axios from 'axios';
 
 export const SignInForm = () => {
   const [signInData, setSignInData] = useState({
@@ -14,6 +15,24 @@ export const SignInForm = () => {
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+
+  const [isSendPressed, setSendPressed] = useState(false);
+
+  useEffect(() => {
+    if (isSendPressed) {
+      handleSubmit();
+    }
+  });
+  const handleSubmit = () => {
+    axios
+      .post('http://localhost:8080/signin', signInData)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const isValidEmail =
     signInData?.email !== '' &&
@@ -74,9 +93,7 @@ export const SignInForm = () => {
         </Box>
       </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button
-          onPress={() => {}}
-          isDisabled={!isValidEmail && !isValidPassword}>
+        <Button onPress={() => setSendPressed(true)} isDisabled={!isValidEmail && !isValidPassword}>
           Continue
         </Button>
       </Box>

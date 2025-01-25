@@ -6,16 +6,36 @@ import {FormInput} from '@molecules/FormInput';
 import {PasswordPatternList} from '@molecules/PasswordPatternList';
 import {useAtom} from 'jotai';
 import {Box, Center, Pressable, Stack, Text} from 'native-base';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {signUpDataAtom} from '../atoms';
+import axios from 'axios';
 
 export const SecureAccount = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
-  const [showPassword, setShowPassword] = useState(false);
+  const [isSendPressed, setSendPressed] = useState(false);
+ const [showPassword, setShowPassword] = useState(false);
+
+
+
 
   const handleContinue = () => {
-    console.log('signUpData', signUpData);
+    axios
+      .post('http://localhost:8080/signup', signUpData)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    // console.log('signUpData', signUpData);
   };
+        
+  useEffect(() => {
+    if (isSendPressed) {
+      handleContinue();
+    }
+  });
 
   const isValidPassword =
     signUpData?.userDetails?.password?.length >= 8 &&
@@ -61,7 +81,10 @@ export const SecureAccount = () => {
         </Stack>
       </Center>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={() => handleContinue} isDisabled={!isValidPassword}>
+
+        <Button onPress={()=>setSendPressed(true)} isDisabled={!isValidPassword}>
+
+
           Continue
         </Button>
       </Box>
