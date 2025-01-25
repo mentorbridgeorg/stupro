@@ -3,6 +3,7 @@ import {Button} from '@atoms/Button';
 import {FormInput} from '@molecules/FormInput';
 import {Box} from 'native-base';
 import React, {useState} from 'react';
+import {usePostHog} from "posthog-react-native"
 
 export const ForgotPasswordForm = () => {
   const [forgotPasswordData, setForgotPasswordData] = useState({
@@ -13,6 +14,15 @@ export const ForgotPasswordForm = () => {
     forgotPasswordData?.email !== '' &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotPasswordData?.email);
 
+    
+   const posthog = usePostHog();
+
+  const handleSubmit = () => {
+    posthog.capture("forgotPasswordButton", {
+      email: forgotPasswordData.email,
+    });
+  
+    };
   return (
     <Box w="100%">
       <Box mb="6" mx="4">
@@ -28,7 +38,7 @@ export const ForgotPasswordForm = () => {
         </Box>
       </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={() => {}} isDisabled={!isValidEmail}>
+        <Button onPress={handleSubmit} isDisabled={!isValidEmail}>
           Submit
         </Button>
       </Box>

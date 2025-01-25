@@ -5,8 +5,9 @@ import {PasswordIcon} from '@assets/icons/PasswordIcon';
 import {Button} from '@atoms/Button';
 import {FormInput} from '@molecules/FormInput';
 import {Box, FormControl, Input, Pressable} from 'native-base';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {PasswordLabel} from './components/PasswordLabel';
+import {usePostHog} from "posthog-react-native"
 
 export const SignInForm = () => {
   const [signInData, setSignInData] = useState({
@@ -14,6 +15,23 @@ export const SignInForm = () => {
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+
+  const posthog = usePostHog();
+
+  useEffect(() => {
+    posthog.capture("signin");
+    posthog.identify('distinctID',
+      {
+        $set: {
+            email: 'user@posthog.com',
+            name: 'My Name'
+        },
+        $set_once: {
+            date_of_first_log_in: '2024-03-01'
+        }
+      }
+    )
+}, [posthog])
   return (
     <Box w="80%">
       <Box mb="5">

@@ -1,10 +1,21 @@
 import {Box, Button, Input} from 'native-base';
+import { usePostHog } from 'posthog-react-native';
 import React, {useRef, useState} from 'react';
 
 export const OTPForm = () => {
   const [otp, setOtp] = useState<string[]>(['', '', '', '']);
   const inputsRef = useRef<(any | null)[]>([]);
 
+
+ 
+   const posthog = usePostHog();
+
+  const handleSubmit = () => {
+    posthog.capture("OTP Button");
+    console.log('OTP Submitted:', otp.join(''));
+
+
+  };
   const handleOtpChange = (text: string, index: number) => {
     if (/^\d*$/.test(text)) {
       const newOtp = [...otp];
@@ -15,7 +26,10 @@ export const OTPForm = () => {
         inputsRef.current[index + 1]?.focus();
       }
     }
-  };
+
+
+
+};
 
   const isSubmitEnabled = otp.every(digit => digit !== '');
 
@@ -57,9 +71,7 @@ export const OTPForm = () => {
       </Box>
       <Box alignItems="center" pt="10">
         <Button
-          onPress={() => {
-            console.log('OTP Submitted:', otp.join(''));
-          }}
+          onPress={handleSubmit}
           isDisabled={!isSubmitEnabled}>
           Submit
         </Button>
