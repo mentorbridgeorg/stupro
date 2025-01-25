@@ -15,6 +15,7 @@ export const SignInForm = () => {
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+
   const [isSendPressed, setSendPressed] = useState(false);
 
   useEffect(() => {
@@ -32,6 +33,16 @@ export const SignInForm = () => {
         console.log(error);
       });
   };
+
+  const isValidEmail =
+    signInData?.email !== '' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signInData?.email);
+
+  const isValidPassword =
+    signInData?.password?.length >= 8 &&
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
+      signInData.password,
+    );
 
   return (
     <Box w="80%">
@@ -82,7 +93,7 @@ export const SignInForm = () => {
         </Box>
       </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={() => setSendPressed(true)} isDisabled={false}>
+        <Button onPress={() => setSendPressed(true)} isDisabled={!isValidEmail && !isValidPassword}>
           Continue
         </Button>
       </Box>

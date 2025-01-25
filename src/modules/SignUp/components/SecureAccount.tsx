@@ -9,9 +9,14 @@ import {Box, Center, Pressable, Stack, Text} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {signUpDataAtom} from '../atoms';
 import axios from 'axios';
+
 export const SecureAccount = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
   const [isSendPressed, setSendPressed] = useState(false);
+ const [showPassword, setShowPassword] = useState(false);
+
+
+
 
   const handleContinue = () => {
     axios
@@ -25,7 +30,7 @@ export const SecureAccount = () => {
 
     // console.log('signUpData', signUpData);
   };
-
+        
   useEffect(() => {
     if (isSendPressed) {
       handleContinue();
@@ -37,7 +42,6 @@ export const SecureAccount = () => {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
       signUpData.userDetails.password,
     );
-  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <Box>
@@ -77,7 +81,10 @@ export const SecureAccount = () => {
         </Stack>
       </Center>
       <Box alignItems="center" mb="5" mt="5">
+
         <Button onPress={()=>setSendPressed(true)} isDisabled={!isValidPassword}>
+
+
           Continue
         </Button>
       </Box>
