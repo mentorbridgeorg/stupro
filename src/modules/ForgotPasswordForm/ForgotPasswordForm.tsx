@@ -1,18 +1,36 @@
+
 import {EmailIcon} from '@assets/icons/EmailIcon';
 import {Button} from '@atoms/Button';
 import {FormInput} from '@molecules/FormInput';
 import {Box} from 'native-base';
 import React, {useState} from 'react';
 import {usePostHog} from "posthog-react-native"
+import axios from 'axios';
 
 export const ForgotPasswordForm = () => {
-  const [forgotPasswordData, setForgotPasswordData] = useState({
-    email: '',
-  });
+
+  const [forgotPasswordData, setForgotPasswordData] = useState('');
+  
   const isValidEmail =
-    forgotPasswordData?.email &&
-    forgotPasswordData?.email !== '' &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotPasswordData?.email);
+    forgotPasswordData &&
+    forgotPasswordData !== '' &&
+      /^[a-z0-9_.+-]+@[a-z0-9]+\.[a-z0-9-.]+$/.test(forgotPasswordData);
+   
+
+
+  const handleSubmit = () => {
+
+    axios.post('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8080/init', {
+      email: forgotPasswordData
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
 
     
    const posthog = usePostHog();
@@ -31,7 +49,7 @@ export const ForgotPasswordForm = () => {
             label="Email"
             placeholder="example@gmail.com"
             onChange={text => {
-              setForgotPasswordData({...forgotPasswordData, email: text});
+              setForgotPasswordData(text,)
             }}
             icon={<EmailIcon />}
           />

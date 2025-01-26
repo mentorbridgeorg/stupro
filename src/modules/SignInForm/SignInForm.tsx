@@ -8,6 +8,7 @@ import {Box, FormControl, Input, Pressable} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {PasswordLabel} from './components/PasswordLabel';
 import {usePostHog} from "posthog-react-native"
+import axios from 'axios';
 
 export const SignInForm = () => {
   const [signInData, setSignInData] = useState({
@@ -31,7 +32,36 @@ export const SignInForm = () => {
         }
       }
     )
-}, [posthog])
+}, [posthog]);
+  
+  const [isSendPressed, setSendPressed] = useState(false);
+
+  useEffect(() => {
+    if (isSendPressed) {
+      handleSubmit();
+    }
+  });
+  const handleSubmit = () => {
+    axios
+      .post('http://localhost:8080/signin', signInData)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const isValidEmail =
+    signInData?.email !== '' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signInData?.email);
+
+  const isValidPassword =
+    signInData?.password?.length >= 8 &&
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
+      signInData.password,
+    );
+
   return (
     <Box w="80%">
       <Box mb="5">
@@ -81,7 +111,7 @@ export const SignInForm = () => {
         </Box>
       </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={() => {}} isDisabled={false}>
+        <Button onPress={() => setSendPressed(true)} isDisabled={!isValidEmail && !isValidPassword}>
           Continue
         </Button>
       </Box>
