@@ -5,6 +5,8 @@ import {PostHogProvider} from 'posthog-react-native';
 import React from 'react';
 import {theme} from './src/theme';
 
+require('./ReactotronConfig');
+
 function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme}>

@@ -5,10 +5,11 @@ import {PasswordIcon} from '@assets/icons/PasswordIcon';
 import {Button} from '@atoms/Button';
 import {FormInput} from '@molecules/FormInput';
 import {Box, FormControl, Input, Pressable} from 'native-base';
+import {usePostHog} from 'posthog-react-native';
 import React, {useEffect, useState} from 'react';
+import {LOGIN_ENDPOINT} from '../../api/endpoints';
+import {sendData} from '../../api/Post/sendData';
 import {PasswordLabel} from './components/PasswordLabel';
-import {usePostHog} from "posthog-react-native"
-import axios from 'axios';
 
 export const SignInForm = () => {
   const [signInData, setSignInData] = useState({
@@ -20,36 +21,22 @@ export const SignInForm = () => {
   const posthog = usePostHog();
 
   useEffect(() => {
-    posthog.capture("signin");
-    posthog.identify('distinctID',
-      {
-        $set: {
-            email: 'user@posthog.com',
-            name: 'My Name'
-        },
-        $set_once: {
-            date_of_first_log_in: '2024-03-01'
-        }
-      }
-    )
-}, [posthog]);
-  
-  const [isSendPressed, setSendPressed] = useState(false);
+    posthog.capture('signin');
+    posthog.identify('distinctID', {
+      $set: {
+        email: 'user@posthog.com',
+        name: 'My Name',
+      },
+      $set_once: {
+        date_of_first_log_in: '2024-03-01',
+      },
+    });
+  }, [posthog]);
 
-  useEffect(() => {
-    if (isSendPressed) {
-      handleSubmit();
-    }
-  });
   const handleSubmit = () => {
-    axios
-      .post('http://localhost:8080/signin', signInData)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    sendData(LOGIN_ENDPOINT, signInData).then(response => {
+      console.log('Response:', response);
+    });
   };
 
   const isValidEmail =
@@ -111,7 +98,9 @@ export const SignInForm = () => {
         </Box>
       </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={() => setSendPressed(true)} isDisabled={!isValidEmail && !isValidPassword}>
+        <Button
+          onPress={handleSubmit}
+          isDisabled={!isValidEmail && !isValidPassword}>
           Continue
         </Button>
       </Box>
