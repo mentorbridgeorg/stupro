@@ -8,17 +8,16 @@ import EditProfile from '../pages/Profile/EditProfile';
 import {SignIn} from '../pages/SignIn';
 import {SignUp} from '../pages/SignUp';
 import {FeedbackPage} from '../pages/Feedback';
+import { View } from 'react-native';
+import { NavigationBar } from '@/modules/navigationBar/navigationBar';
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
-    <Stack.Navigator
-<<<<<<< HEAD
-      initialRouteName="Login"
-=======
+    <View style={{ flex: 1 }}>
+     <Stack.Navigator
       initialRouteName="Home"
->>>>>>> df90c2e228384a09912142b86360270f047d0b42
       screenOptions={{
         headerTitleAlign: 'center',
         headerShadowVisible: false,
@@ -33,5 +32,8 @@ export const RootStack = () => {
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Feedbackpage" component={FeedbackPage} />
     </Stack.Navigator>
+     <NavigationBar />
+     </View>
+ 
   );
 };
