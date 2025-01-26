@@ -1,36 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, Alert } from 'react-native';
+import {View, Text, ScrollView, Pressable} from 'react-native';
+import {Button} from '@atoms/Button';
 import LinearGradient from 'react-native-linear-gradient';
 import axios from 'axios';
+import {styles} from "./Preferences.styles";
+import { Box } from 'native-base';
 
 export const Preferences = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
   const [preferences, setPreferences] = useState([]);
-
-  const preferenceList: string[] = [
-    'Artificial Intelligence',
-    'Cyber Security',
-    'Cloud Computing',
-    'Distributed Computing',
-    'Web Development',
-    'IOT',
-    'Algorithm',
-    'Robotics',
-    'Designing Tools',
-    'Developer Tools',
-    'Data Science',
-    'Space Research',
-    'Machine Learning',
-  ];
 
 const fetchPreferences = () => {
   axios.get("https://jsonplaceholder.typicode.com/posts")
   .then((response) => setPreferences(response.data))
   .catch(error => console.log(error.message));
 }
-
-
-
 const savePreferences = () => {
   axios.post("https://jsonplaceholder.typicode.com/posts",{
   preferences:selectedPreferences
@@ -42,7 +26,6 @@ const savePreferences = () => {
 useEffect(()=>{
   fetchPreferences();
 }, [])
-
 
   const togglePreference = (item: string) => {
     if (selectedPreferences.includes(item)) {
@@ -91,83 +74,13 @@ useEffect(()=>{
             </Pressable>
           ))}
         </ScrollView>
-
-        <Pressable style={styles.nextButton} onPress={savePreferences}>
+        <Box mx="120">
+        <Button onPress={savePreferences} style={styles.nextButton}>
           <Text style={styles.nextButtonText}>Next</Text>
-        </Pressable>
+        </Button>
+        </Box>
       </View>
     </LinearGradient>
   );
 };
-
-const styles = StyleSheet.create({
-  gradientBackground: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'black',
-    textAlign: 'center',
-    marginBottom: 20,
-    marginTop: 20,
-  },
-  scrollContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    paddingHorizontal: 10,
-  },
-  defaultButton: {
-    borderRadius: 20,
-    margin: 5,
-    overflow: 'hidden',
-  },
-  selectedButton: {
-    borderWidth: 2,
-    borderColor: '#FFD700',
-  },
-  buttonGradient: {
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-  defaultButtonText: {
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-  nextButton: {
-    backgroundColor: 'white',
-    paddingVertical: 10,
-    paddingHorizontal: 60,
-    borderRadius: 50,
-    alignSelf: 'center',
-    marginTop: 20,
-    marginBottom: 30,
-  },
-  nextButtonText: {
-    color: 'black',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  limitMessage: {
-    textAlign: 'center',
-    marginBottom: 15,
-    color: 'black',
-    fontSize: 18,
-  },
-});
-
-
-
-
-
-
 
