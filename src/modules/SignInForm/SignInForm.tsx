@@ -7,6 +7,7 @@ import {FormInput} from '@molecules/FormInput';
 import {Box, FormControl, Input, Pressable} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {PasswordLabel} from './components/PasswordLabel';
+import {usePostHog} from "posthog-react-native"
 import axios from 'axios';
 
 export const SignInForm = () => {
@@ -16,6 +17,23 @@ export const SignInForm = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
+  const posthog = usePostHog();
+
+  useEffect(() => {
+    posthog.capture("signin");
+    posthog.identify('distinctID',
+      {
+        $set: {
+            email: 'user@posthog.com',
+            name: 'My Name'
+        },
+        $set_once: {
+            date_of_first_log_in: '2024-03-01'
+        }
+      }
+    )
+}, [posthog]);
+  
   const [isSendPressed, setSendPressed] = useState(false);
 
   useEffect(() => {
