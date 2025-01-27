@@ -18,6 +18,7 @@ const savePreferences = () => {
   sendData("https://jsonplaceholder.typicode.com/posts",{
   preferences:selectedPreferences
   })
+  .then((response)=>console.log(response));
 };
 
 useEffect(()=>{
