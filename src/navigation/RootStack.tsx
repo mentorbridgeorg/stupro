@@ -7,14 +7,14 @@ import {Profile} from '../pages/Profile';
 import EditProfile from '../pages/Profile/EditProfile';
 import {SignIn} from '../pages/SignIn';
 import {SignUp} from '../pages/SignUp';
-import { FeedbackPage } from '../pages/Feedback';
+import {FeedbackPage} from '../pages/Feedback';
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Preferences"
+      initialRouteName="Home"
       screenOptions={{
         headerTitleAlign: 'center',
         headerShadowVisible: false,
@@ -27,7 +27,7 @@ export const RootStack = () => {
       <Stack.Screen name="Login" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-      <Stack.Screen name="FeedbackPage" component={FeedbackPage} />
+      <Stack.Screen name="Feedbackpage" component={FeedbackPage} />
     </Stack.Navigator>
   );
 };
