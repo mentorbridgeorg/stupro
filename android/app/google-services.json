@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "58974247315",
+    "project_id": "stupro-297a8",
+    "storage_bucket": "stupro-297a8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58974247315:android:cf21080249777fdf677066",
+        "android_client_info": {
+          "package_name": "org.mentorbridge.stupro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnrtwnSaVkGAlu51zxTOdHMDbNpH8nU9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
