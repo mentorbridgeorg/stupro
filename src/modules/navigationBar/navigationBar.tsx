@@ -24,13 +24,13 @@ export const NavigationBar = () => {
         <Text style={[styles.label, { color: selectedTab === 'Home' ? '#F3C331' : 'gray' }]}>Home</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => handlePress('Settings')} style={styles.navItem}>
+      <TouchableOpacity onPress={() => handlePress('Category')} style={styles.navItem}>
         <Ionicons
-          name="settings"
+          name="grid" 
           size={20}
-          color={selectedTab === 'Settings' ? '#F3C331' : 'gray'}
+          color={selectedTab === 'Category' ? '#F3C331' : 'gray'}
         />
-        <Text style={[styles.label, { color: selectedTab === 'Settings' ? '#F3C331' : 'gray' }]}>Settings</Text>
+        <Text style={[styles.label, { color: selectedTab === 'Category' ? '#F3C331' : 'gray' }]}>Settings</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => handlePress('Profile')} style={styles.navItem}>
@@ -48,7 +48,7 @@ export const NavigationBar = () => {
 const styles = StyleSheet.create({
   navBar: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 8,
     left: 65,
     right: 20,
     height: 55,

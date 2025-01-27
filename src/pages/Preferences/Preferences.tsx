@@ -90,11 +90,12 @@ useEffect(()=>{
               </LinearGradient>
             </Pressable>
           ))}
-        </ScrollView>
+       
 
         <Pressable style={styles.nextButton} onPress={savePreferences}>
           <Text style={styles.nextButtonText}>Next</Text>
         </Pressable>
+        </ScrollView>
       </View>
     </LinearGradient>
   );
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignSelf: 'center',
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom:80,
   },
   nextButtonText: {
     color: 'black',

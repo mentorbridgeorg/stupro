@@ -11,6 +11,7 @@ import {FeedbackPage} from '../pages/Feedback';
 import { View } from 'react-native';
 import { NavigationBar } from '@/modules/navigationBar/navigationBar';
 
+
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
@@ -31,6 +32,7 @@ export const RootStack = () => {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Feedbackpage" component={FeedbackPage} />
+      
     </Stack.Navigator>
      <NavigationBar />
      </View>
