@@ -1,48 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, Alert } from 'react-native';
+import {View, Text, ScrollView, Pressable} from 'react-native';
+import {Button} from '@atoms/Button';
 import LinearGradient from 'react-native-linear-gradient';
+import {styles} from "./Preferences.styles";
+import { Box } from 'native-base';
+import { fetchData, sendData } from '@/api';
 import axios from 'axios';
+
 
 export const Preferences = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
   const [preferences, setPreferences] = useState([]);
 
-  const preferenceList: string[] = [
-    'Artificial Intelligence',
-    'Cyber Security',
-    'Cloud Computing',
-    'Distributed Computing',
-    'Web Development',
-    'IOT',
-    'Algorithm',
-    'Robotics',
-    'Designing Tools',
-    'Developer Tools',
-    'Data Science',
-    'Space Research',
-    'Machine Learning',
-  ];
-
 const fetchPreferences = () => {
-  axios.get("https://jsonplaceholder.typicode.com/posts")
-  .then((response) => setPreferences(response.data))
-  .catch(error => console.log(error.message));
+  fetchData("https://jsonplaceholder.typicode.com/posts")
+  .then((response) => setPreferences(response))
 }
-
-
-
 const savePreferences = () => {
-  axios.post("https://jsonplaceholder.typicode.com/posts",{
+  sendData("https://jsonplaceholder.typicode.com/posts",{
   preferences:selectedPreferences
   })
-  .then((response) => console.log(response.data))
-  .catch((error) => console.error(error.message));
+  .then((response)=>console.log(response));
 };
 
 useEffect(()=>{
   fetchPreferences();
 }, [])
-
 
   const togglePreference = (item: string) => {
     if (selectedPreferences.includes(item)) {

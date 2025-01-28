@@ -1,14 +1,9 @@
-import React from 'react';
-import {Box, Center, Pressable, Text} from 'native-base';
-import {Button} from '../../ui/atoms/Button';
-import {
-  background,
-  color,
-} from 'native-base/lib/typescript/theme/styled-system';
-import Options from './components/Options';
-import EditProfile from './EditProfile';
-import {RoleLabel} from '../../ui/atoms/RoleLabel/RoleLabel';
+import {Button} from '@atoms/Button';
+import {RoleLabel} from '@atoms/RoleLabel/RoleLabel';
 import {useNavigation} from '@react-navigation/native';
+import {Box, Center} from 'native-base';
+import React from 'react';
+import Options from './components/Options';
 
 export const Profile = () => {
   const navigation = useNavigation();
@@ -20,9 +15,6 @@ export const Profile = () => {
   const role = 'Professional';
 
   const handleBg: () => any = () => {
-    // console.log(
-    //   Position.find(findValue => findValue.value === role)?.background,
-    // );
     return Position.find(findValue => findValue.value === role)?.background;
   };
 
@@ -42,7 +34,7 @@ export const Profile = () => {
         <Box marginY={1} pt={2}>
           <Button
             onPress={() => {
-              navigation.navigate('EditProfile');
+              navigation.navigate('EditProfile' as never);
             }}>
             Edit Profile
           </Button>
