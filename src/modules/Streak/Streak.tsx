@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, HStack, Text, Card} from 'native-base';
+import {Box, HStack, Text, Card, Image} from 'native-base';
 import axios from 'axios';
 import {StatusCircle} from '../../ui/atoms/StatusCircle/StatusCircle';
 
@@ -23,7 +23,7 @@ export const Streak = () => {
               {day: 'Wed', status: true},
               {day: 'Thu', status: true},
               {day: 'Fri', status: false},
-              {day: 'Sat', status: true},
+              {day: 'Sat', status: false},
               {day: 'Sun', status: true},
             ],
           },
@@ -61,22 +61,45 @@ export const Streak = () => {
 
   return (
     <Box p={4}>
-      <Text color="font.primary" fontSize="2xl" alignSelf="center" mt={3}>
-        STREAK
-      </Text>
+      <HStack
+        alignItems="center"
+        justifyContent="center"
+        space={2}
+        mt={5}
+        mb={3}
+        mr={8}>
+        
 
-      <Box mt={7}>
+        <Image
+         
+          source={{
+            uri: 'https://png.pngtree.com/png-vector/20240727/ourmid/pngtree-number-7-with-fire-growing-out-png-image_13246805.png',
+          }}
+          alt="Streak Icon"
+          size="12"
+        />
+        <Text color="font primary" fontSize="2xl" bold>
+          DAYS
+        </Text>
+        <Text color="font primary" fontSize="2xl" bold>
+          STREAK
+        </Text>
+      </HStack>
+
+      <Box mt={10}>
         {streaks.map(streak => (
           <Card
             key={streak.id}
             bg={'#F3C331'}
             rounded="md"
             shadow={3}
-            p={4}
+            p={5}
             alignItems="center"
             width="90%"
             alignSelf="center"
-            mb={6}>
+            mb={10}
+            pt={7}
+            >
             <HStack space={4} justifyContent="space-around" width="100%">
               {streak.details.map(
                 (detail: {day: string; status: boolean}, index: any) => (
