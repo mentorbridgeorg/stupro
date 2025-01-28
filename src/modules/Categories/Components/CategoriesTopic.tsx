@@ -11,13 +11,12 @@ export const CatgoriesTopic = ({label,onPress}:CategoriesProps) => {
     <Box 
     w={100}
     h={10}
-    // bg={'#FEFEFE'} 
+
     bg={'primary.500'} 
-    borderRadius={20} 
+    borderRadius={15} 
     marginLeft='4'  
     marginTop={8} 
-    // borderColor={'primary.500'} 
-    borderColor={'primary.800'} 
+    borderColor={'primary.700'} 
     borderWidth={2}>
    <Center>
      <Text marginTop={2}marginRight={3} color={'black'}>

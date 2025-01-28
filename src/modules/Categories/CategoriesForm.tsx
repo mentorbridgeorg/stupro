@@ -2,20 +2,30 @@ import { VStack, HStack } from 'native-base';
 import React, { useState } from 'react';
 import { CategoriesCard, CatgoriesTopic } from './Components';
 
+import { fetchData } from '@/api';
+
+
 export const CategoryForm = () => {
   const [visibleCards, setVisibleCards] = useState<string[]>(['Article']);  //default
-
+  const [ setData] = useState<any>(null);
   const topics = [
     { label: 'Article' },
     { label: 'Product' },
     { label: 'Repo' },
   ];
-
   const handleTopicPress = (label: string) => {
-    if (!visibleCards.includes(label)) {
-      setVisibleCards((prevCards) => [...prevCards, label]); 
-    }
+    setVisibleCards([label]);
+
+    // Fetch data 
+    fetchData(`URL${label}`)
+      .then((response) => {
+        setData((prevData: any) => ({
+          ...prevData,
+          [label]: response,
+        }));
+      });
   };
+ 
 
   return (
     <>
@@ -39,3 +49,4 @@ export const CategoryForm = () => {
     </>
   );
 };
+
