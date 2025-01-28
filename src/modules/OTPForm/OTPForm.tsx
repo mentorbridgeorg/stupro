@@ -1,3 +1,4 @@
+
 import { sendData } from '@/api';
 import axios from 'axios';
 import {Box, Button, Input} from 'native-base';
@@ -24,7 +25,6 @@ export const OTPForm = () => {
 
   const handleSubmit = () => {
     posthog.capture('OTP Button');
-    axios
       sendData('/url', {
         otp: otp.join(''),
       })

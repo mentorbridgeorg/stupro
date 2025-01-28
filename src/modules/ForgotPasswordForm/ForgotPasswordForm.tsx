@@ -8,7 +8,6 @@ import { usePostHog } from 'posthog-react-native';
 import React, {  useState  } from 'react';
 import axios from 'axios';
 import { sendData } from '@/api';
-
 export const ForgotPasswordForm = () => {
   const posthog = usePostHog();
 
@@ -31,7 +30,6 @@ export const ForgotPasswordForm = () => {
       .then(function (response) {
         console.log(response);
       })
-     
   };
 
   return (
