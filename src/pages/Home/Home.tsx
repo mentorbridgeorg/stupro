@@ -1,62 +1,48 @@
-import {AspectRatio, Box, Button, Center, Image, Text, View} from 'native-base';
+import { Box, Button, Center, Text, View, Image} from 'native-base';
 import React from 'react';
 import {GlobalSearch} from '@modules/GlobalSearch';
 import Swiper from 'react-native-deck-swiper';
-import {StyleSheet} from 'react-native';
+import styles from '@/ui/styles';
+import cardsData from '@/assets/cards/CardsData';
+
 
 export const Home = () => {
   return (
     <Box mt="5">
       <GlobalSearch />
       <Center mt="5">
-        {/* <Box
-          maxW="90%"
-          rounded="lg"
-          overflow="hidden"
-          borderColor="primary.200"
-          borderWidth="5"
-          _web={{
-            shadow: 2,
-            borderWidth: 0,
-          }}>
-          <AspectRatio w="100%" ratio={16 / 9}>
-            <Image
-              maxWidth="100%"
-              maxHeight="250px"
-              source={{
-                uri: 'https://venngage-wordpress.s3.amazonaws.com/uploads/2020/10/Anatomy-of-the-Perfect-Blog-Post.png',
-              }}
-              alt="blog"
-              width="100%"
-              height="100%"
-            />
-          </AspectRatio>
-        </Box> */}
         <Swiper
-          cards={['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']}
-          renderCard={card => {
+          cards={cardsData}
+          // cards={['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']}
+          renderCard={(card) => {
             return (
               <View style={styles.card}>
-                <Text style={styles.text}>{card}</Text>
+                <Image source={ typeof card.image === 'string'?
+                 { uri: card.image } : card.image}
+                style={styles.cardsImage}
+                 alt="image base"/>
+                <Text style={styles.cardTitle}>{card.title}</Text>
+                <Text style={styles.cardsDescription}>{card.description} </Text>
               </View>
             );
           }}
-          onSwiped={cardIndex => {
+          onSwipedRight={cardIndex => {
             console.log(cardIndex);
           }}
+          horizontalSwipe={true}
+          showSecondCard={false}
           onSwipedAll={() => {
             console.log('onSwipedAll');
           }}
+          goBackToPreviousCardOnSwipeLeft={true}
           cardIndex={0}
-          swipeBack={true}
-          swipeLeft={}
           backgroundColor={'#4FD0E9'}
           stackSize={3}>
           <Button
             onPress={() => {
               console.log('oulala');
             }}
-            title="Press me">
+            >
             <Text color="black">You can press me</Text>
           </Button>
         </Swiper>
@@ -65,22 +51,4 @@ export const Home = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
-  card: {
-    flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: '#E8E8E8',
-    backgroundColor: '#F5FCFF',
-    justifyContent: 'center',
-  },
-  text: {
-    textAlign: 'center',
-    backgroundColor: 'transparent',
-    color: '#000',
-  },
-});
+
