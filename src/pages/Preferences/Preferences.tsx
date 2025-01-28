@@ -2,25 +2,25 @@ import React, { useEffect, useState } from 'react';
 import {View, Text, ScrollView, Pressable} from 'react-native';
 import {Button} from '@atoms/Button';
 import LinearGradient from 'react-native-linear-gradient';
-import axios from 'axios';
 import {styles} from "./Preferences.styles";
 import { Box } from 'native-base';
+import { fetchData, sendData } from '@/api';
+import axios from 'axios';
+
 
 export const Preferences = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
   const [preferences, setPreferences] = useState([]);
 
 const fetchPreferences = () => {
-  axios.get("https://jsonplaceholder.typicode.com/posts")
-  .then((response) => setPreferences(response.data))
-  .catch(error => console.log(error.message));
+  fetchData("https://jsonplaceholder.typicode.com/posts")
+  .then((response) => setPreferences(response))
 }
 const savePreferences = () => {
-  axios.post("https://jsonplaceholder.typicode.com/posts",{
+  sendData("https://jsonplaceholder.typicode.com/posts",{
   preferences:selectedPreferences
   })
-  .then((response) => console.log(response.data))
-  .catch((error) => console.error(error.message));
+  .then((response)=>console.log(response));
 };
 
 useEffect(()=>{
