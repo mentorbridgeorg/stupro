@@ -7,6 +7,7 @@ import axios from 'axios';
 import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
 import React, {useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
+import { sendData } from '@/api';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
@@ -47,14 +48,11 @@ export const Feedback = () => {
       addedBy: null,
     };
 
-    axios
-      .post('http://localhost:8080/feedback', data)
+    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092', data)
       .then(function (response) {
-        console.log(response.data);
+        console.log(response);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      
   };
 
   return (
