@@ -1,46 +1,42 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {View, Text, ScrollView, Pressable} from 'react-native';
+import {Button} from '@atoms/Button';
 import LinearGradient from 'react-native-linear-gradient';
+import {styles} from "./Preferences.styles";
+import { Box } from 'native-base';
+import { fetchData, sendData } from '@/api';
+import axios from 'axios';
+
 
 export const Preferences = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
+  const [preferences, setPreferences] = useState([]);
 
-  const preferenceList: string[] = [
-    'Artificial Intelligence',
-    'Cyber Security',
-    'Cloud Computing',
-    'Distributed Computing',
-    'Web Development',
-    'IOT',
-    'Algorithm',
-    'Robotics',
-    'Designing Tools',
-    'Developer Tools',
-    'Data Science',
-    'Space Research',
-    'Machine Learning',
-    'Artificial Intelligence',
-    'Cyber Security',
-    'Cloud Computing',
-    'Distributed Computing',
-    'Web Development',
-    'IOT',
-    'Algorithm',
-    'Robotics',
-    'Designing Tools',
-    'Developer Tools',
-    'Data Science',
-    'Space Research',
-    'Machine Learning',
-  ];
+const fetchPreferences = () => {
+  fetchData("https://jsonplaceholder.typicode.com/posts")
+  .then((response) => setPreferences(response))
+}
+const savePreferences = () => {
+  sendData("https://jsonplaceholder.typicode.com/posts",{
+  preferences:selectedPreferences
+  })
+  .then((response)=>console.log(response));
+};
 
-  //to toggle the button when clicked
+useEffect(()=>{
+  fetchPreferences();
+}, [])
+
   const togglePreference = (item: string) => {
-    setSelectedPreferences((prev) =>
-      prev.includes(item)
-        ? prev.filter((preference) => preference !== item)
-        : [...prev, item]
-    );
+    if (selectedPreferences.includes(item)) {
+      setSelectedPreferences((prev) =>
+        prev.filter((preference) => preference !== item)
+      );
+    } else {
+      if (selectedPreferences.length < 5) {
+        setSelectedPreferences((prev) => [...prev, item]);
+      }
+    }
   };
 
   return (
@@ -50,35 +46,39 @@ export const Preferences = () => {
     >
       <View style={styles.container}>
         <Text style={styles.title}>Select Your Preference</Text>
+        <Text style={styles.limitMessage}>You can choose up to 5 Preferences!</Text>
+
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {preferenceList.map((item, index) => (
-  <Pressable
-    key={index}
-    onPress={() => togglePreference(item)}
-    style={[
-      styles.defaultButton,
-      selectedPreferences.includes(item) && styles.selectedButton,
-    ]}
-  >
-    <LinearGradient
-      colors={
-        selectedPreferences.includes(item)
-          ? ['#FFFFFF','#FFD600', '#FFFFFF'] //gradient colors for selected buttons
-          : ['#FFFFFF', '#FFFFFF'] 
-      }
-      //for vertical gradient of button
-      start={{ x: 0, y: 0 }} 
-      end={{ x: 1, y: 0 }} 
-      style={styles.buttonGradient}
-    >
-      <Text style={styles.defaultButtonText}>{item}</Text>
-    </LinearGradient>
-  </Pressable>
-))}
-        </ScrollView>
-        <Pressable style={styles.nextButton}>
+          {preferences.map((item, index) => (
+            <Pressable
+              key={index}
+              onPress={() => togglePreference(item)}
+              style={[
+                styles.defaultButton,
+                selectedPreferences.includes(item) && styles.selectedButton,
+              ]}
+            >
+              <LinearGradient
+                colors={
+                  selectedPreferences.includes(item)
+                    ? ['#FFFFFF','#FFD600', '#FFFFFF'] //gradient colors for selected buttons
+                    : ['#FFFFFF', '#FFFFFF']
+                }
+                //for vertical gradient of button
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.buttonGradient}
+              >
+                <Text style={styles.defaultButtonText}>{item.id}</Text>
+              </LinearGradient>
+            </Pressable>
+          ))}
+       
+
+        <Pressable style={styles.nextButton} onPress={savePreferences}>
           <Text style={styles.nextButtonText}>Next</Text>
         </Pressable>
+        </ScrollView>
       </View>
     </LinearGradient>
   );
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
-    marginBottom: 60,
+    marginBottom: 20,
     marginTop: 20,
   },
   scrollContainer: {
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+
   nextButton: {
     backgroundColor: 'white',
     paddingVertical: 10,
@@ -132,12 +133,25 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignSelf: 'center',
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom:80,
   },
   nextButtonText: {
     color: 'black',
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  limitMessage: {
+    textAlign: 'center',
+    marginBottom: 15,
+    color: 'black',
+    fontSize: 18,
   },
 });
+
+
+
+
+
+
 

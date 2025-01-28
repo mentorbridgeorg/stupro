@@ -7,18 +7,25 @@ import {PasswordPatternList} from '@molecules/PasswordPatternList';
 import {useAtom} from 'jotai';
 import {Box, Center, Pressable, Stack, Text} from 'native-base';
 import React, {useState} from 'react';
+import {REGISTER_ENDPOINT} from '../../../api/endpoints';
+import {sendData} from '../../../api/Post/sendData';
 import {signUpDataAtom} from '../atoms';
+
 export const SecureAccount = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleContinue = () => {
-    console.log('signUpData', signUpData);
+    sendData(REGISTER_ENDPOINT, signUpData).then(response => {
+      console.log(response);
+    });
   };
+
   const isValidPassword =
     signUpData?.userDetails?.password?.length >= 8 &&
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
       signUpData.userDetails.password,
     );
-  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <Box>
