@@ -11,6 +11,7 @@ import {RoleLabel} from '../../ui/atoms/RoleLabel/RoleLabel';
 import {useNavigation} from '@react-navigation/native';
 
 export const Profile = () => {
+   
   const navigation = useNavigation();
   const Position = [
     {value: 'Student', background: 'lightblue'},
@@ -55,8 +56,11 @@ export const Profile = () => {
         Settings
       </Box>
       <Box marginY={5}>
-        <Options Component="Change password" onPress={() => {}} />
-      </Box>
+        <Options 
+          Component="Change Password"
+          onPress={() => {navigation.navigate('ChangePassword')}}
+          />
+         </Box>
     </Box>
   );
 };

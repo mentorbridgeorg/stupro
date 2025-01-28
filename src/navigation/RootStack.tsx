@@ -7,13 +7,18 @@ import {Profile} from '../pages/Profile';
 import EditProfile from '../pages/Profile/EditProfile';
 import {SignIn} from '../pages/SignIn';
 import {SignUp} from '../pages/SignUp';
+import { ResetPassword } from '@/pages/ResetPassword';
+import { ChangePassword } from '../pages/ChangePassword';
+
+import {Categories} from '@/pages/Categories/Categories';
+
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="Categories"
       screenOptions={{
         headerTitleAlign: 'center',
         headerShadowVisible: false,
@@ -26,6 +31,9 @@ export const RootStack = () => {
       <Stack.Screen name="Login" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="ChangePassword" component={ChangePassword} />
+      <Stack.Screen name="Categories" component={Categories} />
     </Stack.Navigator>
   );
 };
