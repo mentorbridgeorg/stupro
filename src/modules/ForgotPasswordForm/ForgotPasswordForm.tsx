@@ -1,11 +1,13 @@
-import { EmailIcon } from '@assets/icons/EmailIcon';
-import { Button } from '@atoms/Button';
-import { FormInput } from '@molecules/FormInput';
-import axios from 'axios';
-import { Box } from 'native-base';
-import { usePostHog } from 'posthog-react-native';
-import React, { useState } from 'react';
 
+import {  EmailIcon  } from '@assets/icons/EmailIcon';
+import {  Button  } from '@atoms/Button';
+import {  FormInput  } from '@molecules/FormInput';
+import axios from 'axios';
+import {  Box  } from 'native-base';
+import { usePostHog } from 'posthog-react-native';
+import React, {  useState  } from 'react';
+import axios from 'axios';
+import { sendData } from '@/api';
 export const ForgotPasswordForm = () => {
   const posthog = usePostHog();
 
@@ -19,8 +21,7 @@ export const ForgotPasswordForm = () => {
     posthog.capture('forgotPasswordButton', {
       email: forgotPasswordData,
     });
-    axios
-      .post(
+    sendData(
         'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8080/init',
         {
           email: forgotPasswordData,
@@ -29,9 +30,6 @@ export const ForgotPasswordForm = () => {
       .then(function (response) {
         console.log(response);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
   };
 
   return (
