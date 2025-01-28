@@ -5,6 +5,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {styles} from "./Preferences.styles";
 import { Box } from 'native-base';
 import { fetchData, sendData } from '@/api';
+import axios from 'axios';
+
 
 export const Preferences = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
