@@ -9,12 +9,16 @@ import {SignIn} from '@pages/SignIn';
 import {SignUp} from '@pages/SignUp';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import { View } from 'react-native';
+import { NavigationBar } from '@modules/navigationBar/navigationBar';
+
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
-    <Stack.Navigator
+    <View style={{ flex: 1 }}>
+     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
         headerTitleAlign: 'center',
@@ -31,5 +35,8 @@ export const RootStack = () => {
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Feedback" component={FeedbackPage} />
     </Stack.Navigator>
+     <NavigationBar />
+     </View>
+ 
   );
 };
