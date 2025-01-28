@@ -7,4 +7,5 @@ export interface EmojiButtonProps{
   color:String;
   bgColor:String;
   value:String;
+  
 }
