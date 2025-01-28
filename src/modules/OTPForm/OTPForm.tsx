@@ -1,16 +1,19 @@
+import axios from 'axios';
 import {Box, Button, Input} from 'native-base';
+import {usePostHog} from 'posthog-react-native';
 import React, {useRef, useState} from 'react';
+import {TextInput} from 'react-native';
 
 export const OTPForm = () => {
   const [otp, setOtp] = useState<string[]>(['', '', '', '']);
-  const inputsRef = useRef<(any | null)[]>([]);
+  const inputsRef = useRef<(TextInput | null)[]>([]);
 
+  const posthog = usePostHog();
   const handleOtpChange = (text: string, index: number) => {
     if (/^\d*$/.test(text)) {
       const newOtp = [...otp];
       newOtp[index] = text;
       setOtp(newOtp);
-
       if (text && index < otp.length - 1) {
         inputsRef.current[index + 1]?.focus();
       }
@@ -18,6 +21,20 @@ export const OTPForm = () => {
   };
 
   const isSubmitEnabled = otp.every(digit => digit !== '');
+
+  const handleSubmit = () => {
+    posthog.capture('OTP Button');
+    axios
+      .post('/url', {
+        otp: otp.join(''),
+      })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   return (
     <Box w="100%" p="4">
@@ -56,11 +73,7 @@ export const OTPForm = () => {
         ))}
       </Box>
       <Box alignItems="center" pt="10">
-        <Button
-          onPress={() => {
-            console.log('OTP Submitted:', otp.join(''));
-          }}
-          isDisabled={!isSubmitEnabled}>
+        <Button onPress={handleSubmit} isDisabled={!isSubmitEnabled}>
           Submit
         </Button>
       </Box>
