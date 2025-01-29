@@ -4,8 +4,6 @@ import React from 'react';
 
 export const FeedbackPage = () => {
   return (
-    <>
-    <Box bg='primary.500'flex={1}>
     <Center p="10">
       <Box
         mt="90"
@@ -24,7 +22,5 @@ export const FeedbackPage = () => {
         <Feedback />
       </Box>
     </Center>
-    </Box>
-    </>
   );
 };

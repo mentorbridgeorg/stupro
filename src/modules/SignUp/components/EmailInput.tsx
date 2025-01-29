@@ -26,7 +26,7 @@ export const EmailInput = () => {
         textAlign="center">
         Sign Up
       </Text>
-      <Box >
+      <Box w="100%">
         <FormControl isRequired marginTop="10">
           <Stack mx="10" w="80%">
             <FormInput

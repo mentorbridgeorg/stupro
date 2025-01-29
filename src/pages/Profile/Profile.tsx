@@ -6,7 +6,6 @@ import React from 'react';
 import Options from './components/Options';
 
 export const Profile = () => {
-   
   const navigation = useNavigation();
   const Position = [
     {value: 'Student', background: 'lightblue'},
@@ -48,11 +47,8 @@ export const Profile = () => {
         Settings
       </Box>
       <Box marginY={5}>
-        <Options 
-          Component="Change Password"
-          onPress={() => {navigation.navigate('ChangePassword')}}
-          />
-         </Box>
+        <Options Component="Change password" onPress={() => {}} />
+      </Box>
     </Box>
   );
 };
