@@ -10,11 +10,11 @@ export const Preferences = () => {
   const [preferences, setPreferences] = useState([]);
 
 const fetchPreferences = () => {
-  fetchData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092')
+  fetchData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/fetchPreferences')
   .then((response) => setPreferences(response))
 }
 const savePreferences = () => {
-  sendData( 'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092',{
+  sendData( 'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/savePreferences',{
   preferences:selectedPreferences
   })
   .then((response)=>console.log(response));

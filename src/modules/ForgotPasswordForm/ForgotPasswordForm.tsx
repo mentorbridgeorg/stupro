@@ -20,7 +20,7 @@ export const ForgotPasswordForm = () => {
       email: forgotPasswordData,
     });
     sendData(
-        'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092',
+        'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/forgotPassword',
         {
           email: forgotPasswordData,
         },

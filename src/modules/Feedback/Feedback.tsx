@@ -48,7 +48,7 @@ export const Feedback = () => {
       addedBy: null,
     };
 
-    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092', data)
+    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/feedBack', data)
       .then(function (response) {
         console.log(response);
       })
