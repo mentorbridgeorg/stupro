@@ -1,2 +1,2 @@
-export * from './FormInput';
-export * from './FormInput.types';
+export {FormInput} from './FormInput';
+export type {FormInputProps} from './FormInput.types';

@@ -1,5 +1,5 @@
-import {Feedback} from '../../modules/Feedback/Feedback';
-import {Box, Center, Text} from 'native-base';
+import { Feedback } from '@modules/Feedback';
+import { Box, Center, Text } from 'native-base';
 import React from 'react';
 
 export const FeedbackPage = () => {

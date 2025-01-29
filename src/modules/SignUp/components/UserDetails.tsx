@@ -1,10 +1,10 @@
-import { useAtom, useAtomValue } from 'jotai';
-import { Box, Text } from 'native-base';
+import {Button} from '@atoms/Button';
+import {useAtom, useAtomValue} from 'jotai';
+import {Box, Text} from 'native-base';
 import React from 'react';
-import { Button } from '../../../ui/atoms/Button';
-import { currentStepAtom, signUpDataAtom } from '../atoms';
-import { ProfessionalFields } from './ProfessionalFields';
-import { StudentFields } from './StudentFields';
+import {currentStepAtom, signUpDataAtom} from '../atoms';
+import {ProfessionalFields} from './ProfessionalFields';
+import {StudentFields} from './StudentFields';
 
 export const UserDetails = () => {
   const [currentStep, setCurrentStep] = useAtom(currentStepAtom);

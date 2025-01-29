@@ -1,11 +1,12 @@
+import {BadFaceEmojiIcon} from '@assets/icons/BadFaceEmojiIcon';
+import {GoodFaceIcon} from '@assets/icons/GoodFaceIcon';
+import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
+import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
+import {Button} from '@atoms/Button';
+import axios from 'axios';
 import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
 import React, {useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
-import {BadFaceEmojiIcon} from '../../assets/icons/BadFaceEmojiIcon';
-import {OkFaceIcon} from '../../assets/icons/OkFaceIcon';
-import {GoodFaceIcon} from '../../assets/icons/GoodFaceIcon';
-import {PerfectFaceIcon} from '../../assets/icons/PerfectFaceIcon';
-import {Button} from '../../ui/atoms/Button';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
@@ -38,6 +39,23 @@ export const Feedback = () => {
     },
   ];
 
+  const saveFeedback = () => {
+    const data = {
+      label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
+      comment: setComment,
+      addedDate: null,
+      addedBy: null,
+    };
+
+    axios
+      .post('http://localhost:8080/feedback', data)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   return (
     <Box>
@@ -69,10 +87,13 @@ export const Feedback = () => {
         mt="2"
         ml="1"
         color="black"
+        tvParallaxProperties={undefined}
+        onTextInput={undefined}
+        autoCompleteType={undefined}
       />
       <Box mt="10">
         <HStack space={5} justifyContent={'space-between'}>
-          <Link mt={'2'} ml={'2'} onPress={()=>{}}>
+          <Link mt={'2'} ml={'2'} onPress={() => {}}>
             <Text color="#0089B3" fontSize="13" fontWeight={'bold'}>
               Ask Me Later
             </Text>
@@ -80,7 +101,7 @@ export const Feedback = () => {
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
               <Button
-                onPress={()=>{}}
+                onPress={saveFeedback}
                 isDisabled={selectedEmoji === null}>
                 Send
               </Button>

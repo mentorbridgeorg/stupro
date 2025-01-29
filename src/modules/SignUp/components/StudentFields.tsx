@@ -1,8 +1,8 @@
+import {FormInput} from '@molecules/FormInput';
+import {FormSelect} from '@molecules/FormSelect';
 import {useAtom} from 'jotai';
 import {Box, Stack} from 'native-base';
 import React from 'react';
-import {FormInput} from '../../../ui/molecules/FormInput/FormInput';
-import {FormSelect} from '../../../ui/molecules/FormSelect/FormSelect';
 import {signUpDataAtom} from '../atoms';
 
 export const StudentFields = () => {

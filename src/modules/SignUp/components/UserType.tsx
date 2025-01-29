@@ -1,3 +1,7 @@
+import {theme} from '@/theme';
+import {ProfessionalIcon} from '@assets/icons/ProfessionalIcon';
+import {StudentIcon} from '@assets/icons/StudentIcon';
+import {Button} from '@atoms/Button';
 import {useAtom} from 'jotai';
 import {
   Badge,
@@ -10,10 +14,6 @@ import {
   Text,
 } from 'native-base';
 import React from 'react';
-import {ProfessionalIcon} from '../../../assets/icons/ProfessionalIcon';
-import {StudentIcon} from '../../../assets/icons/StudentIcon';
-import {theme} from '../../../theme';
-import {Button} from '../../../ui/atoms/Button';
 import {currentStepAtom, signUpDataAtom} from '../atoms';
 
 export const UserType = () => {
