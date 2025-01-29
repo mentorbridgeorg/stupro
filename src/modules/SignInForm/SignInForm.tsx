@@ -41,7 +41,7 @@ export const SignInForm = () => {
 
   const isValidEmail =
     signInData?.email !== '' &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signInData?.email);
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(signInData?.email);
 
   const isValidPassword =
     signInData?.password?.length >= 8 &&

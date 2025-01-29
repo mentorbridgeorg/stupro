@@ -13,6 +13,7 @@ import { View } from 'react-native';
 import { NavigationBar } from '@modules/navigationBar/navigationBar';
 
 
+
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
@@ -29,7 +30,7 @@ export const RootStack = () => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Preferences" component={Preferences} />
-      <Stack.Screen name="Login" component={SignIn} />
+      <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="OTP" component={OTP} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
