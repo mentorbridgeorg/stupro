@@ -21,6 +21,7 @@ export const ResetPasswordForm = () => {
   const [passwordData, setPasswordData] = useAtom(resetPasswordFormAtom);
   const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
+
   const isValidPassword =
     passwordData?.newPassword?.length >= 8 &&
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
@@ -50,68 +51,66 @@ export const ResetPasswordForm = () => {
   };
 
   return (
-    <>
-      <Box w="80%" p="5">
-        <FormControl isRequired>
-          <FormInput
-            label="New Password"
-            type={showPassword ? 'text' : 'password'}
-            value={passwordData.newPassword}
-            onChange={value =>
-              setPasswordData({...passwordData, newPassword: value})
-            }
-            rightIcon={
-              <Pressable onPress={() => setShowPassword(!showPassword)}>
-                {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
-              </Pressable>
-            }
-            placeholder="New Password"
-          />
-          <PasswordPatternList password={passwordData.newPassword} />
-        </FormControl>
+    <Box w="80%" p="5">
+      <FormControl isRequired>
+        <FormInput
+          label="New Password"
+          type={showPassword ? 'text' : 'password'}
+          value={passwordData.newPassword}
+          onChange={value =>
+            setPasswordData({...passwordData, newPassword: value})
+          }
+          rightIcon={
+            <Pressable onPress={() => setShowPassword(!showPassword)}>
+              {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
+            </Pressable>
+          }
+          placeholder="New Password"
+        />
+        <PasswordPatternList password={passwordData.newPassword} />
+      </FormControl>
 
-        <FormControl isRequired>
-          <FormInput
-            label="Confirm Password"
-            type={showPassword ? 'text' : 'password'}
-            value={passwordData?.confirmPassword}
-            onChange={value =>
-              setPasswordData({...passwordData, confirmPassword: value})
-            }
-            rightIcon={
-              <Pressable onPress={() => setShowPassword(!showPassword)}>
-                {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
-              </Pressable>
-            }
-            placeholder="Confirm Password"
-          />
-        </FormControl>
+      <FormControl isRequired>
+        <FormInput
+          label="Confirm Password"
+          type={showPassword ? 'text' : 'password'}
+          value={passwordData?.confirmPassword}
+          onChange={value =>
+            setPasswordData({...passwordData, confirmPassword: value})
+          }
+          rightIcon={
+            <Pressable onPress={() => setShowPassword(!showPassword)}>
+              {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
+            </Pressable>
+          }
+          placeholder="Confirm Password"
+        />
+      </FormControl>
 
-        {error && (
-          <Box mt="3">
-            <Alert w="100%" status="error">
-              <VStack space={2} flexShrink={1} w="100%">
-                <HStack flexShrink={1} space={2} justifyContent="space-between">
-                  <HStack space={2} flexShrink={1}>
-                    <Alert.Icon mt="1" />
-                    <Text fontSize="md" color="coolGray.800">
-                      {error}
-                    </Text>
-                  </HStack>
+      {error && (
+        <Box mt="3">
+          <Alert w="100%" status="error">
+            <VStack space={2} flexShrink={1} w="100%">
+              <HStack flexShrink={1} space={2} justifyContent="space-between">
+                <HStack space={2} flexShrink={1}>
+                  <Alert.Icon mt="1" />
+                  <Text fontSize="md" color="coolGray.800">
+                    {error}
+                  </Text>
                 </HStack>
-              </VStack>
-            </Alert>
-          </Box>
-        )}
+              </HStack>
+            </VStack>
+          </Alert>
+        </Box>
+      )}
 
-        <Center mt="5">
-          <Button
-            onPress={handleSubmit}
-            isDisabled={!isValidPassword || !isPasswordsMatch}>
-            Submit
-          </Button>
-        </Center>
-      </Box>
-    </>
+      <Center mt="5">
+        <Button
+          onPress={handleSubmit}
+          isDisabled={!isValidPassword || !isPasswordsMatch}>
+          Submit
+        </Button>
+      </Center>
+    </Box>
   );
 };
