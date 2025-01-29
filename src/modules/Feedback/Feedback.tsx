@@ -47,7 +47,7 @@ export const Feedback = () => {
       addedDate: null,
       addedBy: null,
     };
-    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092', {data}).then(response => {
+    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/feedback', {data}).then((response) => {
       if (response) {
         toast.show({
           render: () => {
