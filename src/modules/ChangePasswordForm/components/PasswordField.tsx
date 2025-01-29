@@ -15,7 +15,7 @@ export const PasswordField = ({
 }: PasswordFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <Box mt="5">
+    <Box  w="100%" mt="5">
       <FormInput
         label={label}
         placeholder={placeholder}
