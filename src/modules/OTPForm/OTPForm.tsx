@@ -25,7 +25,9 @@ export const OTPForm = () => {
 
   const handleSubmit = () => {
     posthog.capture('OTP Button');
-      sendData('/url', {
+
+      sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/otp', {
+
         otp: otp.join(''),
       })
       .then(response => {
