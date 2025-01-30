@@ -10,7 +10,7 @@ const cardsData = [
     //title:'title 2',
     description:'This year, Medium’s biggest resolution was to try to build a better internet. That’s a huge goal. It’s daring. It’s lofty. And, like every other goal, it would have fizzled into nothingness without being backed up by people willing to show up and do the work. I’m not only talking about Medium employees (although the 70-odd of us were dedicated and committed to that!). It’s the writers who share their best work with us. It’s the readers who leave thoughtful responses, no matter if they agree or disagree with the writer. It’s the publication editors who write the clearest, cleanest guidelines to help readers and writers know what to expect from their community. It’s the Medium power users who send us detailed feedback on what we can do better.',
     // image: require('../images/2.jpg'),
-    // videoId:'K1rs2YR9NHQ',
+    videoId:'K1rs2YR9NHQ',
   },
   {
     id:3,

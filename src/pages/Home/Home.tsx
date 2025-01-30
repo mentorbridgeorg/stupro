@@ -1,67 +1,45 @@
-import { Box, Button, Center, Text, View, Image} from 'native-base';
+import {AspectRatio, Box, Button, Center, Image, Text, View} from 'native-base';
 import React from 'react';
-// import {GlobalSearch} from '@modules/GlobalSearch';
-import Swiper from 'react-native-deck-swiper';
-import styles from '@/ui/styles';
-import cardsData from '@/assets/cards/CardsData';
-import YouTubeVideo from '@/ui/organisms/CardComponents/YouTubeVideo';
-import ImageComponent from '@/ui/organisms/CardComponents/ImageComponent';
-import TitleComponent from '@/ui/organisms/CardComponents/TitleComponent';
-import DescriptionComponent from '@/ui/organisms/CardComponents/DescriptionComponent';
-import ImageCard from '@/ui/organisms/CardComponents/ImageCard';
-import CoverTitleComponent from '@/ui/organisms/CardComponents/CoverTitleComponent';
-import { ImageBackground } from 'react-native';
-
+import {GlobalSearch} from '@modules/GlobalSearch';
+import { TouchableWithoutFeedback } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export const Home = () => {
-  return (
-    <ImageBackground source={require('../../assets/images/bgIlluistraion3.jpeg')} style={{flex: 1 }} imageStyle={styles.cardBackground}>
-      <Box backgroundColor={'rgba(255, 182, 28)'} >
-      {/* <GlobalSearch /> */}
-      <Center >
-        <Swiper
-          cards={cardsData}
-          // cards={['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']}
-          renderCard={(card) => {
-            return (
-              // <ImageBackground source={require('../../assets/images/image1.jpg')} style={styles.background} borderRadius={20}>
-              <View style={styles.card}>
-                {card.videoId && <YouTubeVideo videoId= {card.videoId} />}
-                {card.image && <ImageComponent image={card.image}/>}
-                {card.title && !card.cover && <TitleComponent title={card.title}/>}
-                {card.description && <DescriptionComponent description={card.description}/>}
-                {card.cover && <ImageCard cover={card.cover}/>}
-                {card.title && card.cover && <CoverTitleComponent coverTitle={card.title}/>}
-              </View>
-              // </ImageBackground>
-            );
-          }}
-          onSwipedLeft={cardIndex => {
-            console.log(cardIndex);
-          }}
-          horizontalSwipe={true}
-          verticalSwipe={false}
-          showSecondCard={true}
-          onSwipedAll={() => {
-            console.log('onSwipedAll');
-          }}
-          goBackToPreviousCardOnSwipeRight={true}
-          cardIndex={0}
-          backgroundColor={'#4FD0E9'}
-          stackSize={3}>
-          {/* <Button
-            onPress={() => {
-              console.log('oulala');
-            }}
-            >
-            <Text color="black">You can press me</Text>
-          </Button> */}
-        </Swiper>
-      </Center>
-    </Box>
-    </ImageBackground>
+    const navigation = useNavigation();
 
+    const handlePress = (screen: string ) => {
+        navigation.navigate(screen);
+    }
+  return (
+    <TouchableWithoutFeedback onPress={() => handlePress('SwipeCards')}>
+    <Box mt="5">
+      <GlobalSearch />
+      <Center mt="5">
+        <Box
+          maxW="90%"
+          rounded="lg"
+          overflow="hidden"
+          borderColor="primary.200"
+          borderWidth="5"
+          _web={{
+            shadow: 2,
+            borderWidth: 0,
+          }}>
+          <AspectRatio w="100%" ratio={16 / 9}>
+            <Image
+              maxWidth="100%"
+              maxHeight="250px"
+              source={{
+                uri: 'https://venngage-wordpress.s3.amazonaws.com/uploads/2020/10/Anatomy-of-the-Perfect-Blog-Post.png',
+              }}
+              alt="blog"
+              width="100%"
+              height="100%"
+            />
+          </AspectRatio>
+        </Box>
+        </Center>
+        </Box>
+        </TouchableWithoutFeedback>
   );
 };
-
-

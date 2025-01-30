@@ -7,12 +7,13 @@ import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
   const [comment, setComment] = useState('');
   const [isSendPressed, setSendPressed] = useState(false);
-
+  const navigation = useNavigation();
   const emojis = [
     {
       label: 'Bad',
@@ -105,7 +106,9 @@ export const Feedback = () => {
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
               <Button
-                onPress={() => setSendPressed(true)}
+                onPress={() =>{ setSendPressed(true);
+                  navigation.navigate('Home');
+                }}
                 isDisabled={selectedEmoji === null}>
                 Send
               </Button>

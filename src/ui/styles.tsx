@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
 
   },
   cardBackground: {
-    // flex: 1,
+    flex: 1,
     // alignContent:'center',
     // verticalAlign: 'middle',
-    // position: 'relative',
+    position: 'relative',
     backgroundColor: 'rgba(255, 182, 29, 1)',
-    resizeMode: 'cover',
+    resizeMode: 'stretch',
     width: 'auto',
     height: 'auto',
     // justifyContent: 'center',
