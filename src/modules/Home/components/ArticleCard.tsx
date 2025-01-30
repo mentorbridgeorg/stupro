@@ -2,63 +2,63 @@ import React from 'react';
 import {Box, VStack, HStack, Text, Image} from 'native-base';
 import {BookMarkIcon} from '../../../assets/icons/BookMarkIcon';
 import {CardData} from './ArticleCard.types';
+import {theme} from '../../../theme';
 
 interface ArticleCardProps {
   data: CardData;
 }
 
 export function Card({data}: ArticleCardProps) {
+  const bg = theme.colors.primary[500];
   return (
-    
-      <Box
-        bg="#FDFAEC"
-        width="380px"
-        height="220px"
-        p={2}
-        borderRadius="10"
-        borderColor="black"
-        borderWidth={2}
-        shadow={2}>
-        <HStack>
-          <Image
-            size={60}
-            borderRadius={15}
-            marginBottom={1}
-            marginRight={1}
-            width={460}
-            height={100}
-            source={{
-              uri: data.imageUrl,
-            }}
-            alt="Card Image"
-          />
-        </HStack>
-        <VStack>
-          <Text
-            fontSize="md"
-            color="black"
-            alignItems="center"
-            fontWeight="bold"
-            marginTop={1}
-            marginLeft={2}>
-            {data.title}
-          </Text>
-          <Text
-            fontSize="10"
-            color="black"
-            alignItems="center"
-            p={1}
-            marginTop={0}
-            marginLeft={2}>
-            Artificial Intelligence is reshaping our world, dramatically
-            altering numerous sectors and influencing.
-          </Text>
-        </VStack>
+    <Box
+      bg={bg}
+      width="380px"
+      height="220px"
+      p={2}
+      borderRadius="10"
+      borderColor="#FDFAEC"
+      borderWidth={2}
+      shadow={2}>
+      <HStack>
+        <Image
+          size={60}
+          borderRadius={15}
+          marginBottom={1}
+          marginRight={1}
+          width={460}
+          height={100}
+          source={{
+            uri: data.imageUrl,
+          }}
+          alt="Card Image"
+        />
+      </HStack>
+      <VStack>
+        <Text
+          fontSize="md"
+          color="black"
+          alignItems="center"
+          fontWeight="bold"
+          marginTop={1}
+          marginLeft={2}>
+          {data.title}
+        </Text>
+        <Text
+          fontSize="10"
+          color="black"
+          alignItems="center"
+          p={1}
+          marginTop={0}
+          marginLeft={2}>
+          Artificial Intelligence is reshaping our world, dramatically altering
+          numerous sectors and influencing.
+        </Text>
+      </VStack>
 
-        <HStack space={2} marginBottom={1} marginTop={2} marginLeft="310">
-          <BookMarkIcon />
-        </HStack>
-      </Box>
-   
+      <HStack space={2} marginBottom={1} marginTop={2} marginLeft="310">
+        <BookMarkIcon />
+      </HStack>
+    </Box>
   );
 }
