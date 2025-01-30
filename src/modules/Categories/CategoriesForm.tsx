@@ -17,7 +17,7 @@ export const CategoryForm = () => {
     setVisibleCards([label]);
 
     // Fetch data 
-    fetchData(`URL${label}`)
+    fetchData(`http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/Categories`)
       .then((response) => {
         setData((prevData: any) => ({
           ...prevData,
