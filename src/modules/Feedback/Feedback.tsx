@@ -1,18 +1,16 @@
-import {BadFaceEmojiIcon} from '@assets/icons/BadFaceEmojiIcon';
-import {GoodFaceIcon} from '@assets/icons/GoodFaceIcon';
-import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
-import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
-import {Button} from '@atoms/Button';
-import {Box, Flex, HStack, Link, Text, TextArea, useToast} from 'native-base';
+import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
 import React, {useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
-import {Toast} from '@/ui/atoms/Toast';
-import {sendData} from '@/api';
+import {BadFaceEmojiIcon} from '../../assets/icons/BadFaceEmojiIcon';
+import {OkFaceIcon} from '../../assets/icons/OkFaceIcon';
+import {GoodFaceIcon} from '../../assets/icons/GoodFaceIcon';
+import {PerfectFaceIcon} from '../../assets/icons/PerfectFaceIcon';
+import {Button} from '../../ui/atoms/Button';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
   const [comment, setComment] = useState('');
-  const toast = useToast();
+
   const emojis = [
     {
       label: 'Bad',
@@ -40,29 +38,6 @@ export const Feedback = () => {
     },
   ];
 
-  const saveFeedback = () => {
-    const data = {
-      label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
-      comment: setComment,
-      addedDate: null,
-      addedBy: null,
-    };
-    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/feedback', {data}).then((response) => {
-      if (response) {
-        toast.show({
-          render: () => {
-            return (
-              <Toast
-                type="sucess"
-                title={'Success'}
-                description={'Feedback sent Successfully!'}
-              />
-            );
-          },
-        });
-      }
-    });
-  };
 
   return (
     <Box>
@@ -94,13 +69,10 @@ export const Feedback = () => {
         mt="2"
         ml="1"
         color="black"
-        tvParallaxProperties={undefined}
-        onTextInput={undefined}
-        autoCompleteType={undefined}
       />
       <Box mt="10">
         <HStack space={5} justifyContent={'space-between'}>
-          <Link mt={'2'} ml={'2'} onPress={() => {}}>
+          <Link mt={'2'} ml={'2'} onPress={()=>{}}>
             <Text color="#0089B3" fontSize="13" fontWeight={'bold'}>
               Ask Me Later
             </Text>
@@ -108,7 +80,7 @@ export const Feedback = () => {
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
               <Button
-                onPress={saveFeedback}
+                onPress={()=>{}}
                 isDisabled={selectedEmoji === null}>
                 Send
               </Button>

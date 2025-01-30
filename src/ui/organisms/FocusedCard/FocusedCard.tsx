@@ -1,7 +1,7 @@
-import {BackButton} from '@atoms/BackButton';
 import {Box, Center, HStack, Image, Text} from 'native-base';
 import React from 'react';
 import {View} from 'react-native';
+import {BackButton} from '../../atoms/BackButton';
 import {IFocusedCardProps} from './FocusedCard.types';
 
 export const FocusedCard = ({

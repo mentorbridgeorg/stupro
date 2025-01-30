@@ -1,31 +1,24 @@
-import {EyeIcon} from '@assets/icons/EyeIcon';
-import {EyeSlashIcon} from '@assets/icons/EyeSlashIcon';
-import {PasswordIcon} from '@assets/icons/PasswordIcon';
-import {Button} from '@atoms/Button';
-import {FormInput} from '@molecules/FormInput';
-import {PasswordPatternList} from '@molecules/PasswordPatternList';
-import {useAtom} from 'jotai';
-import {Box, Center, Pressable, Stack, Text} from 'native-base';
-import React, {useState} from 'react';
-import {REGISTER_ENDPOINT} from '../../../api/endpoints';
-import {sendData} from '../../../api/Post/sendData';
-import {signUpDataAtom} from '../atoms';
-
+import { useAtom } from 'jotai';
+import { Box, Center, Pressable, Stack, Text } from 'native-base';
+import React, { useState } from 'react';
+import { EyeIcon } from '../../../assets/icons/EyeIcon';
+import { EyeSlashIcon } from '../../../assets/icons/EyeSlashIcon';
+import { PasswordIcon } from '../../../assets/icons/PasswordIcon';
+import { Button } from '../../../ui/atoms/Button';
+import { FormInput } from '../../../ui/molecules/FormInput';
+import { PasswordPatternList } from '../../../ui/molecules/PasswordPatternList';
+import { signUpDataAtom } from '../atoms';
 export const SecureAccount = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
-  const [showPassword, setShowPassword] = useState(false);
-
   const handleContinue = () => {
-    sendData(REGISTER_ENDPOINT, signUpData).then(response => {
-      console.log(response);
-    });
+    console.log('signUpData', signUpData);
   };
-
   const isValidPassword =
     signUpData?.userDetails?.password?.length >= 8 &&
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$/.test(
       signUpData.userDetails.password,
     );
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <Box>
@@ -56,11 +49,7 @@ export const SecureAccount = () => {
               </Pressable>
             }
             placeholder="Enter Password"
-            helperText={
-              <PasswordPatternList
-                password={signUpData?.userDetails?.password}
-              />
-            }
+            helperText={<PasswordPatternList password={signUpData?.userDetails?.password} />}
           />
         </Stack>
       </Center>

@@ -1,17 +1,13 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@modules/*": ["src/modules/*"],
-      "@assets/*": ["src/assets/*"],
-      "@pages/*": ["src/pages/*"],
-      "@api/*": ["src/api/*"],
-      "@atoms/*": ["src/ui/atoms/*"],
-      "@molecules/*": ["src/ui/molecules/*"],
-      "@organisms/*": ["src/ui/organisms/*"]
+      "@/*": [
+        "./*"
+      ],
+      "tailwind.config": [
+        "./tailwind.config.js"
+      ]
     }
   },
   "extends": "@react-native/typescript-config/tsconfig.json"

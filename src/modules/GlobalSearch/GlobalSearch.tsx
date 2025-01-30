@@ -1,53 +1,25 @@
-import {SearchIcon} from '@assets/icons/SearchIcon';
-import {Box, Center, Input} from 'native-base';
-import React, { useEffect, useRef } from 'react';
-import { Animated } from 'react-native';
+import {Box,  Input} from 'native-base';
+import React from 'react';
+import {SearchIcon} from '../../assets/icons/SearchIcon';
 
 export const GlobalSearch = () => {
-  const fadeAnim = useRef(new Animated.Value(0)).current; 
-
-    // Fadein
-    useEffect(() => {
-      Animated.timing(fadeAnim, {
-        toValue: 1, 
-        duration: 1000,
-        useNativeDriver: true,
-      }).start();
-   
-     // Fadeout 
-        return () => {
-          Animated.timing(fadeAnim, {
-            toValue: 0, 
-            duration: 1000,
-            useNativeDriver: true,
-          }).start();
-        };
-      }, [fadeAnim]);
   return (
-    <Animated.View
-    style={{
-      opacity: fadeAnim, 
-    }}>
-    <Center>
-      <Box width="80%">
-        <Input
-          placeholder="Search People & Places"
-          width="100%"
-          color={'font.tertiary'}
-          fontWeight={'bold'}
-          borderRadius="50"
-          py="3"
-          px="1"
-          borderColor={'primary.500'}
-          borderWidth={'1px'}
-          InputLeftElement={<SearchIcon />}
-          _focus={{
-            borderColor: 'primary.500',
-            borderWidth: '2px',
-          }}
-        />
-      </Box>
-    </Center>
-    </Animated.View>
+    <Box width="100%" p= '100' marginBottom={5} borderRadius="10">
+      <Input
+        placeholder="Search"
+        width="100%"
+        color="font.tertiary"
+        fontWeight="bold"
+        borderRadius="50"
+        borderColor="black"
+        borderWidth="1"
+        InputLeftElement={<SearchIcon />}
+        _focus={{
+          borderColor: 'black',
+          borderWidth: '2',
+        }}
+      />
+    </Box>
+    
   );
 };

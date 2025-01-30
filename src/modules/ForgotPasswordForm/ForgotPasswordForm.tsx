@@ -1,55 +1,42 @@
+import {Box} from 'native-base';
+import React, {useState} from 'react';
+import {EmailIcon} from '../../assets/icons/EmailIcon';
+import {Button} from '../../ui/atoms/Button';
+import {FormInput} from '../../ui/molecules/FormInput';
 
-import {  EmailIcon  } from '@assets/icons/EmailIcon';
-import {  Button  } from '@atoms/Button';
-import {  FormInput  } from '@molecules/FormInput';
 
-import {  Box  } from 'native-base';
-import { usePostHog } from 'posthog-react-native';
-import React, {  useState  } from 'react';
-
-import { sendData } from '@/api';
 export const ForgotPasswordForm = () => {
-  const posthog = usePostHog();
-
-  const [forgotPasswordData, setForgotPasswordData] = useState('');
+  const [forgotPasswordData, setForgotPasswordData] = useState({
+    email: '',
+  
+  });
   const isValidEmail =
-    forgotPasswordData &&
-    forgotPasswordData !== '' &&
-    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(forgotPasswordData);
+    forgotPasswordData?.email &&
+  forgotPasswordData?.email !== '' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotPasswordData?.email);
 
-  const handleSubmit = () => {
-    posthog.capture('forgotPasswordButton', {
-      email: forgotPasswordData,
-    });
-    sendData(
-
-        'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/forgotPassword',
-
-        {
-          email: forgotPasswordData,
-        },
-      )
-      .then(function (response) {
-        console.log(response);
-      })
-  };
-
+  
   return (
     <Box w="100%">
       <Box mb="6" mx="4">
         <Box>
           <FormInput
+
             label="Email"
             placeholder="example@gmail.com"
+          
             onChange={text => {
-              setForgotPasswordData(text);
+                setForgotPasswordData({...forgotPasswordData, email: text});
             }}
+               
             icon={<EmailIcon />}
+            
           />
         </Box>
+       
       </Box>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={handleSubmit} isDisabled={!isValidEmail}>
+        <Button onPress={() => {}} isDisabled={!isValidEmail}>
           Submit
         </Button>
       </Box>

@@ -1,8 +1,8 @@
-import {currentStepAtom} from '@modules/SignUp/atoms';
-import {FocusedCard} from '@organisms/FocusedCard';
 import {useAtom} from 'jotai';
 import {Box} from 'native-base';
 import React from 'react';
+import {currentStepAtom} from '../../modules/SignUp/atoms';
+import {FocusedCard} from '../../ui/organisms/FocusedCard';
 import {steps} from './steps';
 
 export const SignUp = () => {

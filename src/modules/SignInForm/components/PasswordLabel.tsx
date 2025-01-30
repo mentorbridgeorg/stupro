@@ -1,9 +1,7 @@
-import {useNavigation} from '@react-navigation/native';
 import {Flex, FormControl, Link} from 'native-base';
 import React from 'react';
 
 export const PasswordLabel = () => {
-  const navigation = useNavigation();
   return (
     <Flex
       direction="row"
@@ -17,9 +15,7 @@ export const PasswordLabel = () => {
           fontWeight: 'bold',
           textDecorationLine: 'none',
         }}
-        onPress={() => {
-          navigation.navigate('ForgotPassword' as never);
-        }}>
+        href="/forgot-password">
         Forgot Password?
       </Link>
     </Flex>

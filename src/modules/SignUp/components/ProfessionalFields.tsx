@@ -1,7 +1,7 @@
-import {FormInput} from '../../../ui/molecules/FormInput';
 import {useAtom} from 'jotai';
 import {Box, Stack} from 'native-base';
 import React from 'react';
+import {FormInput} from '../../../ui/molecules/FormInput/FormInput';
 import {signUpDataAtom} from '../atoms';
 
 export const ProfessionalFields = () => {

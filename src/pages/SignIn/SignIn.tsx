@@ -1,9 +1,9 @@
-import {HDivider} from '@atoms/HDivider';
-import {SignInForm} from '@modules/SignInForm';
-import {SocialLogin} from '@modules/SignUp/components/SocialLogin';
-import {FocusedCard} from '@organisms/FocusedCard';
 import {Box, Text} from 'native-base';
 import React from 'react';
+import {SignInForm} from '../../modules/SignInForm/SignInForm';
+import {SocialLogin} from '../../modules/SignUp/components/SocialLogin';
+import {HDivider} from '../../ui/atoms/HDivider';
+import {FocusedCard} from '../../ui/organisms/FocusedCard';
 import {CreateNewAccount} from './components/CreateNewAccount';
 
 export const SignIn = () => {
