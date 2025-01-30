@@ -1,79 +1,72 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# StuPro (St2Pro)
 
-# Getting Started
+For the students, by the students and of the students
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+#### **Purpose and Scope**
 
-## Step 1: Start the Metro Server
+The app aims to create a learning platform for students to access knowledge on topics like learning, interview preparation, and career readiness.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+#### **Target Audience**
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **Primary**: College students and recent graduates.
+- **Secondary**: Aspiring professionals preparing for interviews or skill development.
 
-```bash
-# using npm
-npm start
+---
 
-# OR using Yarn
-yarn start
-```
+#### **Unique Selling Point (USP)**
 
-## Step 2: Start your Application
+- **Community-driven content**: Articles **"of the students, by the students, for the students."**
+- **Card-based reading experience**: Engaging UI with one slide per view, supporting text, video, and images.
+- **Structured editorial process**: Quality control through application-based editor access and admin approval for articles.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+---
 
-### For Android
+#### **Features & Functionalities**
 
-```bash
-# using npm
-npm run android
+1. **User Engagement**
+   - Browse articles on learning, interview preparation, and career growth.
+   - Share article links and bookmark specific slides.
+2. **Editor Contributions**
+   - Apply as an editor via a form showcasing motivation, eligibility, and prior writing samples.
+   - Create articles using slides (text, video, or image) with a guided editor interface.
+   - Submit articles for admin approval before publication.
+3. **Content Discovery**
+   - Dedicated pages for:
+     - Contributors and their articles.
+     - Featured Contributor and New Contributor sections.
+     - Featured Articles with high ratings.
+   - Ratings for articles to reflect user feedback.
+4. **Notifications**
+   - Use Firebase Cloud Messaging (FCM) to notify users about new articles, featured content, or updates.
+5. **Gamification**
+   - Recognition system: badges for editors and readers (e.g., "Top Contributor," "Most Popular Article").
 
-# OR using Yarn
-yarn android
-```
+---
 
-### For iOS
+#### **UI Design Details**
 
-```bash
-# using npm
-npm run ios
+1. **Article Display**
+   - Card-based interface: Readers view one slide at a time with transitions (swipe/flip).
+   - Slides support text, images, and videos with a concise word limit.
+2. **Contributor Section**
+   - Showcase contributor profiles with their published articles.
+   - Highlight Featured and New Contributors prominently.
+3. **Discover Page**
+   - Categorized view of trending and featured articles.
+4. **Reader Actions**
+   - Easy access to share, bookmark, and rate articles.
 
-# OR using Yarn
-yarn ios
-```
+---
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+#### **Tech Stack**
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+1. **Frontend**
+   - **React Native**: Cross-platform development for Android.
+   - **UI Libraries**: React Navigation.
+2. **Backend**
+   - **Java**: API development for user authentication, article submissions, and approvals.
+   - **Firebase**: FCM for notifications.
+3. **Database**
+   - **Mongo DB**: Cloud-hosted NoSQL database for real-time updates.
+4. **Third-party Integrations**
+   - Media support (images/videos) via cloud storage services (AWS S3).

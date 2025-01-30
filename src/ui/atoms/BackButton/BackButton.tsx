@@ -1,4 +1,4 @@
-import {ChevronLeftIcon} from '../../../assets/icons/ChervonLeftIcon';
+import {ChevronLeftIcon} from '@assets/icons/ChervonLeftIcon';
 import {Box, Center, Pressable} from 'native-base';
 import React from 'react';
 import {BackButtonProps} from './BackButton.types';
