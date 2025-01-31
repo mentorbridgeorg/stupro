@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import {Button} from '@atoms/Button';
 import {PasswordPatternList} from '@molecules/PasswordPatternList';
 import {useAtom} from 'jotai';
 import {Alert, Box, HStack, Text, VStack} from 'native-base';
 import React, {useEffect, useState} from 'react';
+=======
+import {Alert, Box, HStack, Text, VStack} from 'native-base';
+import React, {useEffect, useState} from 'react';
+import {Button} from '../../ui/atoms/Button';
+import {useAtom} from 'jotai';
+import {PasswordPatternList} from '../../ui/molecules/PasswordPatternList';
+>>>>>>> parent of 4820360 (homepage add)
 import {passwordFormAtom} from './atoms/PasswordForm';
 import {PasswordField} from './components';
 

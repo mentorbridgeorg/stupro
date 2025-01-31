@@ -1,4 +1,5 @@
 import {Box, Icon, Pressable, Text} from 'native-base';
+import {ColorType} from 'native-base/lib/typescript/components/types';
 import React from 'react';
 import {EmojiButtonProps} from './EmojiButton.types';
 
@@ -17,8 +18,8 @@ export const EmojiButton = ({
         rounded="lg"
         overflow="hidden"
         borderWidth="1"
-        borderColor={color}
-        backgroundColor={bgColor}
+        borderColor={color as ColorType}
+        backgroundColor={bgColor as ColorType}
         alignItems={'center'}
         justifyContent="center"
         borderRadius="10"

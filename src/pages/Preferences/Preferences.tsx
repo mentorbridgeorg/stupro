@@ -1,48 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, Alert } from 'react-native';
+import {View, Text, ScrollView, Pressable} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import axios from 'axios';
+import {styles} from "./Preferences.styles";
+import { fetchData, sendData } from '@/api';
+
 
 export const Preferences = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
   const [preferences, setPreferences] = useState([]);
 
-  const preferenceList: string[] = [
-    'Artificial Intelligence',
-    'Cyber Security',
-    'Cloud Computing',
-    'Distributed Computing',
-    'Web Development',
-    'IOT',
-    'Algorithm',
-    'Robotics',
-    'Designing Tools',
-    'Developer Tools',
-    'Data Science',
-    'Space Research',
-    'Machine Learning',
-  ];
-
 const fetchPreferences = () => {
-  axios.get("https://jsonplaceholder.typicode.com/posts")
-  .then((response) => setPreferences(response.data))
-  .catch(error => console.log(error.message));
+  fetchData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/fetchPreferences')
+  .then((response) => setPreferences(response))
 }
-
-
-
 const savePreferences = () => {
-  axios.post("https://jsonplaceholder.typicode.com/posts",{
+  sendData( 'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/savePreferences',{
   preferences:selectedPreferences
   })
-  .then((response) => console.log(response.data))
-  .catch((error) => console.error(error.message));
+  .then((response)=>console.log(response));
 };
 
 useEffect(()=>{
   fetchPreferences();
 }, [])
-
 
   const togglePreference = (item: string) => {
     if (selectedPreferences.includes(item)) {
@@ -90,84 +70,15 @@ useEffect(()=>{
               </LinearGradient>
             </Pressable>
           ))}
-        </ScrollView>
+       
 
         <Pressable style={styles.nextButton} onPress={savePreferences}>
           <Text style={styles.nextButtonText}>Next</Text>
         </Pressable>
+        </ScrollView>
       </View>
     </LinearGradient>
   );
 };
-
-const styles = StyleSheet.create({
-  gradientBackground: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'black',
-    textAlign: 'center',
-    marginBottom: 20,
-    marginTop: 20,
-  },
-  scrollContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    paddingHorizontal: 10,
-  },
-  defaultButton: {
-    borderRadius: 20,
-    margin: 5,
-    overflow: 'hidden',
-  },
-  selectedButton: {
-    borderWidth: 2,
-    borderColor: '#FFD700',
-  },
-  buttonGradient: {
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-  defaultButtonText: {
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-  nextButton: {
-    backgroundColor: 'white',
-    paddingVertical: 10,
-    paddingHorizontal: 60,
-    borderRadius: 50,
-    alignSelf: 'center',
-    marginTop: 20,
-    marginBottom: 30,
-  },
-  nextButtonText: {
-    color: 'black',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  limitMessage: {
-    textAlign: 'center',
-    marginBottom: 15,
-    color: 'black',
-    fontSize: 18,
-  },
-});
-
-
-
-
-
 
 

@@ -14,6 +14,7 @@ const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
+<<<<<<< HEAD
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{

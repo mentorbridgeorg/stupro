@@ -3,16 +3,16 @@ import {GoodFaceIcon} from '@assets/icons/GoodFaceIcon';
 import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
 import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
 import {Button} from '@atoms/Button';
-import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
-import React, {useEffect, useState} from 'react';
+import {Box, Flex, HStack, Link, Text, TextArea, useToast} from 'native-base';
+import React, {useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
-import axios from 'axios';
+import {Toast} from '@/ui/atoms/Toast';
+import {sendData} from '@/api';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
   const [comment, setComment] = useState('');
-  const [isSendPressed, setSendPressed] = useState(false);
-
+  const toast = useToast();
   const emojis = [
     {
       label: 'Bad',
@@ -40,29 +40,29 @@ export const Feedback = () => {
     },
   ];
 
-  const data = {
-    label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
-    comment: setComment,
-    addedDate: null,
-    addedBy: null,
-  };
-
   const saveFeedback = () => {
-    axios
-      .post('http://localhost:8080/feedback', data)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const data = {
+      label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
+      comment: setComment,
+      addedDate: null,
+      addedBy: null,
+    };
+    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/feedback', {data}).then((response) => {
+      if (response) {
+        toast.show({
+          render: () => {
+            return (
+              <Toast
+                type="sucess"
+                title={'Success'}
+                description={'Feedback sent Successfully!'}
+              />
+            );
+          },
+        });
+      }
+    });
   };
-
-  useEffect(() => {
-    if (isSendPressed) {
-      saveFeedback();
-    }
-  },);
 
   return (
     <Box>
@@ -94,6 +94,9 @@ export const Feedback = () => {
         mt="2"
         ml="1"
         color="black"
+        tvParallaxProperties={undefined}
+        onTextInput={undefined}
+        autoCompleteType={undefined}
       />
       <Box mt="10">
         <HStack space={5} justifyContent={'space-between'}>
@@ -105,7 +108,7 @@ export const Feedback = () => {
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
               <Button
-                onPress={() => setSendPressed(true)}
+                onPress={saveFeedback}
                 isDisabled={selectedEmoji === null}>
                 Send
               </Button>

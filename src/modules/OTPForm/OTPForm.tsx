@@ -1,23 +1,40 @@
+
+import { sendData } from '@/api';
+import axios from 'axios';
 import {Box, Button, Input} from 'native-base';
+import {usePostHog} from 'posthog-react-native';
 import React, {useRef, useState} from 'react';
+import {TextInput} from 'react-native';
 
 export const OTPForm = () => {
   const [otp, setOtp] = useState<string[]>(['', '', '', '']);
-  const inputsRef = useRef<(any | null)[]>([]);
+  const inputsRef = useRef<(TextInput | null)[]>([]);
 
+  const posthog = usePostHog();
   const handleOtpChange = (text: string, index: number) => {
     if (/^\d*$/.test(text)) {
       const newOtp = [...otp];
       newOtp[index] = text;
       setOtp(newOtp);
-
       if (text && index < otp.length - 1) {
         inputsRef.current[index + 1]?.focus();
       }
     }
   };
-
   const isSubmitEnabled = otp.every(digit => digit !== '');
+
+  const handleSubmit = () => {
+    posthog.capture('OTP Button');
+
+      sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/otp', {
+
+        otp: otp.join(''),
+      })
+      .then(response => {
+        console.log(response);
+      })
+      
+  };
 
   return (
     <Box w="100%" p="4">
@@ -47,7 +64,7 @@ export const OTPForm = () => {
             borderColor="#ccc"
             borderRadius="10"
             bg="#f8f8f8"
-            onKeyPress={({nativeEvent}) => {
+            onKeyPress={({ nativeEvent }) => {
               if (nativeEvent.key === 'Backspace' && !digit && index > 0) {
                 inputsRef.current[index - 1]?.focus();
               }
@@ -56,11 +73,7 @@ export const OTPForm = () => {
         ))}
       </Box>
       <Box alignItems="center" pt="10">
-        <Button
-          onPress={() => {
-            console.log('OTP Submitted:', otp.join(''));
-          }}
-          isDisabled={!isSubmitEnabled}>
+        <Button onPress={handleSubmit} isDisabled={!isSubmitEnabled}>
           Submit
         </Button>
       </Box>

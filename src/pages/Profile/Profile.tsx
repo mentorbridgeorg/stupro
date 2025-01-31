@@ -1,8 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
-import {Box,VStack} from 'native-base';
+import {Box, VStack} from 'native-base';
 import React from 'react';
 import Options from './components/Options';
-import {Image,TouchableOpacity} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
 import {EditIcon} from '../../assets/icons/EditIcon';
 
 export const Profile = () => {
