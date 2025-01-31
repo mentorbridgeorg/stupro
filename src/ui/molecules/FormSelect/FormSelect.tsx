@@ -21,10 +21,11 @@ export const FormSelect = ({
           selectedValue={selectedValue}
           accessibilityLabel={placeholder}
           placeholder={placeholder}
-          borderRadius={'10px'}
+          borderRadius={'15px'}
           borderColor={'primary.500'}
           color={'font.tertiary'}
-          borderWidth={'1px'}
+          borderWidth={'2px'}
+          padding={3}
           _selectedItem={{
             bg: 'primary.500',
             endIcon: <CheckIcon size="5" color="primary.500" />,
