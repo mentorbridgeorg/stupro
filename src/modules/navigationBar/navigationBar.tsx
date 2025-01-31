@@ -24,13 +24,23 @@ export const NavigationBar = () => {
         <Text style={[styles.label, { color: selectedTab === 'Home' ? '#F3C331' : 'gray' }]}>Home</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => handlePress('Category')} style={styles.navItem}>
+      <TouchableOpacity onPress={() => handlePress('Categories')} style={styles.navItem}>
         <Ionicons
           name="grid" 
           size={20}
-          color={selectedTab === 'Category' ? '#F3C331' : 'gray'}
+          color={selectedTab === 'Categories' ? '#F3C331' : 'gray'}
         />
-        <Text style={[styles.label, { color: selectedTab === 'Category' ? '#F3C331' : 'gray' }]}>Settings</Text>
+        <Text style={[styles.label, { color: selectedTab === 'Categories' ? '#F3C331' : 'gray' }]}>Categories</Text>
+      </TouchableOpacity>
+
+
+      <TouchableOpacity onPress={() => handlePress('BookMarkPage')} style={styles.navItem}>
+        <Ionicons
+          name="bookmark"
+          size={20}
+          color={selectedTab === 'BookMarkPage' ? '#F3C331' : 'gray'}
+        />
+        <Text style={[styles.label, { color: selectedTab === 'BookMarkPage' ? '#F3C331' : 'gray' }]}>BookMarks</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => handlePress('Profile')} style={styles.navItem}>
@@ -41,6 +51,7 @@ export const NavigationBar = () => {
         />
         <Text style={[styles.label, { color: selectedTab === 'Profile' ? '#F3C331' : 'gray' }]}>Profile</Text>
       </TouchableOpacity>
+
     </View>
   );
 };
@@ -49,16 +60,16 @@ const styles = StyleSheet.create({
   navBar: {
     position: 'absolute',
     bottom: 8,
-    left: 65,
+    left: 55,
     right: 20,
     height: 55,
-    width: 250, 
+    width: 280, 
     backgroundColor: '#ffffff',
     borderRadius: 30, 
     flexDirection: 'row',
     elevation: 10,
     shadowColor: 'black',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.5,
     shadowRadius: 2,
     borderWidth: 1,
     borderColor: '#F3C331',
