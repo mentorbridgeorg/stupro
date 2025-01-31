@@ -1,8 +1,4 @@
-import { ReactNode } from "react";
-
-
-export interface CategoriesProps{
-  label?:String;
-  onPress:()=>void;
-
+export interface CategoriesProps {
+  label?: string;
+  onPress: () => void;
 }

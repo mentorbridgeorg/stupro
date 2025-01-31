@@ -1,3 +1,3 @@
-export * from './CategoriesCard'
-export * from "./CategoriesTopic"
-export *from "./CardTopic.types"
+export * from './CardTopic.types';
+export * from './CategoriesCard';
+export * from './CategoriesTopic';

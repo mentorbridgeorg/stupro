@@ -1,9 +1,8 @@
+import {ArrowRight} from '@/assets/icons/ArrowRight';
+import {Box, HStack, Image, Text, VStack} from 'native-base';
 import React from 'react';
-import {Box, VStack, HStack, Text, Image} from 'native-base';
-import {BookMarkIcon} from '../../../assets/icons/BookMarkIcon';
 import {ProductData} from './ProductCard.types';
-import { TextList } from './TextCardList';
-
+import {TextList} from './TextCardList';
 
 interface ProductCardProps {
   data: ProductData;
@@ -21,7 +20,7 @@ export const ProductCard = ({data}: ProductCardProps) => {
       borderColor="black"
       borderWidth={4}
       shadow={50}>
-      <HStack >
+      <HStack>
         <VStack>
           <HStack>
             <Image
@@ -45,16 +44,13 @@ export const ProductCard = ({data}: ProductCardProps) => {
               {data.title}
             </Text>
           </HStack>
-          <VStack p={3} width={350} borderRadius={40}  >
-          <TextList />
-             
-        
+          <VStack p={3} width={350} borderRadius={40}>
+            <TextList />
           </VStack>
 
           <HStack space={2} marginBottom={30} marginLeft="300" marginTop={2}>
-            <BookMarkIcon />
+            <ArrowRight />
           </HStack>
-         
         </VStack>
       </HStack>
     </Box>
