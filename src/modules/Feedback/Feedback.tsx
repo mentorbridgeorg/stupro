@@ -7,7 +7,7 @@ import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
@@ -63,7 +63,7 @@ export const Feedback = () => {
     if (isSendPressed) {
       saveFeedback();
     }
-  },);
+  });
 
   return (
     <Box>
@@ -94,8 +94,7 @@ export const Feedback = () => {
         borderRadius="10"
         mt="2"
         ml="1"
-        color="black"
-      />
+        color="black" tvParallaxProperties={undefined} onTextInput={undefined} autoCompleteType={undefined}      />
       <Box mt="10">
         <HStack space={5} justifyContent={'space-between'}>
           <Link mt={'2'} ml={'2'} onPress={() => {}}>
@@ -106,8 +105,9 @@ export const Feedback = () => {
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
               <Button
-                onPress={() =>{ setSendPressed(true);
-                  navigation.navigate('Home');
+                onPress={() => {
+                  setSendPressed(true);
+                  navigation.navigate('HomePage');
                 }}
                 isDisabled={selectedEmoji === null}>
                 Send

@@ -9,18 +9,19 @@ import {SignIn} from '../pages/SignIn';
 import {SignUp} from '../pages/SignUp';
 import {FeedbackPage} from '../pages/Feedback';
 import {SwipeCards } from '@/pages/Home';
-
+import {HomePage} from '../modules/Home/Homepage';
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomePage"
       screenOptions={{
         headerTitleAlign: 'center',
         headerShadowVisible: false,
         headerShown: false,
       }}>
+        <Stack.Screen name="HomePage" component={HomePage} />
       <Stack.Screen name="SwipeCards" component={SwipeCards} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="Profile" component={Profile} />
