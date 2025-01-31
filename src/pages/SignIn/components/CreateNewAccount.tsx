@@ -1,7 +1,9 @@
-import {Flex, Link, Text} from 'native-base';
+import { useNavigation } from '@react-navigation/native';
+import { Flex, Link, Text } from 'native-base';
 import React from 'react';
 
 export const CreateNewAccount = () => {
+  const navigation = useNavigation();
   return (
     <Flex
       direction="row"
@@ -17,7 +19,9 @@ export const CreateNewAccount = () => {
           color: 'font.primary',
           fontWeight: 'bold',
         }}
-        href="/sign-up">
+        onPress={() => {
+          navigation.navigate('SignUp' as never);
+        }}>
         Create New
       </Link>
     </Flex>

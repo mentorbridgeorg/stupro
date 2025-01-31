@@ -1,8 +1,8 @@
+import {Button} from '@atoms/Button';
+import {FormInput} from '../../../ui/molecules/FormInput';
 import {useAtom} from 'jotai';
 import {Box, Stack, Text} from 'native-base';
 import React from 'react';
-import {Button} from '../../../ui/atoms/Button';
-import {FormInput} from '../../../ui/molecules/FormInput/FormInput';
 import {currentStepAtom, signUpDataAtom} from '../atoms';
 export const NameDetails = () => {
   const [currentStep, setCurrentStep] = useAtom(currentStepAtom);
