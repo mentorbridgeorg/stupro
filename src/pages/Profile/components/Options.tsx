@@ -1,3 +1,4 @@
+import {theme} from '@/theme';
 import {ArrowRight} from '@assets/icons/ArrowRight';
 import {Box, Pressable} from 'native-base';
 import React from 'react';
