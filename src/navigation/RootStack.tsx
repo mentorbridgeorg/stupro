@@ -7,7 +7,8 @@ import {Profile} from '../pages/Profile';
 import EditProfile from '../pages/Profile/EditProfile';
 import {SignIn} from '../pages/SignIn';
 import {SignUp} from '../pages/SignUp';
-import { FeedbackPage } from '../pages/Feedback';
+import {FeedbackPage} from '../pages/Feedback';
+import {ChangePassword} from '@/pages/ChangePassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ export const RootStack = () => {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="FeedbackPage" component={FeedbackPage} />
+      <Stack.Screen name="ChangePassword" component={ChangePassword} />
     </Stack.Navigator>
   );
 };

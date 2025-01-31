@@ -49,7 +49,6 @@ export const Home = () => {
           }}
           cardIndex={0}
           swipeBack={true}
-          swipeLeft={}
           backgroundColor={'#4FD0E9'}
           stackSize={3}>
           <Button
