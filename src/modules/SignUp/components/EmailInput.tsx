@@ -28,7 +28,7 @@ export const EmailInput = () => {
       </Text>
       <Box >
         <FormControl isRequired marginTop="10">
-          <Stack mx="10" w="80%">
+          <Stack mx="10" w="290">
             <FormInput
               placeholder="example@gmail.com"
               onChange={text => setSignUpData({...signUpData, email: text})}

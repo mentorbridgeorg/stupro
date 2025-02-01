@@ -37,7 +37,7 @@ export const SecureAccount = () => {
         Secure Your Account
       </Text>
       <Center mt="5">
-        <Stack>
+        <Stack w='290'>
           <FormInput
             label="Password"
             type={showPassword ? 'text' : 'password'}
