@@ -16,7 +16,7 @@ import {
 } from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {resetPasswordFormAtom} from './atoms/PasswordForn';
-import { updateData } from '@/api';
+import { PAGES_ENDPOINT, updateData } from '@/api';
 
 export const ResetPasswordForm = () => {
   const [passwordData, setPasswordData] = useAtom(resetPasswordFormAtom);
@@ -49,9 +49,9 @@ export const ResetPasswordForm = () => {
     if (error === null && isValidPassword && isPasswordsMatch) {
       console.log('Password Reset Successful!');
     }
-      updateData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/resetPassword', passwordData)
+    updateData(PAGES_ENDPOINT + '/resetPassword', passwordData)
           .then(function (response) {
-            console.log(response);
+            console.log('Response:', response);
           })
 
 

@@ -2,18 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {Box, HStack, Text, Card, Image} from 'native-base';
 import axios from 'axios';
 import {StatusCircle} from '../../ui/atoms/StatusCircle/StatusCircle';
+import { fetchData, PAGES_ENDPOINT } from '@/api';
 
 export const Streak = () => {
   const [streaks, setStreakDetails] = useState<any[]>([]);
 
   const showStreak = () => {
-    axios
-      .get('/streak')
+   fetchData(PAGES_ENDPOINT+'/streak')
       .then(response => {
-        setStreakDetails(response.data);
+        setStreakDetails('Response:', response);
       })
-      .catch(error => {
-        console.error(error);
+      
         setStreakDetails([
           {
             id: 'Login',
@@ -52,7 +51,7 @@ export const Streak = () => {
             ],
           },
         ]);
-      });
+     
   };
 
   useEffect(() => {
