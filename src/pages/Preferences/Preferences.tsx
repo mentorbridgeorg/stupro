@@ -1,4 +1,4 @@
-import {fetchData, sendData} from '@/api';
+import {fetchData, PAGES_ENDPOINT, sendData} from '@/api';
 import React, {useEffect, useState} from 'react';
 import {Pressable, ScrollView, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,17 +9,15 @@ export const Preferences = () => {
   const [preferences, setPreferences] = useState([]);
 
   const fetchPreferences = () => {
-    fetchData(
-      'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/fetchPreferences',
-    ).then(response => setPreferences(response));
+    fetchData( PAGES_ENDPOINT+'/fetchPreferences',
+    ).then(response => setPreferences('Response:', response));
   };
   const savePreferences = () => {
-    sendData(
-      'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/savePreferences',
+    sendData( PAGES_ENDPOINT+ '/savePreferences',
       {
         preferences: selectedPreferences,
       },
-    ).then(response => console.log(response));
+    ).then(response => console.log('Response:', response));
   };
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import {  Box  } from 'native-base';
 import { usePostHog } from 'posthog-react-native';
 import React, {  useState  } from 'react';
 
-import { sendData } from '@/api';
+import { PAGES_ENDPOINT, sendData } from '@/api';
 export const ForgotPasswordForm = () => {
   const posthog = usePostHog();
 
@@ -21,17 +21,9 @@ export const ForgotPasswordForm = () => {
     posthog.capture('forgotPasswordButton', {
       email: forgotPasswordData,
     });
-    sendData(
-
-        'http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/forgotPassword',
-
-        {
-          email: forgotPasswordData,
-        },
-      )
-      .then(function (response) {
-        console.log(response);
-      })
+    sendData(PAGES_ENDPOINT+'/forgotPassword', forgotPasswordData).then(response => {
+      console.log('Response:', response);
+    });
   };
 
   return (

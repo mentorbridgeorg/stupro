@@ -7,7 +7,7 @@ import {Box, Flex, HStack, Link, Text, TextArea, useToast} from 'native-base';
 import React, {useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
 import {Toast} from '@/ui/atoms/Toast';
-import {sendData} from '@/api';
+import {PAGES_ENDPOINT, sendData} from '@/api';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
@@ -47,7 +47,7 @@ export const Feedback = () => {
       addedDate: null,
       addedBy: null,
     };
-    sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/feedback', {data}).then((response) => {
+    sendData(PAGES_ENDPOINT + '/feedback', {data}).then((response) => {
       if (response) {
         toast.show({
           render: () => {

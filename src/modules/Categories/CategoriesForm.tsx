@@ -1,6 +1,7 @@
 import {HStack, VStack} from 'native-base';
 import React, {useState} from 'react';
 import {CategoriesCard, CatgoriesTopic} from './Components';
+import { fetchData, PAGES_ENDPOINT } from '@/api';
 
 export const CategoryForm = () => {
   const [visibleCards, setVisibleCards] = useState<string[]>(['Article']); //default
@@ -11,6 +12,10 @@ export const CategoryForm = () => {
     if (!visibleCards.includes(label)) {
       setVisibleCards(prevCards => [...prevCards, label]);
     }
+    fetchData(PAGES_ENDPOINT+'/category').then(response => {
+      console.log('Response:', response);
+    });
+
   };
 
   return (

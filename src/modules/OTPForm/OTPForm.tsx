@@ -1,5 +1,5 @@
 
-import { sendData } from '@/api';
+import { PAGES_ENDPOINT, sendData } from '@/api';
 import axios from 'axios';
 import {Box, Button, Input} from 'native-base';
 import {usePostHog} from 'posthog-react-native';
@@ -26,12 +26,12 @@ export const OTPForm = () => {
   const handleSubmit = () => {
     posthog.capture('OTP Button');
 
-      sendData('http://ec2-35-87-21-24.us-west-2.compute.amazonaws.com:8092/otp', {
+      sendData(PAGES_ENDPOINT+'/otp', {
 
         otp: otp.join(''),
       })
       .then(response => {
-        console.log(response);
+        console.log('Response:', response);
       })
       
   };
