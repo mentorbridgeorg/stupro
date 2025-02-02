@@ -1,6 +1,6 @@
+import {Center, ScrollView, VStack} from 'native-base';
 import React from 'react';
-import {ScrollView, VStack, Center} from 'native-base';
-import {Card} from './ArticleCard';
+import {ArticleCard} from './ArticleCard';
 import {CardData} from './ArticleCard.types';
 
 const cardData: CardData[] = [
@@ -17,7 +17,7 @@ export const CardList = () => {
       <Center flex={1} bg="white">
         <VStack space={4} width="90%" alignItems="center">
           {cardData.map((data, index) => (
-            <Card key={`${index}`} data={data} />
+            <ArticleCard key={`${index}`} data={data} />
           ))}
         </VStack>
       </Center>

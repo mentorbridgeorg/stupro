@@ -7,7 +7,7 @@ interface ArticleCardProps {
   data: CardData;
 }
 
-export function Card({data}: ArticleCardProps) {
+export function ArticleCard({data}: ArticleCardProps) {
   return (
     <Box
       bg="#FDFAEC"
