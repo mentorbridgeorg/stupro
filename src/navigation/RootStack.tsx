@@ -9,6 +9,9 @@ import {SignIn} from '@pages/SignIn';
 import {SignUp} from '@pages/SignUp';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import { View } from 'react-native';
+import { NavigationBar } from '@modules/navigationBar/navigationBar';
+
 
 import {ResetPassword} from '@/pages/ResetPassword';
 import {ChangePassword} from '@pages/ChangePassword';
@@ -22,6 +25,7 @@ const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
+
     <View style={{flex: 1}}>
       <Stack.Navigator
         initialRouteName="Home"
@@ -45,5 +49,6 @@ export const RootStack = () => {
       </Stack.Navigator>
       <NavigationBar />
     </View>
+
   );
 };

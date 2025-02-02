@@ -70,7 +70,7 @@ export const Preferences = () => {
             </Pressable>
           ))}
 
-          <Pressable style={styles.nextButton} onPress={savePreferences}>
+            <Pressable style={styles.nextButton} onPress={savePreferences}>
             <Text style={styles.nextButtonText}>Next</Text>
           </Pressable>
         </ScrollView>
@@ -78,3 +78,4 @@ export const Preferences = () => {
     </LinearGradient>
   );
 };
+

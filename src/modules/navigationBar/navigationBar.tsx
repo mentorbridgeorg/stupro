@@ -50,6 +50,7 @@ export const NavigationBar = () => {
         />
         <Text style={[styles.label, { color: selectedTab === 'Profile' ? '#F3C331' : 'gray' }]}>Profile</Text>
       </TouchableOpacity>
+
     </View>
   );
 };
@@ -58,16 +59,18 @@ const styles = StyleSheet.create({
   navBar: {
     position: 'absolute',
     bottom: 8,
+
     left: 65,
     right: 20,
     height: 55,
     width: 250, 
+
     backgroundColor: '#ffffff',
     borderRadius: 30, 
     flexDirection: 'row',
     elevation: 10,
     shadowColor: 'black',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.5,
     shadowRadius: 2,
     borderWidth: 1,
     borderColor: '#F3C331',
