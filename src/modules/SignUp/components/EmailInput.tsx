@@ -15,7 +15,7 @@ export const EmailInput = () => {
 
   const isValidEmail =
     signUpData?.email !== '' &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signUpData?.email);
+    /^[a-zA-Z0-9_.+-]+@[a-zA_Z0-9]+\.[a-zA-Z0-9-.]+$/.test(signUpData?.email);
 
   return (
     <Box>
@@ -26,7 +26,7 @@ export const EmailInput = () => {
         textAlign="center">
         Sign Up
       </Text>
-      <Box w="100%">
+      <Box >
         <FormControl isRequired marginTop="10">
           <Stack mx="10" w="80%">
             <FormInput

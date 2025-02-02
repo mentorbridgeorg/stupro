@@ -7,6 +7,8 @@ import {PasswordPatternList} from '@molecules/PasswordPatternList';
 import {useAtom} from 'jotai';
 import {Box, Center, Pressable, Stack, Text} from 'native-base';
 import React, {useState} from 'react';
+import {REGISTER_ENDPOINT} from '../../../api/endpoints';
+import {sendData} from '../../../api/Post/sendData';
 import {signUpDataAtom} from '../atoms';
 
 export const SecureAccount = () => {
@@ -14,7 +16,9 @@ export const SecureAccount = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleContinue = () => {
-    console.log('signUpData', signUpData);
+    sendData(REGISTER_ENDPOINT, signUpData).then(response => {
+      console.log(response);
+    });
   };
 
   const isValidPassword =
@@ -61,7 +65,7 @@ export const SecureAccount = () => {
         </Stack>
       </Center>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={() => handleContinue} isDisabled={!isValidPassword}>
+        <Button onPress={handleContinue} isDisabled={!isValidPassword}>
           Continue
         </Button>
       </Box>
