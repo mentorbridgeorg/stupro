@@ -3,15 +3,16 @@ import {GoodFaceIcon} from '@assets/icons/GoodFaceIcon';
 import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
 import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
 import {Button} from '@atoms/Button';
-import axios from 'axios';
-import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
+import {Box, Flex, HStack, Link, Text, TextArea, useToast} from 'native-base';
 import React, {useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
+import {Toast} from '@/ui/atoms/Toast';
+import {PAGES_ENDPOINT, sendData} from '@/api';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
   const [comment, setComment] = useState('');
-
+  const toast = useToast();
   const emojis = [
     {
       label: 'Bad',
@@ -46,15 +47,21 @@ export const Feedback = () => {
       addedDate: null,
       addedBy: null,
     };
-
-    axios
-      .post('http://localhost:8080/feedback', data)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    sendData(PAGES_ENDPOINT + '/feedback', {data}).then((response) => {
+      if (response) {
+        toast.show({
+          render: () => {
+            return (
+              <Toast
+                type="sucess"
+                title={'Success'}
+                description={'Feedback sent Successfully!'}
+              />
+            );
+          },
+        });
+      }
+    });
   };
 
   return (

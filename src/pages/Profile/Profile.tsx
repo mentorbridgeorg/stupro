@@ -47,7 +47,12 @@ export const Profile = () => {
         Settings
       </Box>
       <Box marginY={5}>
-        <Options Component="Change password" onPress={() => {}} />
+        <Options
+          Component="Change Password"
+          onPress={() => {
+            navigation.navigate('ChangePassword');
+          }}
+        />
       </Box>
     </Box>
   );

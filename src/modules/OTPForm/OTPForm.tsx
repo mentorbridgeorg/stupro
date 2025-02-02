@@ -1,3 +1,5 @@
+
+import { PAGES_ENDPOINT, sendData } from '@/api';
 import axios from 'axios';
 import {Box, Button, Input} from 'native-base';
 import {usePostHog} from 'posthog-react-native';
@@ -19,21 +21,19 @@ export const OTPForm = () => {
       }
     }
   };
-
   const isSubmitEnabled = otp.every(digit => digit !== '');
 
   const handleSubmit = () => {
     posthog.capture('OTP Button');
-    axios
-      .post('/url', {
+
+      sendData(PAGES_ENDPOINT+'/otp', {
+
         otp: otp.join(''),
       })
       .then(response => {
-        console.log(response.data);
+        console.log('Response:', response);
       })
-      .catch(error => {
-        console.log(error);
-      });
+      
   };
 
   return (
@@ -64,7 +64,7 @@ export const OTPForm = () => {
             borderColor="#ccc"
             borderRadius="10"
             bg="#f8f8f8"
-            onKeyPress={({nativeEvent}) => {
+            onKeyPress={({ nativeEvent }) => {
               if (nativeEvent.key === 'Backspace' && !digit && index > 0) {
                 inputsRef.current[index - 1]?.focus();
               }

@@ -1,9 +1,9 @@
+import {EmailInput} from '@modules/SignUp/components/EmailInput';
+import {NameDetails} from '@modules/SignUp/components/NameDetails';
+import {SecureAccount} from '@modules/SignUp/components/SecureAccount';
+import {UserDetails} from '@modules/SignUp/components/UserDetails';
+import {UserType} from '@modules/SignUp/components/UserType';
 import React from 'react';
-import {EmailInput} from '../../modules/SignUp/components/EmailInput';
-import {NameDetails} from '../../modules/SignUp/components/NameDetails';
-import {SecureAccount} from '../../modules/SignUp/components/SecureAccount';
-import {UserDetails} from '../../modules/SignUp/components/UserDetails';
-import {UserType} from '../../modules/SignUp/components/UserType';
 
 export const steps = [
   {

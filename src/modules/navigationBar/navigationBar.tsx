@@ -33,7 +33,6 @@ export const NavigationBar = () => {
         <Text style={[styles.label, { color: selectedTab === 'Categories' ? '#F3C331' : 'gray' }]}>Categories</Text>
       </TouchableOpacity>
 
-
       <TouchableOpacity onPress={() => handlePress('BookMarkPage')} style={styles.navItem}>
         <Ionicons
           name="bookmark"
@@ -60,10 +59,12 @@ const styles = StyleSheet.create({
   navBar: {
     position: 'absolute',
     bottom: 8,
-    left: 55,
+
+    left: 65,
     right: 20,
     height: 55,
-    width: 280, 
+    width: 250, 
+
     backgroundColor: '#ffffff',
     borderRadius: 30, 
     flexDirection: 'row',
