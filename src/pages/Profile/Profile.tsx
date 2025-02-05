@@ -1,50 +1,62 @@
-import {Button} from '@atoms/Button';
-import {RoleLabel} from '@atoms/RoleLabel/RoleLabel';
 import {useNavigation} from '@react-navigation/native';
-import {Box, Center} from 'native-base';
+import {Box, VStack} from 'native-base';
 import React from 'react';
 import Options from './components/Options';
+import {Image, TouchableOpacity} from 'react-native';
+import {EditIcon} from '../../assets/icons/EditIcon';
 
 export const Profile = () => {
   const navigation = useNavigation();
   const Position = [
-    {value: 'Student', background: 'lightblue'},
-    {value: 'Professional', background: 'lightgreen'},
+    {value: 'Student', background: 'yellow.300'},
+    {value: 'Professional', background: 'orange.300'},
   ];
 
-  const role = 'Professional';
+  const name = 'Bala Krishnan';
+  const designation = 'React Native Developer';
+  const role = 'Student';
 
   const handleBg: () => any = () => {
     return Position.find(findValue => findValue.value === role)?.background;
   };
 
   return (
-    <Box>
-      <Center>
+    <Box flex={1}>
+      <Box>
+        <Image
+          source={require('../../../assets/ProfileTop.png')}
+          resizeMode="contain"
+        />
+      </Box>
+      <Box position={'absolute'} top={1} left={0} right={0} p={5}>
+        <TouchableOpacity
+          style={{alignSelf: 'flex-end', marginRight: 10, marginTop: 10}}
+          onPress={() => navigation.navigate('EditProfile')}>
+          <EditIcon />
+        </TouchableOpacity>
+      </Box>
+      // name, designation, role
+      <Box position={'absolute'} top={100} left={0} right={0} p={5} ml={2}>
+        <Box _text={{color: 'black', fontSize: 50, fontWeight: '700'}}>
+          {name}
+        </Box>
+        <Box _text={{color: 'black', fontSize: 20, fontWeight: '400'}}>
+          {designation}
+        </Box>
         <Box
-          mt={20}
-          mb={2}
-          _text={{fontSize: '3xl', color: 'amber.900', fontWeight: 'semibold'}}>
-          Name
+          bg={handleBg()}
+          borderRadius={10}
+          mt={2}
+          maxWidth={20}
+          p={2}
+          _text={{
+            color: 'black',
+            fontSize: 15,
+            fontWeight: '500',
+            textAlign: 'center',
+          }}>
+          {role}
         </Box>
-        <RoleLabel Component={role} bg={handleBg()} />
-        <Box mt={3} _text={{fontSize: '2xl', color: 'amber.900'}}>
-          Role
-        </Box>
-        <Box marginY={1} pt={2}>
-          <Button
-            onPress={() => {
-              navigation.navigate('EditProfile' as never);
-            }}>
-            Edit Profile
-          </Button>
-        </Box>
-      </Center>
-      <Box
-        pl={5}
-        pt={5}
-        _text={{color: 'black', fontWeight: 'medium', fontSize: 20}}>
-        Settings
       </Box>
       <Box marginY={5}>
         <Options
