@@ -58,13 +58,24 @@ export const Profile = () => {
           {role}
         </Box>
       </Box>
-      <Box marginY={5}>
+      // Settings
+      <VStack marginX={7} mb={20} space={2}>
         <Options
-          Component="Change Password"
+          Component={'Change Password'}
           onPress={() => {
             navigation.navigate('ChangePassword');
           }}
         />
+        <Options
+          Component={'Preferences'}
+          onPress={() => {
+            navigation.navigate('Preferences');
+          }}
+        />
+        <Options Component={'Bookmarks'} onPress={() => {}} />
+      </VStack>
+      <Box position={'absolute'} bottom={-20} width={'100%'}>
+        <Image source={require('../../../assets/ProfileBottom.png')} />
       </Box>
     </Box>
   );
