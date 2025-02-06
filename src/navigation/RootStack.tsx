@@ -23,7 +23,7 @@ export const RootStack = () => {
       }}>
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={HomePage} />
       <Stack.Screen name="Preferences" component={Preferences} />
       <Stack.Screen name="Login" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
