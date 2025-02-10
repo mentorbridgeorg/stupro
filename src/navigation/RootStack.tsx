@@ -9,8 +9,6 @@ import {SignIn} from '@pages/SignIn';
 import {SignUp} from '@pages/SignUp';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import { View } from 'react-native';
-import { NavigationBar } from '@modules/navigationBar/navigationBar';
 
 
 import {ResetPassword} from '@/pages/ResetPassword';
