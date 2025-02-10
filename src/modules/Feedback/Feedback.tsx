@@ -8,12 +8,15 @@ import React, {useEffect, useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
+import {Toast} from '@/ui/atoms/Toast';
+import {PAGES_ENDPOINT, sendData} from '@/api';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
   const [comment, setComment] = useState('');
   const [isSendPressed, setSendPressed] = useState(false);
   const navigation = useNavigation();
+  const toast = useToast();
   const emojis = [
     {
       label: 'Bad',
@@ -40,31 +43,29 @@ export const Feedback = () => {
       bg: 'rgba(254, 249, 224,1)',
     },
   ];
-
-  const data = {
-    label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
-    comment: setComment,
-    addedDate: null,
-    addedBy: null,
-  };
-
   const saveFeedback = () => {
-    axios
-      .post('http://localhost:8080/feedback', data)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const data = {
+      label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
+      comment: setComment,
+      addedDate: null,
+      addedBy: null,
+    };
+    sendData(PAGES_ENDPOINT + '/feedback', {data}).then((response) => {
+      if (response) {
+        toast.show({
+          render: () => {
+            return (
+              <Toast
+                type="sucess"
+                title={'Success'}
+                description={'Feedback sent Successfully!'}
+              />
+            );
+          },
+        });
+      }
+    });
   };
-
-  useEffect(() => {
-    if (isSendPressed) {
-      saveFeedback();
-    }
-  });
-
   return (
     <Box>
       <HStack p={4} space={3}>
@@ -94,7 +95,11 @@ export const Feedback = () => {
         borderRadius="10"
         mt="2"
         ml="1"
-        color="black" tvParallaxProperties={undefined} onTextInput={undefined} autoCompleteType={undefined}      />
+        color="black"
+        tvParallaxProperties={undefined}
+        onTextInput={undefined}
+        autoCompleteType={undefined}
+      />
       <Box mt="10">
         <HStack space={5} justifyContent={'space-between'}>
           <Link mt={'2'} ml={'2'} onPress={() => {}}>
@@ -107,6 +112,7 @@ export const Feedback = () => {
               <Button
                 onPress={() => {
                   setSendPressed(true);
+                  saveFeedback();
                   navigation.navigate('HomePage');
                 }}
                 isDisabled={selectedEmoji === null}>

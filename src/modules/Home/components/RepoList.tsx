@@ -1,18 +1,15 @@
+import { Center, ScrollView, VStack } from 'native-base';
 import React from 'react';
-import { ScrollView, VStack, Center } from 'native-base';
-import {  RepoCard } from '../components/RepoCard';
+import { RepoCard } from '../components/RepoCard';
 import { RepoData } from './RepoCard.types';
 
 
 
 const repoData: RepoData[] = [
   {
-   
     title: 'AI projects ',
     imageUrl: 'https://wallpaperaccess.com/full/317501.jpg',
-    
   },
-  
 ];
 
 

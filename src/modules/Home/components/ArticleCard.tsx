@@ -11,7 +11,7 @@ import { SwipeCards } from '@/pages/Home';
 //   data: CardData;
 // }
 
-export function Card({data}: ArticleCardProps) {
+export function ArticleCard({data}: ArticleCardProps) {
   // const {cardData} = useCardData();
   const navigation = useNavigation();
 // console.log(data);

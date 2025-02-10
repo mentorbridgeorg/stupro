@@ -1,7 +1,7 @@
 import {Box, FormControl, Input} from 'native-base';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {FormInputProps} from './FormInput.types';
-
+import { Animated } from 'react-native';
 export const FormInput = ({
   label,
   type = 'text',
@@ -13,8 +13,35 @@ export const FormInput = ({
   helperText,
   value,
 }: FormInputProps) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    // Fade-in animation
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+  
+    // Fade-out animation
+    return () => {
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 2000,
+        useNativeDriver: true,
+      }).start();
+    };
+  }, [fadeAnim]);
+  
+
+
   return (
-    <Box w="100%">
+    <Animated.View 
+    style={{
+      opacity: fadeAnim, 
+    }}>
+     <Box w="100%">
+      
       <FormControl isRequired={isRequired}>
         {label && <FormControl.Label mb="2">{label}</FormControl.Label>}
         <Input
@@ -24,9 +51,10 @@ export const FormInput = ({
           placeholder={placeholder}
           w="100%"
           fontSize={'sm'}
-          borderRadius={'10px'}
+          borderRadius={'15px'}
           borderColor={'primary.500'}
-          borderWidth={'1px'}
+          borderWidth={'2px'}
+          padding={3}
           onChangeText={onChange}
           InputLeftElement={icon}
           InputRightElement={rightIcon}
@@ -40,6 +68,8 @@ export const FormInput = ({
           <FormControl.HelperText>{helperText}</FormControl.HelperText>
         )}
       </FormControl>
+      
     </Box>
+    </Animated.View>
   );
 };
