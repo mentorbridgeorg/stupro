@@ -27,7 +27,7 @@ export const NameDetails = () => {
         Hello {signUpData?.userDetails?.firstName}
       </Text>
       <Box w="100%">
-        <Stack mx="10" w="80%">
+        <Stack mx="10" w="290">
           <FormInput
             label="First Name"
             value={signUpData?.userDetails?.firstName}
@@ -40,7 +40,7 @@ export const NameDetails = () => {
             }
           />
         </Stack>
-        <Stack mx="10" w="80%" mt="3">
+        <Stack mx="10" w="290" mt="3">
           <FormInput
             label="Last Name"
             value={signUpData?.userDetails?.lastName}

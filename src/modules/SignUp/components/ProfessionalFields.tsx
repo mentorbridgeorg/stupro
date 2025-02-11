@@ -9,7 +9,7 @@ export const ProfessionalFields = () => {
 
   return (
     <Box w="100%">
-      <Stack mx="10" w="80%">
+      <Stack mx="10" w="290">
         <FormInput
           label="Designation"
           placeholder="Designation"
@@ -22,7 +22,7 @@ export const ProfessionalFields = () => {
           }
         />
       </Stack>
-      <Stack mx="10" w="80%" mt="3">
+      <Stack mx="10" w="290" mt="3">
         <FormInput
           label="Company"
           placeholder="Company"
