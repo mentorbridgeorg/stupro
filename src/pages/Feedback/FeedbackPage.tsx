@@ -1,8 +1,12 @@
 import { Feedback } from '@modules/Feedback';
+import ShareExample from '../../../ShareExample';
 import { Box, Center, Text } from 'native-base';
 import React from 'react';
+import { View } from 'react-native';
+import DeepLink from '../DeepLink/DeepLink';
 
-export const FeedbackPage = () => {
+export const FeedbackPage = ({data}: any) => {
+  console.log('feedback:' , data);
   return (
     <Center p="10">
       <Box
@@ -20,6 +24,10 @@ export const FeedbackPage = () => {
           How would you rate your Experience?
         </Text>
         <Feedback />
+        <View style={{justifyContent:'center'}}>
+        {/* <ShareExample /> */}
+        <DeepLink data={data}/>
+        </View>
       </Box>
     </Center>
   );

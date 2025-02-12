@@ -4,6 +4,7 @@ import {BookMarkIcon} from '../../../assets/icons/BookMarkIcon';
 import { TouchableWithoutFeedback } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SwipeCards } from '@/pages/Home';
+import DeepLink from '@/pages/DeepLink/DeepLink';
 // import { useCardData } from '@/pages/Home/useCardData';
 
 
@@ -11,11 +12,13 @@ import { SwipeCards } from '@/pages/Home';
 //   data: CardData;
 // }
 
-export function Card({data}: ArticleCardProps) {
+export function ArticleCard({data}: any) {
+  // const artdata = data;
   // const {cardData} = useCardData();
   const navigation = useNavigation();
-// console.log(data);
+console.log(data);
   return (
+    <>
     <TouchableWithoutFeedback onPress={() => {
       navigation.navigate('SwipeCards'
       ,{cardData: data});
@@ -69,5 +72,8 @@ export function Card({data}: ArticleCardProps) {
         </HStack>
       </Box>
       </TouchableWithoutFeedback>
+        {/* // <DeepLink data={data}/> */}
+      {/* {artdata} */}
+        </>
   );
 }
