@@ -7,7 +7,7 @@ import {styles} from './Preferences.styles';
 export const Preferences = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
   const [preferences, setPreferences] = useState([]);
-
+  
   const fetchPreferences = () => {
     fetchData( PAGES_ENDPOINT+'/fetchPreferences',
     ).then(response => setPreferences('Response:', response));
@@ -69,7 +69,6 @@ export const Preferences = () => {
               </LinearGradient>
             </Pressable>
           ))}
-
             <Pressable style={styles.nextButton} onPress={savePreferences}>
             <Text style={styles.nextButtonText}>Next</Text>
           </Pressable>
@@ -78,4 +77,3 @@ export const Preferences = () => {
     </LinearGradient>
   );
 };
-

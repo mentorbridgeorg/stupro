@@ -1,7 +1,15 @@
-import {Center, ScrollView, VStack} from 'native-base';
 import React from 'react';
+import { ScrollView, VStack, Center } from 'native-base';
+import { Card } from './ArticleCard';
+// import { CardData } from './ArticleCard.types';
+import { useCardData } from '@/pages/Home/useCardData';
 import {ArticleCard} from './ArticleCard';
 import {CardData} from './ArticleCard.types';
+
+//un comment this if you want to use the mock api for the article
+// export const CardList = () => {
+//   const {cardData} = useCardData();
+  // console.log(cardData);
 
 const cardData: CardData[] = [
   {
