@@ -1,23 +1,49 @@
 import {useNavigation} from '@react-navigation/native';
 import {Box, VStack} from 'native-base';
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Options from './components/Options';
 import {Animated, Image, TouchableOpacity} from 'react-native';
 import {EditIcon} from '../../assets/icons/EditIcon';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Profile = () => {
   const navigation = useNavigation();
   const Position = [
-    {value: 'Student', background: 'yellow.300'},
-    {value: 'Professional', background: 'orange.300'},
+    {value: 'student', background: 'yellow.300'},
+    {value: 'professional', background: 'orange.300'},
   ];
 
-  const name = 'Bala Krishnan';
-  const designation = 'React Native Developer';
-  const role = 'Student';
+  const [name, setName] = useState('Name');
+  const [designation, setDesignation] = useState('Designation');
+  const [role, setRole] = useState('Role');
 
   const handleBg: () => any = () => {
     return Position.find(findValue => findValue.value === role)?.background;
+  };
+
+  useEffect(() => {
+    loadFromAsyncStorage();
+  }, []);
+
+  const loadFromAsyncStorage = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if (value !== null) {
+        const data = JSON.parse(value);
+        // console.log('Data retrieved:', data);
+        setName(
+          [data.userDetails.firstName, data.userDetails.lastName].join(' '),
+        );
+        setRole(data.userType);
+        {
+          data.userType === 'student'
+            ? setDesignation(data.userDetails.college)
+            : setDesignation(data.userDetails.designation);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load data:', (error as Error).message);
+    }
   };
 
   const opacity = useRef(new Animated.Value(0)).current;
@@ -70,9 +96,9 @@ export const Profile = () => {
         <Animated.View style={{opacity, transform: [{translateY}]}}>
           <Box
             bg={handleBg()}
-            borderRadius={10}
+            borderRadius={13}
             mt={2}
-            maxWidth={20}
+            mr={250}
             p={2}
             _text={{
               color: 'black',

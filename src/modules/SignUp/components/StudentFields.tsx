@@ -11,7 +11,7 @@ export const StudentFields = () => {
 
   return (
     <Box w="100%">
-      <Stack mx="10" w="80%" mb="5">
+      <Stack mx="10" w="80" mb="5">
         <FormSelect
           label="Degree"
           isRequired
@@ -26,7 +26,7 @@ export const StudentFields = () => {
           placeholder="Choose Degree"
         />
       </Stack>
-      <Stack mx="10" w="80%" mb="5">
+      <Stack mx="10" w="80" mb="5">
         <FormInput
           label="College"
           isRequired
