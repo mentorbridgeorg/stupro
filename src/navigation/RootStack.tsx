@@ -1,17 +1,16 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {ForgotPassword} from '../pages/ForgotPassword';
-import {Home} from '../pages/Home/Home';
-import {HomePage} from '../pages/Home';
-import {Preferences} from '../pages/Preferences';
-import {Profile} from '../pages/Profile';
-import EditProfile from '../pages/Profile/EditProfile';
-import {SignIn} from '../pages/SignIn';
-import {SignUp} from '../pages/SignUp';
-import {FeedbackPage} from '../pages/Feedback';
-import {SwipeCards } from '@/pages/Home';
-import {HomePage} from '../modules/Home/Homepage';
-import {ChangePassword} from '@/pages/ChangePassword';
+
+
+
+
+import {ResetPassword} from '@/pages/ResetPassword';
+import {ChangePassword} from '@pages/ChangePassword';
+
+import {Categories} from '@/pages/Categories/Categories';
+
+import {NavigationBar} from '@modules/navigationBar/navigationBar';
+import {View} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 

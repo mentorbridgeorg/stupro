@@ -8,7 +8,7 @@ const productData: ProductData[] = [
     date: 'Jan',
     day: '21',
     title: 'AI projects ',
-    imageUrl: 'https://wallpaperaccess.com/full/317501.jpg',
+    imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJhjl5ueLgjQcedeJLg7CpPC3Ix7AEJRrimQ&s.jpg',
   },
 ];
 
