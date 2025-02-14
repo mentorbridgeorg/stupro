@@ -1,29 +1,29 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 
-import {ResetPassword} from '@/pages/ResetPassword';
+import {ResetPassword} from '@pages/ResetPassword';
 import {ChangePassword} from '@pages/ChangePassword';
 
-import {Categories} from '@/pages/Categories/Categories';
+import {Categories} from '@pages/Categories/Categories';
 
 import {NavigationBar} from '@modules/navigationBar/navigationBar';
 import {View} from 'react-native';
-import {HomePage, SwipeCards} from '@/pages/Home';
-import EditProfile from '@/pages/Profile/EditProfile';
-import {Profile} from '@/pages/Profile';
-import {Preferences} from '@/pages/Preferences';
-import {SignIn} from '@/pages/SignIn';
-import {SignUp} from '@/pages/SignUp';
-import {ForgotPassword} from '@/pages/ForgotPassword';
-import {FeedbackPage} from '@/pages/Feedback';
-import Onboarding from '@/pages/LandingPage/Onboarding';
+import {HomePage, SwipeCards} from '@pages/Home';
+import EditProfile from '@pages/Profile/EditProfile';
+import {Profile} from '@pages/Profile';
+import {Preferences} from '@pages/Preferences';
+import {SignIn} from '@pages/SignIn';
+import {SignUp} from '@pages/SignUp';
+import {ForgotPassword} from '@pages/ForgotPassword';
+import {FeedbackPage} from '@pages/Feedback';
+import Onboarding from '@pages/LandingPage/Onboarding';
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Onboarding"
+      initialRouteName="Profile"
       screenOptions={{
         headerTitleAlign: 'center',
         headerShadowVisible: false,
