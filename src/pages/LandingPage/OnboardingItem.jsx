@@ -1,4 +1,4 @@
-import {Button} from '@/ui/atoms/Button';
+import {Button} from '@atoms/Button';
 import {useNavigation} from '@react-navigation/native';
 import {Image} from 'react-native';
 import {StyleSheet, useWindowDimensions, View} from 'react-native';

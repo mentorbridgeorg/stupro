@@ -1,3 +1,4 @@
+import {theme} from '@/theme';
 import {Animated, StyleSheet, useWindowDimensions, View} from 'react-native';
 
 const Paginator = ({data, scrollX}) => {
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   dot: {
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#493d8a',
+    backgroundColor: theme.colors.primary[400],
     marginHorizontal: 5,
   },
 });
