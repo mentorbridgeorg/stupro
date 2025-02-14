@@ -11,15 +11,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import { View } from 'react-native';
 import { NavigationBar } from '@modules/navigationBar/navigationBar';
-
-
 import {ResetPassword} from '@/pages/ResetPassword';
 import {ChangePassword} from '@pages/ChangePassword';
-
 import {Categories} from '@/pages/Categories/Categories';
-
-import {NavigationBar} from '@modules/navigationBar/navigationBar';
-import {View} from 'react-native';
+import {SentencePage} from '@/pages/SentencePage/SentencePage';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +23,7 @@ export const RootStack = () => {
 
     <View style={{flex: 1}}>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="SentencePage"
         screenOptions={{
           headerTitleAlign: 'center',
           headerShadowVisible: false,
@@ -46,6 +41,7 @@ export const RootStack = () => {
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="Categories" component={Categories} />
         <Stack.Screen name="Feedback" component={FeedbackPage} />
+        <Stack.Screen name="SentencePage" component={SentencePage} />
       </Stack.Navigator>
       <NavigationBar />
     </View>
