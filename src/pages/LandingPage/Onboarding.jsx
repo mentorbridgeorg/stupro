@@ -10,8 +10,10 @@ const Onboarding = () => {
   const slidesRef = useRef(null);
 
   const viewableItemChanged = useRef(({viewableItems}) => {
-    setCurrentIndex(viewableItems[0].index);
-  }).current;
+    {
+      setCurrentIndex(viewableItems[0].index);
+    }
+  })?.current;
   return (
     <View style={styles.container}>
       <FlatList
