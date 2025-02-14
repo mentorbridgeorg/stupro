@@ -1,7 +1,5 @@
 
 export interface RepoData {
-   
     title: string;
-    imageUrl: string;
-    
+    imageUri: string;
   };

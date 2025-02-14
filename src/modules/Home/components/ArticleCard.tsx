@@ -59,4 +59,5 @@ export function ArticleCard({data}: ArticleCardProps) {
       </HStack>
     </Box>
   );
-}
+};
+

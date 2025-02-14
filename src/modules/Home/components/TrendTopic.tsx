@@ -1,99 +1,32 @@
-import {Box, HStack, Text} from 'native-base';
-import React from 'react';
+import { Box, HStack, Text, Pressable } from 'native-base';
+import React, { useState } from 'react';
+
 export const TrendTopic = () => {
+  const topics = ['All', 'Coding', 'Interview', 'Science', 'Database'];
+  const [selectedTopic, setSelectedTopic] = useState('All');
+
   return (
     <Box>
       <HStack space={4} alignItems="center">
-        <Box
-          size="50px"
-          bg="yellow.200"
-          borderRadius="20"
-          width="70"
-          height="8"
-          borderColor="yellow.200"
-          borderWidth={1}
-          shadow={2}
-          _text={{
-            fontSize: '12',
-            color: 'font.primary',
-            alignItems: 'center',
-            marginTop: 2,
-            marginLeft: 5,
-          }}>
-          All
-        </Box>
-        <Box
-          size="50px"
-          bg="#FEF4D2"
-          borderRadius="20"
-          width="70"
-          height="8"
-          borderColor="#FEF4D2"
-          borderWidth={1}
-          shadow={2}>
-          <Text
-            fontSize="12"
-            color="font.primary"
-            alignItems="center"
-            marginTop={2}
-            marginLeft={4}>
-            coding
-          </Text>
-        </Box>
-        <Box
-          size="50px"
-          bg="#FEF4D2"
-          borderRadius="20"
-          width="70"
-          height="8"
-          borderColor="#FEF4D2"
-          borderWidth={1}
-          shadow={2}>
-          <Text
-            fontSize="12"
-            color="font.primary"
-            alignItems="center"
-            marginTop={2}
-            marginLeft={3}>
-            interview{' '}
-          </Text>
-        </Box>
-        <Box
-          size="50px"
-          bg="#FEF4D2"
-          borderRadius="20"
-          width="70"
-          height="8"
-          borderColor="#FEF4D2"
-          borderWidth={1}
-          shadow={2}>
-          <Text
-            fontSize="12"
-            color="font.primary"
-            alignItems="center"
-            marginTop={2}
-            marginLeft={4}>
-            Science
-          </Text>
-        </Box>
-        <Box
-          size="50px"
-          bg="#FEF4D2"
-          borderRadius="20"
-          width="70"
-          height="8"
-          borderColor="#FEF4D2"
-          borderWidth={1}
-          shadow={2}>
-          <Text
-            fontSize="12"
-            color="font.primary"
-            alignItems="center"
-            marginTop={2}
-            marginLeft={4}>
-            Database{' '}
-          </Text>
-        </Box>
+        {topics.map((topic, index) => (
+          <Pressable key={index} onPress={() => setSelectedTopic(topic)}>
+            <Box
+              bg={selectedTopic === topic ? '#F3C331' : '#FFE37F'}
+              borderRadius="20"
+              width="70"
+              height="8"
+              borderColor={selectedTopic === topic ? '#F3C331' : '#FFE37F'}
+              borderWidth={1}
+              shadow={2}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Text fontSize="12" color="black">
+                {topic}
+              </Text>
+            </Box>
+          </Pressable>
+        ))}
       </HStack>
     </Box>
   );

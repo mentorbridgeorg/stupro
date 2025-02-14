@@ -10,12 +10,24 @@ import React, {useState} from 'react';
 import {REGISTER_ENDPOINT} from '../../../api/endpoints';
 import {sendData} from '../../../api/Post/sendData';
 import {signUpDataAtom} from '../atoms';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SecureAccount = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
   const [showPassword, setShowPassword] = useState(false);
 
+  const saveIntoAsyncStorage = async (key: string, value: any) => {
+    try {
+      await AsyncStorage.setItem(key, JSON.stringify(value));
+      // console.log('Data saved successfully');
+      // console.log('Data : ', value);
+    } catch (error) {
+      console.error('Failed to save data : ', (error as Error).message);
+    }
+  };
+
   const handleContinue = () => {
+    saveIntoAsyncStorage('user', signUpData);
     sendData(REGISTER_ENDPOINT, signUpData).then(response => {
       console.log(response);
     });
@@ -65,7 +77,10 @@ export const SecureAccount = () => {
         </Stack>
       </Center>
       <Box alignItems="center" mb="5" mt="5">
-        <Button onPress={handleContinue} isDisabled={!isValidPassword}>
+
+        <Button onPress={()=>setSendPressed(true)} isDisabled={!isValidPassword}>
+
+
           Continue
         </Button>
       </Box>

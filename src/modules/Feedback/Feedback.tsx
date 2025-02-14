@@ -3,15 +3,19 @@ import {GoodFaceIcon} from '@assets/icons/GoodFaceIcon';
 import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
 import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
 import {Button} from '@atoms/Button';
-import {Box, Flex, HStack, Link, Text, TextArea, useToast} from 'native-base';
-import React, {useState} from 'react';
+import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
+import React, {useEffect, useState} from 'react';
 import {EmojiButton} from './components/EmojiButton';
+import axios from 'axios';
+import {useNavigation} from '@react-navigation/native';
 import {Toast} from '@/ui/atoms/Toast';
 import {PAGES_ENDPOINT, sendData} from '@/api';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
   const [comment, setComment] = useState('');
+  const [isSendPressed, setSendPressed] = useState(false);
+  const navigation = useNavigation();
   const toast = useToast();
   const emojis = [
     {
@@ -39,7 +43,6 @@ export const Feedback = () => {
       bg: 'rgba(254, 249, 224,1)',
     },
   ];
-
   const saveFeedback = () => {
     const data = {
       label: selectedEmoji !== null ? emojis[selectedEmoji].label : null,
@@ -63,7 +66,6 @@ export const Feedback = () => {
       }
     });
   };
-
   return (
     <Box>
       <HStack p={4} space={3}>
@@ -108,7 +110,11 @@ export const Feedback = () => {
           <Box width={'150'} flex={1}>
             <Flex direction="row-reverse">
               <Button
-                onPress={saveFeedback}
+                onPress={() => {
+                  setSendPressed(true);
+                  saveFeedback();
+                  navigation.navigate('HomePage');
+                }}
                 isDisabled={selectedEmoji === null}>
                 Send
               </Button>

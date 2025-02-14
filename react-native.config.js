@@ -1,1 +1,6 @@
-// export const assets = ['./android/app/src/main/assets/fonts'];
+module.exports = {
+    project: {
+      android: {},
+    },
+    assets: ['./src/assets/fonts/'],
+  };
