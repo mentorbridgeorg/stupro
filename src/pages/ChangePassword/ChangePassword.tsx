@@ -1,5 +1,5 @@
 import {BackButton} from '@atoms/BackButton';
-import {ChangePasswordForm} from '@modules/ChangePasswordForm';
+import {ChangePasswordForm} from '@/modules/ChangePasswordForm';
 import {useNavigation} from '@react-navigation/native';
 import {Box, HStack, Text} from 'native-base';
 import React from 'react';

@@ -1,4 +1,4 @@
-import {currentStepAtom} from '@modules/SignUp/atoms';
+import {currentStepAtom} from '@/modules/SignUp/atoms';
 import {FocusedCard} from '@organisms/FocusedCard';
 import {useAtom} from 'jotai';
 import {Box} from 'native-base';

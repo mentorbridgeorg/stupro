@@ -1,4 +1,4 @@
-import {ResetPasswordForm} from '@modules/ResetPasswordForm';
+import {ResetPasswordForm} from '@/modules/ResetPasswordForm';
 import {FocusedCard} from '@organisms/FocusedCard';
 import {Box, Text} from 'native-base';
 import React from 'react';

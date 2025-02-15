@@ -1,4 +1,4 @@
-import {ForgotPasswordForm} from '@modules/ForgotPasswordForm';
+import {ForgotPasswordForm} from '@/modules/ForgotPasswordForm';
 import {FocusedCard} from '@organisms/FocusedCard';
 import {Box, Text} from 'native-base';
 import React from 'react';

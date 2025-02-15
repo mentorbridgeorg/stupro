@@ -1,8 +1,8 @@
 import {EmailIcon} from '@assets/icons/EmailIcon';
 import {Button} from '@atoms/Button';
 import {HDivider} from '@atoms/HDivider';
-import {signUpDataAtom} from '@modules/SignUp/atoms';
-import {currentStepAtom} from '@modules/SignUp/atoms/currentStepAtom';
+import {signUpDataAtom} from '@/modules/SignUp/atoms';
+import {currentStepAtom} from '@/modules/SignUp/atoms/currentStepAtom';
 import {useAtom, useSetAtom} from 'jotai';
 import {Box, FormControl, Stack, Text} from 'native-base';
 import React from 'react';

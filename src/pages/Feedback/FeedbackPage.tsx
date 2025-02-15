@@ -1,4 +1,4 @@
-import {Feedback} from '@modules/Feedback';
+import {Feedback} from '@/modules/Feedback';
 import {Box, Center, Text} from 'native-base';
 import React from 'react';
 
