@@ -1,7 +1,8 @@
 import {Button} from '@atoms/Button';
 import {useNavigation} from '@react-navigation/native';
-import {Image} from 'react-native';
-import {StyleSheet, useWindowDimensions, View} from 'react-native';
+import {Image, StyleSheet, useWindowDimensions, View} from 'react-native';
+import React from 'react';
+
 const OnboardingItem = ({item}) => {
   const navigation = useNavigation();
   const {width} = useWindowDimensions();

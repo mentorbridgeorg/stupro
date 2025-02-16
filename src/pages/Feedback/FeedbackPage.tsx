@@ -17,7 +17,7 @@ export const FeedbackPage = () => {
           borderRadius="20"
           shadow={2}
           bg="#FEFEFE">
-          <Text color={'font.primary'} fontWeight="bold">
+          <Text color={'font.primary'} fontWeight="bold" marginBottom={2}>
             How would you rate your Experience?
           </Text>
           <Feedback />

@@ -1,10 +1,10 @@
 import {degreeOptions} from '@/modules/SignUp/components/DegreeOptions';
 import {theme} from '@/theme';
-import {FormSelect} from '@/ui/molecules/FormSelect';
 import {Button} from '@atoms/Button';
 import {FormInput} from '@molecules/FormInput';
+import {FormSelect} from '@molecules/FormSelect';
 import {useNavigation} from '@react-navigation/native';
-import {Box, Center, Stack, Button as NativeBaseButton} from 'native-base';
+import {Box, Center, Button as NativeBaseButton, Stack} from 'native-base';
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native';
 
@@ -20,11 +20,12 @@ const EditProfile = () => {
   ];
 
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <SafeAreaView style={{flex: 1}}>
       <Box bg={theme.colors.primary[500]} pb={10} borderBottomRadius={30}>
         <Center
           mt={10}
-          _text={{fontSize: 25, color: 'black', fontWeight: 'bold'}}>
+          _text={{fontSize: 25, color: 'white', fontWeight: 'bold'}}>
           Edit Profile
         </Center>
       </Box>
@@ -69,15 +70,14 @@ const EditProfile = () => {
         <Center flexDirection={'row'} justifyContent={'space-around'}>
           <NativeBaseButton
             variant={'outline'}
+            size={'sm'}
             _text={{
-              fontSize: 'md',
+              fontSize: 'sm',
               fontWeight: 'bold',
             }}
-            style={{
-              borderColor: theme.colors.primary[100],
-              borderWidth: 3,
-              borderRadius: 10,
-            }}
+            borderColor={theme.colors.light[200]}
+            borderWidth={1}
+            borderRadius={10}
             onPress={() => {
               navigation.goBack();
             }}>

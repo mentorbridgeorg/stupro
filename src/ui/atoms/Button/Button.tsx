@@ -6,12 +6,12 @@ import {ButtonProps} from './Button.types';
 export const Button = ({onPress, children, isDisabled, style}: ButtonProps) => {
   return (
     <NativeBaseButton
-      // width={'50%'}
+      minWidth={'25%'}
       borderRadius={10}
+      size={'sm'}
       _text={{
-        fontSize: 'md',
+        fontSize: 'sm',
         fontWeight: 'bold',
-        // marginLeft: '0',
       }}
       isDisabled={isDisabled}
       onPress={onPress}

@@ -1,27 +1,26 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {ResetPassword} from '@pages/ResetPassword';
-import {ChangePassword} from '@pages/ChangePassword';
-import {Categories} from '@pages/Categories/Categories';
 import {NavigationBar} from '@/modules/navigationBar/navigationBar';
 import {View} from 'react-native';
+import {ChangePassword} from '@pages/ChangePassword';
+import {ResetPassword} from '@pages/ResetPassword';
+import {Categories} from '@pages/Categories/Categories';
+import {FeedbackPage} from '@pages/Feedback';
+import {ForgotPassword} from '@pages/ForgotPassword';
 import {HomePage, SwipeCards} from '@pages/Home';
-import EditProfile from '@pages/Profile/EditProfile';
-import {Profile} from '@pages/Profile';
+import Onboarding from '@pages/LandingPage/Onboarding';
 import {Preferences} from '@pages/Preferences';
+import {Profile} from '@pages/Profile';
+import EditProfile from '@pages/Profile/EditProfile';
 import {SignIn} from '@pages/SignIn';
 import {SignUp} from '@pages/SignUp';
-import {ForgotPassword} from '@pages/ForgotPassword';
-import {FeedbackPage} from '@pages/Feedback';
-import Onboarding from '@pages/LandingPage/Onboarding';
-import Notification from '@/pages/Notification/Notification';
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Profile"
+      initialRouteName="FeedbackPage"
       screenOptions={{
         headerTitleAlign: 'center',
         headerShadowVisible: false,
@@ -36,6 +35,8 @@ export const RootStack = () => {
       <Stack.Screen name="Login" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="Categories" component={Categories} />
       <Stack.Screen name="FeedbackPage" component={FeedbackPage} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="Onboarding" component={Onboarding} />

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   dot: {
     height: 10,
     borderRadius: 5,
-    backgroundColor: theme.colors.primary[400],
+    backgroundColor: theme.colors.primary[500],
     marginHorizontal: 5,
   },
 });

@@ -1,9 +1,9 @@
-import {currentStepAtom} from '@/modules/SignUp/atoms';
-import {FocusedCard} from '@organisms/FocusedCard';
-import {useAtom} from 'jotai';
-import {Box} from 'native-base';
+import { currentStepAtom } from '@modules/SignUp/atoms';
+import { FocusedCard, FocusedImage } from '@organisms/FocusedCard';
+import { useAtom } from 'jotai';
+import { Box } from 'native-base';
 import React from 'react';
-import {steps} from './steps';
+import { steps } from './steps';
 
 export const SignUp = () => {
   const [currentStep, setCurrentStep] = useAtom(currentStepAtom);
@@ -15,7 +15,7 @@ export const SignUp = () => {
   return (
     <Box>
       <FocusedCard
-        imageSource={steps[currentStep].image}
+        imageSource={<FocusedImage imageSource={steps[currentStep].image} />}
         onBackButtonPress={handleBackButtonPress}
         isDisplayBackButton={currentStep > 1}>
         {steps[currentStep].component}

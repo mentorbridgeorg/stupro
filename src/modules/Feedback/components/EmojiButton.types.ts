@@ -2,9 +2,9 @@ import {ReactElement, ReactNode} from 'react';
 
 export interface EmojiButtonProps {
   label?: ReactNode;
-  icon: ReactElement;
+  icon: (color: string) => ReactElement;
   onPress: () => void;
   color: string;
   bgColor: string;
-  value: number | null;
+  isSelected: boolean;
 }
