@@ -1,5 +1,5 @@
 import { Feedback } from '@modules/Feedback';
-import ShareExample from '../../../ShareExample';
+import ShareExample from '../../modules/Share/ShareExample';
 import { Box, Center, Text } from 'native-base';
 import React from 'react';
 import { View } from 'react-native';

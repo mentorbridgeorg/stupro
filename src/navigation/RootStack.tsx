@@ -10,7 +10,7 @@ import {SignUp} from '../pages/SignUp';
 import {FeedbackPage} from '../pages/Feedback';
 import {SwipeCards } from '@/pages/Home';
 import {HomePage} from '../modules/Home/Homepage';
-import ShareExample from '../../ShareExample';
+import ShareExample from '../modules/Share/ShareExample';
 import DeepLink from '../pages/DeepLink/DeepLink';
 import Article from '../pages/DeepLink/Article';
 // import { Linking } from 'react-native';
