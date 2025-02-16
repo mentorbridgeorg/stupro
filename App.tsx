@@ -34,10 +34,8 @@ const App = () => {
 
     listenToNotifications();
   }, []);
-
   return (
     <NativeBaseProvider theme={theme}>
-      <NavigationContainer>
         <PostHogProvider
           apiKey="phc_FlcrWuBmMaAMVqmYmuJ03BjVoCTomT6ckOxOOTaDWMl"
           options={{
@@ -45,7 +43,6 @@ const App = () => {
           }}>
           <RootStack />
         </PostHogProvider>
-      </NavigationContainer>
     </NativeBaseProvider>
   );
 }
