@@ -14,14 +14,13 @@ export const styles = StyleSheet.create({
     overflow: "hidden",
   },
   top: {
-  
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-   paddingTop:10,
-   paddingBottom:20,
-   paddingRight:15,
-   paddingLeft:20,
+    paddingTop: 10,
+    paddingBottom: 20,
+    paddingRight: 15,
+    paddingLeft: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
@@ -34,10 +33,10 @@ export const styles = StyleSheet.create({
   },
   questionImage: {
     width: 50,
-    height:90,
-   },
+    height: 90,
+  },
   optionsGrid: {
-    padding:10,
+    padding: 10,
   },
   row: {
     flexDirection: "row",
@@ -49,16 +48,14 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     margin: 6,
     borderWidth: 1.5,
- 
   },
-  
   optionText: {
     fontSize: 14,
     fontWeight: "bold",
     color: "black",
-    flexWrap: "wrap", 
+    flexWrap: "wrap",
   },
-   correctOption: {
+  correctOption: {
     borderColor: "#5CE65C",
     borderWidth: 2,
     backgroundColor: "#CCFFCC",
@@ -68,5 +65,4 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "#FFBABA",
   },
-
 });
