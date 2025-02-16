@@ -1,11 +1,10 @@
-
 export interface CardData {
+  id: string;
+  tags: string[];
   title: string;
-  image: string;
   description: string;
-  timeAgo: string;
-  id: number;
-  videoId: string;
-  cover: string;
-  imageUrl: string;
+  fetchedDate: string;
+  thumbnail: string;
+  url: string;
+  content: string;
 }

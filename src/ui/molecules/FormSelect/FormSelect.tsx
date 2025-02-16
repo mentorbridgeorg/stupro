@@ -37,7 +37,11 @@ export const FormSelect = ({
       }}>
       <Box w="100%">
         <FormControl isRequired={isRequired}>
-          {label && <FormControl.Label mb="2">{label}</FormControl.Label>}
+          {label && (
+            <FormControl.Label mb="2" _text={{color: 'primary.500'}}>
+              {label}
+            </FormControl.Label>
+          )}
           <Select
             minWidth="100%"
             size="lg"

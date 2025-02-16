@@ -1,8 +1,11 @@
-import {Feedback} from '@modules/Feedback';
+import {Feedback} from '@/modules/Feedback';
 import {Box, Center, Text} from 'native-base';
 import React from 'react';
+import { View } from 'react-native';
+import DeepLink from '../DeepLink/DeepLink';
 
-export const FeedbackPage = () => {
+export const FeedbackPage = ({data}: any) => {
+  console.log('feedback:' , data);
   return (
     <Box bg="primary.500" flex={1}>
       <Center p="10">
@@ -17,7 +20,7 @@ export const FeedbackPage = () => {
           borderRadius="20"
           shadow={2}
           bg="#FEFEFE">
-          <Text color={'font.primary'} fontWeight="bold">
+          <Text color={'font.primary'} fontWeight="bold" marginBottom={2}>
             How would you rate your Experience?
           </Text>
           <Feedback />

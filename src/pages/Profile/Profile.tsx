@@ -1,10 +1,10 @@
+import {EditIcon} from '@assets/icons/EditIcon';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {Box, VStack} from 'native-base';
 import React, {useEffect, useRef, useState} from 'react';
-import Options from './components/Options';
 import {Animated, Image, TouchableOpacity} from 'react-native';
-import {EditIcon} from '../../assets/icons/EditIcon';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import Options from './components/Options';
 
 export const Profile = () => {
   const navigation = useNavigation();
@@ -30,16 +30,15 @@ export const Profile = () => {
       const value = await AsyncStorage.getItem('user');
       if (value !== null) {
         const data = JSON.parse(value);
-        // console.log('Data retrieved:', data);
         setName(
           [data.userDetails.firstName, data.userDetails.lastName].join(' '),
         );
         setRole(data.userType);
-        {
+        setDesignation(
           data.userType === 'student'
-            ? setDesignation(data.userDetails.college)
-            : setDesignation(data.userDetails.designation);
-        }
+            ? data.userDetails.college
+            : data.userDetails.designation,
+        );
       }
     } catch (error) {
       console.error('Failed to load data:', (error as Error).message);
@@ -63,7 +62,7 @@ export const Profile = () => {
         useNativeDriver: true,
       }),
     ]).start();
-  }, []);
+  }, [opacity, translateY]);
 
   return (
     <Box flex={1}>
@@ -71,16 +70,17 @@ export const Profile = () => {
         <Image
           source={require('../../../assets/ProfileTop.png')}
           resizeMode="contain"
+          alt="ProfileTop"
         />
       </Box>
       <Box position={'absolute'} top={1} left={0} right={0} p={5}>
         <TouchableOpacity
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{alignSelf: 'flex-end', marginRight: 10, marginTop: 10}}
-          onPress={() => navigation.navigate('EditProfile')}>
+          onPress={() => navigation.navigate('EditProfile' as never)}>
           <EditIcon />
         </TouchableOpacity>
       </Box>
-      // name, designation, role
       <Box position={'absolute'} top={100} left={0} right={0} p={5} ml={2}>
         <Animated.View style={{opacity, transform: [{translateY}]}}>
           <Box _text={{color: 'black', fontSize: 50, fontWeight: '700'}}>
@@ -101,7 +101,7 @@ export const Profile = () => {
             mr={250}
             p={2}
             _text={{
-              color: 'black',
+              color: 'white',
               fontSize: 15,
               fontWeight: '500',
               textAlign: 'center',
@@ -110,24 +110,26 @@ export const Profile = () => {
           </Box>
         </Animated.View>
       </Box>
-      // Settings
       <VStack marginX={7} mb={20} space={2}>
         <Options
           Component={'Change Password'}
           onPress={() => {
-            navigation.navigate('ChangePassword');
+            navigation.navigate('ChangePassword' as never);
           }}
         />
         <Options
           Component={'Preferences'}
           onPress={() => {
-            navigation.navigate('Preferences');
+            navigation.navigate('Preferences' as never);
           }}
         />
         <Options Component={'Bookmarks'} onPress={() => {}} />
       </VStack>
       <Box position={'absolute'} bottom={-20} width={'100%'}>
-        <Image source={require('../../../assets/ProfileBottom.png')} />
+        <Image
+          source={require('../../../assets/ProfileBottom.png')}
+          alt="ProfileBottom"
+        />
       </Box>
     </Box>
   );

@@ -1,6 +1,18 @@
 export interface ProductData {
-  date: string;
-  day: string;
-  title: string;
-  imageUri: string;
+  id: string;
+  website: string;
+  tags: {
+    label: string;
+    slug: string;
+  }[];
+  thumbnail: {
+    url: string;
+  };
+  name: string;
+  tagline: string;
+  description: string;
+  productHuntId: string;
+  productHuntUrl: string;
+  fetchedDate: string;
+  isFavorite?: boolean;
 }

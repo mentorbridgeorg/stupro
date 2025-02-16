@@ -1,11 +1,11 @@
 
-import {  EmailIcon  } from '@assets/icons/EmailIcon';
-import {  Button  } from '@atoms/Button';
-import {  FormInput  } from '@molecules/FormInput';
+import { EmailIcon } from '@assets/icons/EmailIcon';
+import { Button } from '@atoms/Button';
+import { FormInput } from '@molecules/FormInput';
 
-import {  Box  } from 'native-base';
+import { Box } from 'native-base';
 import { usePostHog } from 'posthog-react-native';
-import React, {  useState  } from 'react';
+import React, { useState } from 'react';
 
 import { PAGES_ENDPOINT, sendData } from '@/api';
 export const ForgotPasswordForm = () => {
