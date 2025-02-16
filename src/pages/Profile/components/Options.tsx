@@ -9,6 +9,7 @@ const Options = ({Component, onPress, bg = theme.colors.primary[500]}: any) => {
       backgroundColor={bg}
       p={3}
       mt={4}
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{elevation: 5}}
       borderRadius={15}
       flexDirection="row"
@@ -16,7 +17,7 @@ const Options = ({Component, onPress, bg = theme.colors.primary[500]}: any) => {
       onPress={onPress}>
       <Box
         marginX={2}
-        _text={{fontSize: 'xl', fontWeight: 'bold', color: 'black'}}>
+        _text={{fontSize: 'xl', fontWeight: 'bold', color: 'white'}}>
         {Component}
       </Box>
       <Box alignSelf={'center'}>
