@@ -1,90 +1,111 @@
+import {Box, HStack, IconButton, Image, Text, VStack} from 'native-base';
 import React from 'react';
-import {
-  Box,
-  HStack,
-  Image,
-  NativeBaseProvider,
-  Text,
-  VStack,
-} from 'native-base';
+
+import styles from '@/ui/styles';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {ProductData} from './ProductCard.types';
-import {BookMarkIcon} from '@/assets/icons/BookMarkIcon';
 interface ProductCardProps {
   data: ProductData;
 }
 
 export const ProductCard = ({data}: ProductCardProps) => {
-  return (
-    <NativeBaseProvider>
-      <Box
-        flexDirection="column"
-        borderColor="black"
-        borderWidth={1}
-        width={350}
-        height={220}
-        borderRadius={15}
-        overflow="hidden">
-        <Box flex={1} bg="amber.400" justifyContent="center">
-          <HStack space={2}>
-            <Box
-              marginLeft={2}
-              borderWidth={2}
-              borderColor="black"
-              borderBottomRadius={3}
-              borderTopRadius={8}
-              borderBottomWidth={8}
-              overflow="hidden"
-              width={110}
-              height={20}>
-              <Image
-                source={{uri: data.imageUri}}
-                alt="Card Image"
-                width="100%"
-                height="100%"
-                resizeMode="cover"
-              />
-            </Box>
+  const addToFavorites = () => {
+    console.log('addToFavorites');
+  };
 
+  return (
+    <Box
+      marginBottom={5}
+      mx={4}
+      flexDirection="column"
+      width={'100%'}
+      shadow={3}
+      borderRadius={10}
+      overflow="hidden">
+      <Box padding={5} bg={'primary.500'} justifyContent="center">
+        <HStack space={2}>
+          <Box
+            marginLeft={2}
+            borderWidth={2}
+            borderBottomRadius={3}
+            borderTopRadius={8}
+            overflow="hidden"
+            width={110}
+            padding={2}
+            height={20}>
+            <Image
+              source={{uri: data?.thumbnail?.url}}
+              alt="Card Image"
+              width="100%"
+              height="100%"
+              borderRadius={10}
+              resizeMode="contain"
+            />
+          </Box>
+          <VStack marginLeft={1}>
             <Text
               fontSize="16"
               fontWeight="bold"
               color="black"
-              marginTop={6}
-              marginLeft={5}>
-              AI ChatBot
+              style={styles.textContent}>
+              {data?.name}
             </Text>
-          </HStack>
-        </Box>
-        <Box flex={1} bg="#fff">
-          <Text fontSize="10" marginLeft={5} marginTop={6}>
-            Artificial Intelligence is reshaping our world, dramatically
-            altering numerous sectors and influencing.
-          </Text>
-          <VStack>
-            <HStack space={7}>
-              <Box
-                bgColor="amber.400"
-                w={70}
-                h={7}
-                borderRadius={7}
-                marginLeft={210}
-                marginTop={2}>
-                <Text
-                  fontSize="10"
-                  fontWeight="bold"
-                  color="black"
-                  marginTop={1}
-                  marginLeft={5}>
-                  Python
-                </Text>
-              </Box>
-              <Box marginTop={3}>
-                <BookMarkIcon />
-              </Box>
-            </HStack>
+            <Box width={'80%'}>
+              <Text
+                fontSize="12"
+                mt={1}
+                fontWeight="bold"
+                color="muted.700"
+                style={styles.textContent}>
+                {data.tagline}
+              </Text>
+            </Box>
           </VStack>
-        </Box>
+          <IconButton
+            onPress={addToFavorites}
+            icon={
+              <Ionicons
+                name={data.isFavorite ? 'heart' : 'heart-outline'}
+                size={18}
+                color="red"
+              />
+            }
+            padding={1}
+            position="absolute"
+            top="0"
+            rounded="full"
+            right="2"
+            bg="white"
+          />
+        </HStack>
       </Box>
-    </NativeBaseProvider>
+      <Box bg="#fafafa" shadow={3}>
+        <VStack minHeight={50} py={5} px={3} mx={3} space={2}>
+          <Text
+            fontSize="12"
+            fontWeight="bold"
+            color="black"
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            lineHeight={18}
+            style={styles.textContent}>
+            {data.description}
+          </Text>
+          <HStack space={2}>
+            {data?.tags.map(tag => (
+              <Text
+                key={tag?.slug}
+                style={styles.textContent}
+                fontSize="12"
+                fontWeight="bold"
+                color={'font.primary'}
+                marginTop={1}>
+                #{tag?.label}
+              </Text>
+            ))}
+          </HStack>
+        </VStack>
+      </Box>
+    </Box>
   );
 };

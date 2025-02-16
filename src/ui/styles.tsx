@@ -1,10 +1,9 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
-
   },
   cardBackground: {
     flex: 1,
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     // padding: 10,
     // marginTop: 10,
-    marginBottom:20,
+    marginBottom: 20,
   },
   text: {
     textAlign: 'center',
@@ -45,16 +44,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   cardTitle: {
-    fontFamily:'BauhausStd-Demi',
-    textAlign:'center',
-    padding:10,
+    fontFamily: 'BauhausStd-Demi',
+    textAlign: 'center',
+    padding: 10,
     fontSize: 30,
     marginBottom: 10,
-    marginTop:10,
+    marginTop: 10,
     color: 'coolGray.50',
   },
   cardsDescription: {
-    fontFamily:'BauhausStd-Medium',
+    fontFamily: 'BauhausStd-Medium',
     fontSize: 18,
     // marginTop: 10,
     // marginBottom: 10,
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 237, 199, 0.7)',
     // backgroundOpacity: 0.5,
     justifyContent: 'center',
-    fontFamily:'BauhausStd-Demi',
+    fontFamily: 'BauhausStd-Demi',
     fontSize: 30,
     flex: 1,
     width: '100%',
@@ -111,6 +110,11 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 20,
     // filter: 'blur(1px)',
+  },
+  textContent: {
+    fontFamily: 'BauhausStd-DemiBold',
+    lineHeight: 20,
+    letterSpacing: 0.5,
   },
 });
 

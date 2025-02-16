@@ -1,18 +1,17 @@
 import {Box, HStack, Image, Text, VStack} from 'native-base';
 import React from 'react';
-import {ArrowRight} from '../../../assets/icons/ArrowRight';
 import {CardData} from './ArticleCard.types';
+import styles from '@/ui/styles';
 
 interface ArticleCardProps {
   data: CardData;
 }
 
-export function ArticleCard({data}: ArticleCardProps) {
+export const ArticleCard = ({data}: ArticleCardProps) => {
   return (
     <Box
       bg="#FDFAEC"
       width="380px"
-      height="220px"
       p={2}
       borderRadius="10"
       borderColor="black"
@@ -25,9 +24,9 @@ export function ArticleCard({data}: ArticleCardProps) {
           marginBottom={1}
           marginRight={1}
           width={460}
-          height={100}
+          height={200}
           source={{
-            uri: data.imageUrl,
+            uri: data.thumbnail,
           }}
           alt="Card Image"
         />
@@ -43,21 +42,16 @@ export function ArticleCard({data}: ArticleCardProps) {
           {data.title}
         </Text>
         <Text
-          fontSize="10"
+          fontSize="12"
           color="black"
           alignItems="center"
           p={1}
+          style={styles.textContent}
           marginTop={0}
           marginLeft={2}>
-          Artificial Intelligence is reshaping our world, dramatically altering
-          numerous sectors and influencing.
+          {data.description}
         </Text>
       </VStack>
-
-      <HStack space={2} marginBottom={1} marginTop={2} marginLeft="310">
-        <ArrowRight />
-      </HStack>
     </Box>
   );
 };
-
