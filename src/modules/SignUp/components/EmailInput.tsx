@@ -3,10 +3,11 @@ import {Button} from '@atoms/Button';
 import {HDivider} from '@atoms/HDivider';
 import {signUpDataAtom} from '@modules/SignUp/atoms';
 import {currentStepAtom} from '@modules/SignUp/atoms/currentStepAtom';
+import {FormInput} from '@molecules/FormInput';
 import {useAtom, useSetAtom} from 'jotai';
-import {Box, FormControl, Stack, Text} from 'native-base';
+import {Box, FormControl, Link, Stack, Text} from 'native-base';
 import React from 'react';
-import {FormInput} from '../../../ui/molecules/FormInput';
+import {StyleSheet} from 'react-native';
 import {SocialLogin} from './SocialLogin';
 
 export const EmailInput = () => {
@@ -26,7 +27,7 @@ export const EmailInput = () => {
         textAlign="center">
         Sign Up
       </Text>
-      <Box >
+      <Box>
         <FormControl isRequired marginTop="10">
           <Stack mx="10" w="80%">
             <FormInput
@@ -36,16 +37,44 @@ export const EmailInput = () => {
             />
           </Stack>
         </FormControl>
-        <Text
-          fontSize="sm"
-          color="font.primary"
-          mx="10"
-          mt="5"
-          mb="7"
-          fontWeight="bold">
-          By clicking continue, you agree to our Terms of Service and Privacy
-          Policy.
-        </Text>
+        <Box alignItems="center">
+          <Text
+            fontSize="sm"
+            color="font.primary"
+            mx="10"
+            mt="5"
+            mb="7"
+            style={styles.link}
+            fontWeight="bold">
+            By clicking continue, you agree to our{' '}
+            <Link
+              colorScheme="primary.500"
+              href="https://www.google.com"
+              isExternal
+              _text={{
+                color: 'info.500',
+                fontWeight: 'bold',
+                marginTop: 5,
+                marginBottom: -1,
+              }}>
+              Terms & Conditions
+            </Link>{' '}
+            and{' '}
+            <Link
+              colorScheme="primary.500"
+              href="https://www.google.com"
+              isExternal
+              _text={{
+                color: 'info.500',
+                fontWeight: 'bold',
+                marginTop: 5,
+                marginBottom: -1,
+              }}>
+              Privacy Policy
+            </Link>
+            .
+          </Text>
+        </Box>
         <Box alignItems="center" mb="5">
           <Button isDisabled={!isValidEmail} onPress={() => setCurrentStep(1)}>
             Continue
@@ -57,3 +86,10 @@ export const EmailInput = () => {
     </Box>
   );
 };
+
+const styles = StyleSheet.create({
+  link: {
+    color: 'font.primary !important',
+    fontWeight: 'bold',
+  },
+});

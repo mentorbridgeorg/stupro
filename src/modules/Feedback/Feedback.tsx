@@ -1,15 +1,14 @@
-import {BadFaceEmojiIcon} from '@assets/icons/BadFaceEmojiIcon';
-import {GoodFaceIcon} from '@assets/icons/GoodFaceIcon';
-import {OkFaceIcon} from '@assets/icons/OkFaceIcon';
-import {PerfectFaceIcon} from '@assets/icons/PerfectFaceIcon';
-import {Button} from '@atoms/Button';
-import {Box, Flex, HStack, Link, Text, TextArea} from 'native-base';
-import React, {useEffect, useState} from 'react';
-import {EmojiButton} from './components/EmojiButton';
-import axios from 'axios';
-import {useNavigation} from '@react-navigation/native';
-import {Toast} from '@/ui/atoms/Toast';
-import {PAGES_ENDPOINT, sendData} from '@/api';
+import { PAGES_ENDPOINT, sendData } from '@/api';
+import { Toast } from '@/ui/atoms/Toast';
+import { BadFaceEmojiIcon } from '@assets/icons/BadFaceEmojiIcon';
+import { GoodFaceIcon } from '@assets/icons/GoodFaceIcon';
+import { OkFaceIcon } from '@assets/icons/OkFaceIcon';
+import { PerfectFaceIcon } from '@assets/icons/PerfectFaceIcon';
+import { Button } from '@atoms/Button';
+import { useNavigation } from '@react-navigation/native';
+import { Box, Flex, HStack, Link, Text, TextArea, useToast } from 'native-base';
+import React, { useState } from 'react';
+import { EmojiButton } from './components/EmojiButton';
 
 export const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState<number | null>(null);
@@ -50,7 +49,7 @@ export const Feedback = () => {
       addedDate: null,
       addedBy: null,
     };
-    sendData(PAGES_ENDPOINT + '/feedback', {data}).then((response) => {
+    sendData(PAGES_ENDPOINT + '/feedback', {data}).then(response => {
       if (response) {
         toast.show({
           render: () => {

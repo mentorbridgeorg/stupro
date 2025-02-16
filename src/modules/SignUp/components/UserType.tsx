@@ -58,7 +58,7 @@ export const UserType = () => {
                   borderStyle="solid"
                   boxShadow={
                     type.type === signUpData?.userType
-                      ? `0 0 2px 2px ${theme.colors.font.primary}`
+                      ? `0 0 2px 2px ${theme.colors.primary[500]}`
                       : 'none'
                   }
                   p="5">
