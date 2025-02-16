@@ -1,6 +1,13 @@
 module.exports = {
-    project: {
-      android: {},
+  project: {
+    android: {},
+  },
+  assets: ['./src/assets/fonts/'],
+  dependencies: {
+    'react-native': {
+      platforms: {
+        ios: null,
+      },
     },
-    assets: ['./src/assets/fonts/'],
-  };
+  },
+};

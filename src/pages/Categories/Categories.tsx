@@ -2,7 +2,7 @@ import {CategoryForm} from '@/modules/Categories';
 import {Box, Center, Text} from 'native-base';
 import React from 'react';
 
-export const Categories: React.FC = ({}) => {
+export const Categories: React.FC = () => {
   return (
     <>
       <Center>

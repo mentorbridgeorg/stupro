@@ -46,7 +46,7 @@ export const RootStack = () => {
   return (
     <NavigationContainer linking={linking}>
     <Stack.Navigator
-      initialRouteName="FeedbackPage"
+      initialRouteName="HomePage"
       screenOptions={{
         headerTitleAlign: 'center',
         headerShadowVisible: false,
