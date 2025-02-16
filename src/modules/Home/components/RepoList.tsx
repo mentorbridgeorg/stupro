@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, VStack, Center } from 'native-base';
-import { RepoCard } from '../components/RepoCard';
+import { RepoCard } from './RepoCard';
 import { RepoData } from './RepoCard.types';
 
 const repoData: RepoData[] = [
