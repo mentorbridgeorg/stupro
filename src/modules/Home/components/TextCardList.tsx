@@ -12,13 +12,15 @@ const textData = [
 export const TextList = () => {
   return (
     <ScrollView>
-      <Center flex={1} bg="white" width={325} height={70} borderRadius={10} >
+   
+      <Center flex={1} bg="#FDFAEC" width={300} height={70} borderRadius={10} >
         <VStack space={4} width="90%" alignItems="center">
           {textData.map(data => (
             <TextCard key={data.text} data={data.text} />
           ))}
         </VStack>
       </Center>
+     
     </ScrollView>
   );
 };

@@ -7,7 +7,7 @@ export const TextCard = ({data}: {data:string}) => {
     <Text
     fontSize="12"
     color="black.100"
-    marginRight={8}
+    marginRight={10}
     marginTop={1}
     >
     {data}

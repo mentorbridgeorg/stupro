@@ -6,36 +6,32 @@ import {FormInput} from '@molecules/FormInput';
 import {PasswordPatternList} from '@molecules/PasswordPatternList';
 import {useAtom} from 'jotai';
 import {Box, Center, Pressable, Stack, Text} from 'native-base';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import {REGISTER_ENDPOINT} from '../../../api/endpoints';
+import {sendData} from '../../../api/Post/sendData';
 import {signUpDataAtom} from '../atoms';
-import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SecureAccount = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
-  const [isSendPressed, setSendPressed] = useState(false);
- const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-
-
+  const saveIntoAsyncStorage = async (key: string, value: any) => {
+    try {
+      await AsyncStorage.setItem(key, JSON.stringify(value));
+      // console.log('Data saved successfully');
+      // console.log('Data : ', value);
+    } catch (error) {
+      console.error('Failed to save data : ', (error as Error).message);
+    }
+  };
 
   const handleContinue = () => {
-    axios
-      .post('http://localhost:8080/signup', signUpData)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    // console.log('signUpData', signUpData);
+    saveIntoAsyncStorage('user', signUpData);
+    sendData(REGISTER_ENDPOINT, signUpData).then(response => {
+      console.log(response);
+    });
   };
-        
-  useEffect(() => {
-    if (isSendPressed) {
-      handleContinue();
-    }
-  });
 
   const isValidPassword =
     signUpData?.userDetails?.password?.length >= 8 &&

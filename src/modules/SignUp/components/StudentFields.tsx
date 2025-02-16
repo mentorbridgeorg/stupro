@@ -4,25 +4,14 @@ import {useAtom} from 'jotai';
 import {Box, Stack} from 'native-base';
 import React from 'react';
 import {signUpDataAtom} from '../atoms';
+import {degreeOptions} from './DegreeOptions';
 
 export const StudentFields = () => {
   const [signUpData, setSignUpData] = useAtom(signUpDataAtom);
 
-  const degreeOptions = [
-    {label: 'Bachelor of Engineering', value: 'BE'},
-    {label: 'Bachelor of Technology', value: 'BTech'},
-    {label: 'Bachelor of Science', value: 'BSc'},
-    {label: 'Bachelor of Arts', value: 'BA'},
-    {label: 'Master of Engineering', value: 'ME'},
-    {label: 'Master of Technology', value: 'MTech'},
-    {label: 'Master of Science', value: 'MS'},
-    {label: 'Master of Arts', value: 'MA'},
-    {label: 'Doctor of Philosophy', value: 'PhD'},
-  ];
-
   return (
     <Box w="100%">
-      <Stack mx="10" w="80%" mb="5">
+      <Stack mx="10" w="80" mb="5">
         <FormSelect
           label="Degree"
           isRequired
@@ -37,7 +26,7 @@ export const StudentFields = () => {
           placeholder="Choose Degree"
         />
       </Stack>
-      <Stack mx="10" w="80%" mb="5">
+      <Stack mx="10" w="80" mb="5">
         <FormInput
           label="College"
           isRequired

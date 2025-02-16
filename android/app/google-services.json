@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "71921065686",
+    "project_id": "stupto-dbd7b",
+    "storage_bucket": "stupto-dbd7b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71921065686:android:5f33f091267668c44ef377",
+        "android_client_info": {
+          "package_name": "com.stupro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfRDjb_6Uuu2ZHFeMlSqs3Zii2MpcZAck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

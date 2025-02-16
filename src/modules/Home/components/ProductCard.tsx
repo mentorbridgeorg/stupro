@@ -1,59 +1,90 @@
 import React from 'react';
-import {Box, VStack, HStack, Text, Image} from 'native-base';
-import {BookMarkIcon} from '../../../assets/icons/BookMarkIcon';
+import {
+  Box,
+  HStack,
+  Image,
+  NativeBaseProvider,
+  Text,
+  VStack,
+} from 'native-base';
 import {ProductData} from './ProductCard.types';
-import { TextList } from './TextCardList';
-
-
+import {BookMarkIcon} from '@/assets/icons/BookMarkIcon';
 interface ProductCardProps {
   data: ProductData;
 }
 
 export const ProductCard = ({data}: ProductCardProps) => {
   return (
-    <Box
-      bg="#FDFAEC"
-      width="380px"
-      height="230px"
-      p={4}
-      borderTopRadius={10}
-      borderBottomWidth={10}
-      borderColor="black"
-      borderWidth={4}
-      shadow={50}>
-      <HStack >
-        <VStack>
-          <HStack>
-            <Image
-              borderRadius={15}
+    <NativeBaseProvider>
+      <Box
+        flexDirection="column"
+        borderColor="black"
+        borderWidth={1}
+        width={350}
+        height={220}
+        borderRadius={15}
+        overflow="hidden">
+        <Box flex={1} bg="amber.400" justifyContent="center">
+          <HStack space={2}>
+            <Box
               marginLeft={2}
-              width={60}
-              height={60}
-              marginTop={1}
-              source={{
-                uri: data.imageUrl,
-              }}
-              alt="Card Image"
-            />
+              borderWidth={2}
+              borderColor="black"
+              borderBottomRadius={3}
+              borderTopRadius={8}
+              borderBottomWidth={8}
+              overflow="hidden"
+              width={110}
+              height={20}>
+              <Image
+                source={{uri: data.imageUri}}
+                alt="Card Image"
+                width="100%"
+                height="100%"
+                resizeMode="cover"
+              />
+            </Box>
+
             <Text
-              fontSize="md"
-              color="black"
-              alignItems="center"
+              fontSize="16"
               fontWeight="bold"
-              marginTop={5}
+              color="black"
+              marginTop={6}
               marginLeft={5}>
-              {data.title}
+              AI ChatBot
             </Text>
           </HStack>
-          <VStack p={3} width={350} borderRadius={40}  >
-          <TextList />
+        </Box>
+        <Box flex={1} bg="#fff">
+          <Text fontSize="10" marginLeft={5} marginTop={6}>
+            Artificial Intelligence is reshaping our world, dramatically
+            altering numerous sectors and influencing.
+          </Text>
+          <VStack>
+            <HStack space={7}>
+              <Box
+                bgColor="amber.400"
+                w={70}
+                h={7}
+                borderRadius={7}
+                marginLeft={210}
+                marginTop={2}>
+                <Text
+                  fontSize="10"
+                  fontWeight="bold"
+                  color="black"
+                  marginTop={1}
+                  marginLeft={5}>
+                  Python
+                </Text>
+              </Box>
+              <Box marginTop={3}>
+                <BookMarkIcon />
+              </Box>
+            </HStack>
           </VStack>
-
-          <HStack space={2} marginBottom={30} marginLeft="300" marginTop={2}>
-            <BookMarkIcon />
-          </HStack>
-        </VStack>
-      </HStack>
-    </Box>
+        </Box>
+      </Box>
+    </NativeBaseProvider>
   );
 };

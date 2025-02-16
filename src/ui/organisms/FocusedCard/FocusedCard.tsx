@@ -4,6 +4,16 @@ import React from 'react';
 import {View} from 'react-native';
 import {IFocusedCardProps} from './FocusedCard.types';
 
+export const FocusedImage = ({imageSource}: {imageSource: string}) => {
+  return (
+    <Image
+      source={{uri: imageSource}}
+      alt="email"
+      w="100%"
+      h={'300px'} />
+  );
+};
+
 export const FocusedCard = ({
   imageSource,
   children,
@@ -39,14 +49,7 @@ export const FocusedCard = ({
           <Box />
         </HStack>
         <Center marginTop={'100px'} paddingLeft={'25px'} paddingRight={'25px'}>
-          <Image
-            source={{
-              uri: imageSource,
-            }}
-            alt="email"
-            w="100%"
-            h={'300px'}
-          />
+          {imageSource}
         </Center>
         <Center position="absolute" bottom={0} left={0} right={0}>
           <Box

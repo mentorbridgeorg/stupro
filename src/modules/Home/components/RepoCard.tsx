@@ -1,94 +1,68 @@
 import React from 'react';
-import {Box, VStack, HStack, Text, Image} from 'native-base';
-import {BookMarkIcon} from '../../../assets/icons/BookMarkIcon';
-import {RepoData} from './RepoCard.types';
+import { Box, VStack, Text, Image, Badge, ScrollView, HStack } from 'native-base';
+import { RepoData } from './RepoCard.types';
+import { BookMarkIcon } from '@/assets/icons/BookMarkIcon';
+
 interface RepoCardProps {
-  data: RepoData;
+  data: RepoData[];  
 }
 
-export const RepoCard = ({data}: RepoCardProps) => {
+export const RepoCard = ({ data }: RepoCardProps) => {
   return (
-    <Box
-      bg="yellow.100"
-      width="380px"
-      height="200px"
-      p={4}
-      borderRadius={10}
-      borderBottomWidth={2}
-      borderColor="black"
-      borderWidth={2}
-      shadow={50}>
-      <HStack >
-        <VStack>
-          <HStack>
-            <VStack>
-            <Image
-              borderRadius={15}
-              marginLeft={2}
-              width={60}
-              height={60}
-              marginTop={8}
-              source={{
-                uri: data.imageUrl,
-              }}
-              alt="Card Image"
-            />
-            <Text marginLeft={2} p={1}>
-               Python
-            </Text>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <HStack space={4} p={3}>
+        {data.map((item, index) => (
+          <Box
+            key={index}
+            borderWidth={1}
+            borderColor="black"
+            borderRadius={15}
+            p={6}
+            width={350}
+            height={180}
+            bg="white"
+            flexDirection="row"
+            alignItems="center"
+            shadow={2}
+          >
+            <VStack space={2} alignItems="center">
+              <Image
+                source={{ uri: item.imageUri }}
+                borderRadius={15}
+                width={60}
+                height={60}
+                resizeMode="contain"
+              />
+              <Text fontSize="14" fontWeight="bold" color="black">
+                {item.title}
+              </Text>
             </VStack>
             <Box
-          bg="white"
-          borderRadius="md"
-          shadow={2}
-          p={4}
-          marginLeft={6}
-          marginTop={1}
-          width="70%"
-          height='100%'
-          alignItems="center"
-          
-        >
-          <VStack>
-           <Text
-              fontSize="12"
-              color="black"
-              alignItems="center"
-              fontWeight="bold"
-              marginRight={150}
-              >
-              {data.title}
-            </Text>
-            <Text
-             fontSize="10"
-             color="black"
-             marginRight={1}
-
+              bg="black"
+              borderRadius={10}
+              p={3}
+              ml={4}
+              flex={1}
+              height={110}
+              justifyContent="space-between"
             >
-          Artificial Intelligence is reshaping our world, 
-          dramatically altering numerous sectors and influencing.  
-            </Text>
-            <Box
-      bg="#FDFAEC"
-      width="20"
-      height="1"
-      p={2}
-      borderRadius={10}
-      borderBottomWidth={2}
-      borderColor="yellow.100"
-      borderWidth={2}
-      marginTop={2}
-      shadow={50}  />
-            </VStack>
-            </Box>
-          </HStack>
-          <VStack p={3} width={350} borderRadius={40} />
-          <HStack marginLeft={300}>
-          <BookMarkIcon />
-          </HStack>
+              <Text fontSize="12" fontWeight="bold" color="white">
+                Artificial Intelligence
+              </Text>
+              <Text fontSize="9" color="gray.300" ml={2}>
+                AI is reshaping our world, influencing our daily routines.
+              </Text>
 
-        </VStack>
+              <Badge bg="amber.300" alignSelf="flex-end" borderRadius={10} px={2}>
+                <Text fontSize="10" color="black">{item.title}</Text>
+              </Badge>
+            </Box>
+            <Box position="absolute" bottom={3} right={3}>
+              <BookMarkIcon />
+            </Box>
+          </Box>
+        ))}
       </HStack>
-    </Box>
+    </ScrollView>
   );
 };

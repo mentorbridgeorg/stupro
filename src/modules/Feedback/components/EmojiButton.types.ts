@@ -1,10 +1,10 @@
 import {ReactElement, ReactNode} from 'react';
 
-export interface EmojiButtonProps{
+export interface EmojiButtonProps {
   label?: ReactNode;
-  icon:ReactElement;
-  onPress:()=>void;
-  color:String;
-  bgColor:String;
-  value:String;
+  icon: (color: string) => ReactElement;
+  onPress: () => void;
+  color: string;
+  bgColor: string;
+  isSelected: boolean;
 }

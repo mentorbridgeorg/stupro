@@ -1,6 +1,5 @@
 
 export interface CardData {
-
   title: string;
   image: string;
   description: string;
@@ -8,4 +7,5 @@ export interface CardData {
   id: number;
   videoId: string;
   cover: string;
+  imageUrl: string;
 }

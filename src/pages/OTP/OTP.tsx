@@ -1,4 +1,4 @@
-import {OTPForm} from '@modules/OTPForm/OTPForm';
+import {OTPForm} from '@/modules/OTPForm/OTPForm';
 import {FocusedCard} from '@organisms/FocusedCard';
 import {Box, Text} from 'native-base';
 import React from 'react';
