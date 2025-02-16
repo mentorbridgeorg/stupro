@@ -1,11 +1,10 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-
+import {NavigationBar} from '@/modules/navigationBar/navigationBar';
+import {View} from 'react-native';
 import {ChangePassword} from '@pages/ChangePassword';
 import {ResetPassword} from '@pages/ResetPassword';
-
 import {Categories} from '@pages/Categories/Categories';
-
 import {FeedbackPage} from '@pages/Feedback';
 import {ForgotPassword} from '@pages/ForgotPassword';
 import {HomePage, SwipeCards} from '@pages/Home';
@@ -41,6 +40,7 @@ export const RootStack = () => {
       <Stack.Screen name="FeedbackPage" component={FeedbackPage} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="Onboarding" component={Onboarding} />
+      {/* <Stack.Screen name="Notification" component={Notification}/> */}
     </Stack.Navigator>
   );
 };

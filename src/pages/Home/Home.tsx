@@ -1,6 +1,6 @@
 import {AspectRatio, Box, Button, Center, Image, Text, View} from 'native-base';
 import React from 'react';
-import {GlobalSearch} from '@modules/GlobalSearch';
+import {GlobalSearch} from '@/modules/GlobalSearch';
 import {TouchableWithoutFeedback} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
