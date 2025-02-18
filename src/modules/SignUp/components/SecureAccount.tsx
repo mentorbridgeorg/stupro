@@ -78,7 +78,7 @@ export const SecureAccount = () => {
       </Center>
       <Box alignItems="center" mb="5" mt="5">
 
-        <Button onPress={()=>setSendPressed(true)} isDisabled={!isValidPassword}>
+        <Button onPress={()=>handleContinue} isDisabled={!isValidPassword}>
 
 
           Continue
