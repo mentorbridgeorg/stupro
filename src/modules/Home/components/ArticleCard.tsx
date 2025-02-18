@@ -1,12 +1,5 @@
 import {Box, HStack, Image, Text, VStack} from 'native-base';
 import React from 'react';
-import {Box, VStack, HStack, Text, Image} from 'native-base';
-import {BookMarkIcon} from '../../../assets/icons/BookMarkIcon';
-import { TouchableWithoutFeedback } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { SwipeCards } from '@/pages/Home';
-import DeepLink from '@/pages/DeepLink/DeepLink';
-import {ArrowRight} from '../../../assets/icons/ArrowRight';
 import {CardData} from './ArticleCard.types';
 import styles from '@/ui/styles';
 

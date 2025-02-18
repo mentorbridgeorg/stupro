@@ -9,7 +9,6 @@ import ImageCard from '@/ui/organisms/CardComponents/ImageCard';
 import CoverTitleComponent from '@/ui/organisms/CardComponents/CoverTitleComponent';
 import {ImageBackground} from 'react-native';
 import {FeedbackPage} from '../Feedback';
-import DeepLink from '../DeepLink/DeepLink';
 
 export const SwipeCards = ({route}) => {
   const [showFeedback, setShowFeedback] = React.useState(false);
@@ -35,7 +34,7 @@ const revisedCard = checkCards();
         <Center>
           {showFeedback ? (
             <View justifyContent={'center'}>
-              <FeedbackPage data={revisedCard}/>
+              <FeedbackPage />
             </View>
           ) : (
             <Swiper
@@ -66,8 +65,6 @@ const revisedCard = checkCards();
               showSecondCard={true}
               onSwipedAll={() => {
                 setShowFeedback(true);
-                // <DeepLink data={revisedCard}/>;
-                // console.log('revised',revisedCard);
                 console.log('onSwipedAll');
               }}
               goBackToPreviousCardOnSwipeRight={true}

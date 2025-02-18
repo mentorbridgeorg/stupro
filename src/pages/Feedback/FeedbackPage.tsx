@@ -1,11 +1,8 @@
 import {Feedback} from '@/modules/Feedback';
 import {Box, Center, Text} from 'native-base';
 import React from 'react';
-import { View } from 'react-native';
-import DeepLink from '../DeepLink/DeepLink';
 
-export const FeedbackPage = ({data}: any) => {
-  console.log('feedback:' , data);
+export const FeedbackPage = () => {
   return (
     <Box bg="primary.500" flex={1}>
       <Center p="10">
