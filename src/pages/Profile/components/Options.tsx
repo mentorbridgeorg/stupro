@@ -6,18 +6,17 @@ import React from 'react';
 const Options = ({Component, onPress, bg = theme.colors.primary[500]}: any) => {
   return (
     <Pressable
-      backgroundColor={bg}
+      bg={'#FFE0B2'}
       p={3}
       mt={4}
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{elevation: 5}}
       borderRadius={15}
+      marginX={5}
       flexDirection="row"
       justifyContent="space-between"
       onPress={onPress}>
       <Box
-        marginX={2}
-        _text={{fontSize: 'xl', fontWeight: 'bold', color: 'white'}}>
+        marginX={3}
+        _text={{fontSize: 'xl', fontWeight: 'bold', color: 'black'}}>
         {Component}
       </Box>
       <Box alignSelf={'center'}>
