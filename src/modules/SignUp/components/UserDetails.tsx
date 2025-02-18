@@ -13,19 +13,22 @@ export const UserDetails = () => {
     setCurrentStep(currentStep + 1);
   };
 
-  const isUserDetailsValid = () => {
-    if (signUpData?.userType === 'student') {
-      return (
-        signUpData?.userDetails?.degree !== '' &&
-        signUpData?.userDetails?.college !== ''
-      );
-    } else {
-      return (
-        signUpData?.userDetails?.designation !== '' &&
-        signUpData?.userDetails?.company !== ''
-      );
-    }
-  };
+  // const isUserDetailsValid = () => {
+  //   if (signUpData?.userType === 'student') {
+  //     return (
+  //       signUpData?.userDetails?.degree !== '' &&
+  //       signUpData?.userDetails?.college !== ''
+  //     );
+  //   } else {
+  //     return (
+  //       signUpData?.userDetails?.designation !== '' &&
+  //       signUpData?.userDetails?.company !== ''
+  //     );
+  //   }
+  // };
+  const isUserDetailsValid = 
+    signUpData?.userType  === 'student' ? signUpData?.userDetails?.degree !== '' && signUpData?.userDetails?.college !== '' : signUpData?.userDetails?.designation !== '' && signUpData?.userDetails?.company !== '';
+  
 
   return (
     <Box>
