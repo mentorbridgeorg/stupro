@@ -1,9 +1,10 @@
-import {EyeIcon} from '@assets/icons/EyeIcon';
-import {EyeSlashIcon} from '@assets/icons/EyeSlashIcon';
-import {Button} from '@atoms/Button';
-import {FormInput} from '@molecules/FormInput';
-import {PasswordPatternList} from '@molecules/PasswordPatternList';
-import {useAtom} from 'jotai';
+import { PAGES_ENDPOINT, updateData } from '@/api';
+import { EyeIcon } from '@assets/icons/EyeIcon';
+import { EyeSlashIcon } from '@assets/icons/EyeSlashIcon';
+import { Button } from '@atoms/Button';
+import { FormInput } from '@molecules/FormInput';
+import { PasswordPatternList } from '@molecules/PasswordPatternList';
+import { useAtom } from 'jotai';
 import {
   Alert,
   Box,
@@ -14,9 +15,8 @@ import {
   Text,
   VStack,
 } from 'native-base';
-import React, {useEffect, useState} from 'react';
-import {resetPasswordFormAtom} from './atoms/PasswordForn';
-import { PAGES_ENDPOINT, updateData } from '@/api';
+import React, { useEffect, useState } from 'react';
+import { resetPasswordFormAtom } from './atoms/PasswordForn';
 
 export const ResetPasswordForm = () => {
   const [passwordData, setPasswordData] = useAtom(resetPasswordFormAtom);
@@ -49,13 +49,11 @@ export const ResetPasswordForm = () => {
     if (error === null && isValidPassword && isPasswordsMatch) {
       console.log('Password Reset Successful!');
     }
-    updateData(PAGES_ENDPOINT + '/resetPassword', passwordData)
-          .then(function (response) {
-            console.log('Response:', response);
-          })
-
-
-
+    updateData(PAGES_ENDPOINT + '/resetPassword', passwordData).then(function (
+      response,
+    ) {
+      console.log('Response:', response);
+    });
   };
 
   return (

@@ -1,3 +1,5 @@
+import {EditIcon} from '@assets/icons/EditIcon';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {Box, Center, Image, View, VStack} from 'native-base';
 import React, {useEffect, useRef, useState} from 'react';
@@ -36,16 +38,15 @@ export const Profile = () => {
       const value = await AsyncStorage.getItem('user');
       if (value !== null) {
         const data = JSON.parse(value);
-        // console.log('Data retrieved:', data);
         setName(
           [data.userDetails.firstName, data.userDetails.lastName].join(' '),
         );
         setRole(data.userType);
-        {
+        setDesignation(
           data.userType === 'student'
-            ? setDesignation(data.userDetails.college)
-            : setDesignation(data.userDetails.designation);
-        }
+            ? data.userDetails.college
+            : data.userDetails.designation,
+        );
       }
     } catch (error) {
       console.error('Failed to load data:', (error as Error).message);
