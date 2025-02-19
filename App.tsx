@@ -4,6 +4,8 @@ import {NativeBaseProvider} from 'native-base';
 import {PostHogProvider} from 'posthog-react-native';
 import React from 'react';
 import {theme} from './src/theme';
+import { LoadingProvider } from '@/Loader/LoaderStateManagement';
+import LoaderComponent from '@/Loader/LoaderComponent';
 
 require('./ReactotronConfig');
 
@@ -16,7 +18,11 @@ function App(): React.JSX.Element {
           options={{
             host: 'https://us.i.posthog.com',
           }}>
-          <RootStack />
+          
+          <LoadingProvider>
+            <RootStack />
+            <LoaderComponent />
+          </LoadingProvider>
         </PostHogProvider>
       </NavigationContainer>
     </NativeBaseProvider>
