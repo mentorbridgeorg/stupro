@@ -3,13 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {NativeBaseProvider} from 'native-base';
 import {PostHogProvider} from 'posthog-react-native';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {ChangePassword, SuccessPage} from './src/pages/ChangePassword';
 import {theme} from './src/theme';
-import {SignUp} from './src/pages/SignUp/SignUp';
-import {SignIn} from './src/pages/SignIn';
-import {Preferences} from './src/pages/Preferences';
-import { FeedbackPage } from './src/pages/Feedback';
+
+require('./ReactotronConfig');
 
 function App(): React.JSX.Element {
   return (
